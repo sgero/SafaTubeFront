@@ -1,50 +1,32 @@
-import { Component } from '@angular/core';
-import Swiper from "swiper";
+import {Component, OnInit} from '@angular/core';
+import {RouterLink} from "@angular/router";
+import {CarouselModule} from "ngx-bootstrap/carousel";
 
 @Component({
   selector: 'app-landingpage',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    CarouselModule
+  ],
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })
-export class LandingpageComponent {
+export class LandingpageComponent implements OnInit{
+  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.slides[0] = {
+      src: './assets/img/angular.jpg',
+    };
+    this.slides[1] = {
+      src: './assets/img/react.jpg',
+    }
+    this.slides[2] = {
+      src: './assets/img/vue.jpg',
+    }
+  }
 
 }
-const swiper = new Swiper(".swiper", {
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  coverflowEffect: {
-    rotate: 0,
-    stretch: 0,
-    depth: 100,
-    modifier: 3,
-    slideShadows: true,
-  },
-  keyboard: {
-    enabled: true,
-  },
-  mousewheel: {
-    thresholdDelta: 70,
-  },
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  breakpoints: {
-    640: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 1,
-    },
-    1024: {
-      slidesPerView: 2,
-    },
-    1560: {
-      slidesPerView: 3,
-    },
-  },
-});

@@ -2,34 +2,18 @@
 <main>
   <div>
     <span>discover</span>
-    <h1>safaTube</h1>
+    <div class="logo">
+      <h1>safaTube</h1>
+      <img src="assets/images/logo.png" class="logosafatube">
+    </div>
     <hr>
-    <p>Beauty and mystery are hidden under the sea. Explore with our application to know about Aquatic Animals.</p>
+    <p class="textolp">Descubre una emocionante plataforma de vídeos, donde puedes cargar y
+      disfrutar de contenido variado. Explora un universo de entretenimiento y
+      comparte tus creaciones con una comunidad global de usuarios.</p>
     <a href="#">Log In</a>
     <a href="#">Register</a>
   </div>
 
-  <carousel>
-    <slide>
-      <img src="" alt="first slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
-    </slide>
-    <slide>
-      <img src="" alt="second slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </slide>
-    <slide>
-      <img src="" alt="third slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </slide>
-  </carousel>
+  <gallery class="carrusel" [items]="images" thumbPosition="left"></gallery>
+
 </main>

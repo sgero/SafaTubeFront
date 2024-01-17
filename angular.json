@@ -55,6 +55,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "SafaTubeFront:build"
+          },
           "configurations": {
             "production": {
               "buildTarget": "SafaTubeFront:build:production"
@@ -93,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "58bb9da3-2106-4f2e-85d5-70e4f3bd957a"
+    "analytics": false
   }
 }

@@ -28,6 +28,8 @@ bootstrapApplication(AppComponent, {
 })
 export class LandingpageComponent implements OnInit{
   images:any[];
+  texto:any;
+
   constructor() {
     this.images = [
       new ImageItem({src:'assets/images/fotocarrusle.jpg', thumb: 'assets/images/fotocarrusle.jpg'}),
@@ -35,9 +37,8 @@ export class LandingpageComponent implements OnInit{
       new ImageItem({src:'assets/images/1.png', thumb: 'assets/images/1.png'}),
 
     ]
-
+    this.texto = 'hola';
   }
-
   ngOnInit(): void {}
 
 }

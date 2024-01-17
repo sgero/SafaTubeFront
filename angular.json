@@ -56,15 +56,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SafaTubeFront:build"
+            "buildTarget": "SafaTubeFront:build"
           },
           "configurations": {
             "production": {
-
-              "browserTarget": "SafaTubeFront:build:production"
+              "buildTarget": "SafaTubeFront:build:production"
             },
             "development": {
-               "browserTarget": "SafaTubeFront:build:development"
+              "buildTarget": "SafaTubeFront:build:development"
             }
           },
           "defaultConfiguration": "development"

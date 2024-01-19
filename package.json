@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "safa-tube-front",
   "version": "0.0.0",
   "scripts": {
@@ -19,6 +20,8 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "@fortawesome/angular-fontawesome": "^0.14.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "bootstrap": "^5.3.2",
     "gsap": "^3.12.4",
     "hammerjs": "^2.0.8",

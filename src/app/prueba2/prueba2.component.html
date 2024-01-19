@@ -1,0 +1,27 @@
+<div
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+  "
+>
+  <app-landingpage
+    [indicatorsVisible]="false"
+    [animationSpeed]="100"
+    [slides]="slides"
+    [autoPlay]="true"
+    [autoPlaySpeed]="4000"
+  ></app-landingpage>
+
+  <app-landingpage
+    [indicatorsVisible]="true"
+    [animationSpeed]="400"
+    [slides]="slides"
+    [autoPlay]="true"
+    [autoPlaySpeed]="2000"
+  ></app-landingpage>
+</div>
+

@@ -18,7 +18,7 @@
     <div
       class="slide"
       [ngStyle]="{
-      'background-image': 'url(' + backgroundImages.join('), url(') + ')',
+      'background-image': 'url(' + slides[currentSlide].url + ')',
       opacity: hidden ? 0 : 1,
       transition: 'opacity ' + animationSpeed + 'ms ease-in-out'
     }"

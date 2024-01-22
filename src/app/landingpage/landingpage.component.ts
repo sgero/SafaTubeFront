@@ -67,7 +67,7 @@ export class LandingpageComponent implements OnInit{
   constructor() {
     this.slides = [
       {
-        url: 'assets/images/fotocarrusel1.png',
+        url: 'assets/images/users.jpg',
         title: 'First slide',
         description: 'This is the first slide',
       },
@@ -87,7 +87,7 @@ export class LandingpageComponent implements OnInit{
         description: 'This is the fourth slide',
       },
       {
-        url: 'assets/images/users.jpg',
+        url: 'assets/images/fotocarrusel1.png',
         title: 'Fifth slide',
         description: 'This is the fifth slide',
       },

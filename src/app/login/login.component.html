@@ -1,0 +1,21 @@
+<body>
+<div class="session">
+  <div class="left">
+      <img src="assets/images/logo.png" class="logosafatube">
+  </div>
+  <form action="" class="log-in" autocomplete="off">
+    <h4>Somos <span>safaTube</span></h4>
+    <p>Bienvenido de nuevo! Explora las últimas novedades.</p>
+    <div class="floating-label">
+      <input placeholder="Nombre de usuario" type="text" name="username" id="username" autocomplete="off">
+      <label for="username">Nombre de usuario:</label>
+    </div>
+    <div class="floating-label">
+      <input placeholder="Contraseña" type="password" name="password" id="password" autocomplete="off">
+      <label for="password">Contraseña:</label>
+    </div>
+    <button type="submit">Log in</button>
+    <a class="discrete" target="_blank">¿Aún no tienes una cuenta? Regístrate <a class="registro" [routerLink]="['/safaTube/registro']"> aquí.</a></a>
+  </form>
+</div>
+</body>

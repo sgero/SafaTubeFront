@@ -1,0 +1,16 @@
+
+#activo{
+  display: block;
+}
+#inactivo{
+  display: none;
+}
+.notificacion{
+  display: flex;
+  flex-direction: column;
+  border: solid black 1.5px;
+  border-radius: 20px;
+  padding: 15px 15px;
+  box-shadow: 5px 5px 10px black;
+  width: 320px;
+}

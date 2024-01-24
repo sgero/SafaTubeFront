@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {CarouselModule} from "ngx-bootstrap/carousel";
 import {GALLERY_CONFIG, GalleryComponent, GalleryConfig, GalleryItem, ImageItem} from 'ng-gallery';
-import {AppComponent} from "../app.component";
+import {AppComponent} from "../../app.component";
 import {bootstrapApplication} from "@angular/platform-browser";
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";

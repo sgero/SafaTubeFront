@@ -1,6 +1,7 @@
-<div class="container">
-  <img id="inactivo" src="assets/images/icons8-campana-24.png" ><img id="activo"  src="assets/images/icons8-campana.gif">
-  <div class = "notificacion"><app-suscripcionalerta></app-suscripcionalerta>
-    <app-likealerta></app-likealerta>
-    <app-mensajealerta></app-mensajealerta> </div>
+<div class="container" (click)="mostrar()">
+  <img #inactivo id="inactivo" src="assets/images/icons8-campana-24.png" ><img #activo id="activo"  src="assets/images/icons8-campana.gif">
+
 </div>
+<div #notifi id = "notifi" class = "notificacion"><p (click)="mostrar()"><B><I>x</I></B></p><app-suscripcionalerta></app-suscripcionalerta>
+  <app-likealerta></app-likealerta>
+  <app-mensajealerta></app-mensajealerta> </div>

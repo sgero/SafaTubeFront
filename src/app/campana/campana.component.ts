@@ -14,13 +14,36 @@ import {MensajealertaComponent} from "../mensajealerta/mensajealerta.component";
 export class CampanaComponent implements OnInit{
   @ViewChild('activo') campanaActivo: ElementRef | undefined;
   @ViewChild('inactivo') campanaInactivo: ElementRef | undefined;
-
+  @ViewChild('notifi') desplegable: ElementRef | undefined;
   constructor() {}
+  ngAfterViewInit() {
+    // Puedes acceder a los elementos aquí
+    console.log('Elementos inicializados:');
+    if (this.campanaActivo && this.campanaInactivo && this.desplegable) {
+      this.campanaActivo.nativeElement.style.display = 'block';
+      this.campanaInactivo.nativeElement.style.display = 'none';
+      this.desplegable.nativeElement.style.display = 'none';
+    }
+  }
 
   ngOnInit() {
-    if (this.campanaActivo && this.campanaInactivo) {
+    // if (this.campanaActivo && this.campanaInactivo) {
+    //   this.campanaActivo.nativeElement.style.display = 'block';
+    //   this.campanaInactivo.nativeElement.style.display = 'none';
+    // }
+  }
+
+  mostrar(){
+    console.log("funciona?");
+    if (this.campanaActivo && this.campanaInactivo && this.desplegable) {
       this.campanaActivo.nativeElement.style.display = 'none';
       this.campanaInactivo.nativeElement.style.display = 'block';
+      if (this.desplegable.nativeElement.style.display == 'none'){
+        this.desplegable.nativeElement.style.display = 'flex';
+      }else{
+        this.desplegable.nativeElement.style.display = 'none';
+      }
     }
+
   }
 }

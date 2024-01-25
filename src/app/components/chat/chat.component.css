@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.div1, .div2 {
+  width: 320px;
+  height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin: -100px 10px 10px 10px; /* Espacio entre los divs */
+  box-sizing: border-box;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.div2{
+  background-image: url("/assets/images/fondochat.png");
+  background-size: cover;
+  padding-bottom: 80px;
+}
+
+.div1-content{
+  display: flex;
+  flex-direction: row;
+}
+.div1-content>a{
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f14668;
+  color: white;
+  font-weight: bold;
+  border: solid black 0.5px;
+}
+button{
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+button>img{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.div2>div{
+  width: 100%;
+  display: flex;
+  padding: 10px;
+}
+p{
+  width: 80%;
+  padding: 10px;
+  border: solid grey 1px;
+  border-radius: 20px;
+}
+.pamplina{
+  background-color: white;
+
+}
+#prueba{
+  margin-left: auto;
+  background-color: lightblue;
+}
+
+#crear_mensaje{
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  bottom: 42px;
+  align-items: center;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+#crear_mensaje>input{
+  width: 100%;
+  height: 100%;
+  border-radius:20px;
+  padding-left: 10px;
+}
+#crear_mensaje>button{
+  width: 50px;
+  height: 42px;
+  background-color: lightcyan;
+  border-radius:20px;
+  margin-left: 3px;
+}
+#crear_mensaje>button>img{
+  height: 30px;
+}

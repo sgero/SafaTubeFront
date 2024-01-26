@@ -61,8 +61,8 @@
   <div>
     <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
   </div>
-  <form id="crear_mensaje">
-    <input type="text">
+  <form id="crear_mensaje" (ngSubmit)="crearMensaje()">
+    <input type="text" id="texto" placeholder="Escribe un mensaje..." name="texto" [(ngModel)]="mensaje.texto" required>
     <button type="submit"><img src="assets/images/Drawing.png"></button>
   </form>
 </div>

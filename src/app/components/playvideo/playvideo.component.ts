@@ -18,20 +18,20 @@ export class PlayvideoComponent implements OnInit{
   darLikeVideo: any;
   darDislikeVideo: any;
   ngOnInit() {
-    // this.route.params.subscribe(params =>
-    //   {const videoId= +params['id'];
-    //     if (videoId) {
-    //       this.dataservice.enviarIdVideoPlayingBaseDatos(videoId)
-    //         .subscribe(
-    //           data => {
-    //             this.video = data;
-    //           },
-    //           error => {
-    //             console.error("no funciona", error);
-    //           }
-    //         )
-    //     }
-    //   }
-    // )
+    this.route.params.subscribe(params =>
+      {const videoId= +params['id'];
+        if (videoId) {
+          this.dataservice.enviarIdVideoPlayingBaseDatos(videoId)
+            .subscribe(
+              data => {
+                this.video = data;
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
+        }
+      }
+    )
   }
 }

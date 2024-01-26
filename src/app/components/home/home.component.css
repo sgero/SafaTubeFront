@@ -289,3 +289,19 @@ body {
   background-color: var(--header-bg-color);
   font-size: 13px;
 }
+
+.tipo-categoria{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.tipo-categoria a{
+  display: flex;
+  margin: 10px;
+}
+.boton-categoria:hover{
+  /*color: black;*/
+  text-decoration: underline;
+
+}

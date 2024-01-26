@@ -1,17 +1,54 @@
-import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {HeaderComponent} from "../header/header.component";
+import {HttpClient} from "@angular/common/http";
+import {Generalservice} from "../../service/generalservice";
+import {NgForOf} from "@angular/common";
+import {TipoCategoria} from "../../models/TipoCategoria";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-    imports: [
-        RouterLink,
-        HeaderComponent
-    ],
+  imports: [
+    RouterLink,
+    HeaderComponent,
+    NgForOf
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements  OnInit{
+  videos: any;
+  tipocategorias: any;
+  constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
 
+  ngOnInit() {
+    this.route.params.subscribe(params =>
+      {const usuarioId= +params['id'];
+        if (usuarioId) {
+          this.dataservice.getVideosParaTiPage(usuarioId)
+            .subscribe(
+              data => {
+                this.videos = data;
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
+        }
+      }
+    )
+    this.dataservice.getTipoCategorias()
+      .subscribe((data: any) => {
+        this.tipocategorias = data;
+      },
+          (error: any) => {
+          console.error("no funciona", error);
+        }
+      )
+  }
+
+  getVideos(categoria: TipoCategoria) {
+
+  }
 }

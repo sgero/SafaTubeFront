@@ -15,6 +15,8 @@ import {Generalservice} from "../../service/generalservice";
 export class PlayvideoComponent implements OnInit{
   constructor(private route:ActivatedRoute, private dataservice: Generalservice) {}
   video:any;
+  darLikeVideo: any;
+  darDislikeVideo: any;
   ngOnInit() {
     // this.route.params.subscribe(params =>
     //   {const videoId= +params['id'];

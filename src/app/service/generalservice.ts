@@ -8,6 +8,10 @@ import {Mensaje} from "../models/Mensaje";
   providedIn: 'root',
 })
 export class Generalservice {
+  // constructor(private http: HttpClient) {}
+  // enviarIdVideoPlayingBaseDatos(id:number){
+  //   return this.http.post<Video>('http://localhost:8080/api/video/get/', id)
+  // }
 
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
-import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
 
@@ -14,23 +13,25 @@ import {Generalservice} from "../../service/generalservice";
   styleUrl: './playvideo.component.css'
 })
 export class PlayvideoComponent implements OnInit{
-  constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
+  constructor(private route:ActivatedRoute, private dataservice: Generalservice) {}
   video:any;
+  darLikeVideo: any;
+  darDislikeVideo: any;
   ngOnInit() {
-    this.route.params.subscribe(params =>
-      {const videoId= +params['id'];
-        if (videoId) {
-          this.dataservice.enviarIdVideoPlayingBaseDatos(videoId)
-            .subscribe(
-              data => {
-                this.video = data;
-              },
-              error => {
-                console.error("no funciona", error);
-              }
-            )
-        }
-      }
-    )
+    // this.route.params.subscribe(params =>
+    //   {const videoId= +params['id'];
+    //     if (videoId) {
+    //       this.dataservice.enviarIdVideoPlayingBaseDatos(videoId)
+    //         .subscribe(
+    //           data => {
+    //             this.video = data;
+    //           },
+    //           error => {
+    //             console.error("no funciona", error);
+    //           }
+    //         )
+    //     }
+    //   }
+    // )
   }
 }

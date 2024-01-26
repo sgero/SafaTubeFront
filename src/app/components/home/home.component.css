@@ -300,10 +300,6 @@ body {
 }
 .tipo-categoria a{
   display: flex;
-  margin: 10px;
+  margin: 5px;
 }
-.boton-categoria:hover{
-  /*color: black;*/
-  text-decoration: underline;
 
-}

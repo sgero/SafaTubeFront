@@ -3,8 +3,6 @@ import {Usuario} from "./Usuario";
 export class Mensaje{
   id?: number;
   texto?: string;
-  fecha?: Date;
-  leido?: boolean;
-  usuarioEmisor?: Usuario;
-  usuarioReceptor?: Usuario;
+  usuario_emisor?: number;
+  usuario_receptor?: number;
 }

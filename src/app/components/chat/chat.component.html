@@ -1,0 +1,70 @@
+<app-header></app-header>
+<body>
+
+<div class="div1">
+  <div class="div1-content">
+    <a>Home</a>
+    <a>Canal</a>
+  </div>
+  <div class="personas">
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Alba Alejandre Voces</span><span id="number" style="text-align:center; width: 25px; height:25px; background-color: indianred; border-radius: 100%;">11</span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+    <form class="persona">
+      <button><img src="assets/images/video.jpg"><span>Carolina de monaco</span><span></span></button>
+    </form>
+
+
+  </div>
+</div>
+
+<div class="div2">
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p id="prueba">Alba ponme un diez y añado hover a los botones</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <div>
+    <p class="pamplina">Este mensaje se autodestruirá en 3,2,1</p>
+  </div>
+  <form id="crear_mensaje" (ngSubmit)="crearMensaje()">
+    <input type="text" id="texto" placeholder="Escribe un mensaje..." name="texto" [(ngModel)]="mensaje.texto" required>
+    <button type="submit"><img src="assets/images/Drawing.png"></button>
+  </form>
+</div>
+
+</body>

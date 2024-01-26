@@ -7,8 +7,9 @@
       <img src="assets/images/logo.png" class="logosafatube">
     </div>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Search..." />
+    <div class="search-bar" id="buscarVideo" >
+      <input type="text" [(ngModel)]="palabraClave" placeholder="Search..."/>
+      <button type="submit" (click)="buscarVideo()"></button>
     </div>
   </div>
   <div class="header-menu">

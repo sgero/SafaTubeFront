@@ -30,4 +30,7 @@ export class Generalservice {
   getTipoCategorias() {
     return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
   }
+  getVideosSegunCategoria(categoria: object) {
+    return this.http.post<Video[]>('http://localhost:8000/api/categoria/clasificar', categoria)
+  }
 }

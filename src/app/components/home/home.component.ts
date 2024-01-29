@@ -20,6 +20,9 @@ import {TipoCategoria} from "../../models/TipoCategoria";
 export class HomeComponent implements  OnInit{
   videos: any;
   tipocategorias: any;
+  enviado:any;
+  // categoria: TipoCategoria= new TipoCategoria();
+
   constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
 
   ngOnInit() {
@@ -48,7 +51,21 @@ export class HomeComponent implements  OnInit{
       )
   }
 
-  getVideos(categoria: TipoCategoria) {
-
+  getVideos(categoria: object) {
+    this.route.params.subscribe(params =>
+    {
+      this.tipocategorias = categoria;
+      if (this.tipocategorias) {
+        this.dataservice.getVideosSegunCategoria(this.tipocategorias)
+          .subscribe(
+            data => {
+              this.enviado = data;
+            },
+            error => {
+              console.error("no funciona", error);
+            }
+          )
+      }
+    } )
   }
 }

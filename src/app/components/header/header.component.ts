@@ -3,6 +3,8 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
+import {BusquedaVideo} from "../../models/BusquedaVideo";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -19,10 +21,9 @@ export class HeaderComponent {
 
   palabraClave: any;
   datos: any;
-  titulo = [];
 
 
-  constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute) {
+  constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
 
   buscarVideo(){
@@ -30,7 +31,7 @@ export class HeaderComponent {
     this.route.params.subscribe(params =>
     {
       if (this.palabraClave){
-        this.service.BuscarVideo(this.titulo.join(this.palabraClave))
+        this.service.BuscarVideo(this.palabraClave)
           .subscribe(data=> {
               this.datos=data;
               console.log(data);

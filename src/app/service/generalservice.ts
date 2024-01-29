@@ -24,7 +24,7 @@ export class Generalservice {
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
   }
 
-  BuscarVideo(palabraClave: string): Observable<any>{
-    return this.http.post<any>('http://localhost:8000/api/video/buscar', palabraClave);
+  BuscarVideo(palabraClave: string){
+    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=19857', palabraClave);
   }
 }

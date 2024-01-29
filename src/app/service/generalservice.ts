@@ -33,4 +33,8 @@ export class Generalservice {
   getVideosSegunCategoria(categoria: object) {
     return this.http.post<Video[]>('http://localhost:8000/api/categoria/clasificar', categoria)
   }
+
+  BuscarVideo(palabraClave: string){
+    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=19857', palabraClave);
+  }
 }

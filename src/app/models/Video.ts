@@ -4,6 +4,7 @@ import {TipoPrivacidad} from "./TipoPrivacidad";
 
 export class Video{
   id?: number;
+  titulo?: string;
   descripcion?: string;
   enlace?: string;
   duracion?: number;

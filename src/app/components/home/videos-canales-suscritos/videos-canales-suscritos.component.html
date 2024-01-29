@@ -1,0 +1,30 @@
+<div class="video-app">
+  <app-header></app-header>
+
+<!--  <div class="wrapper">-->
+<!--    <div class="parent" onclick="">-->
+<!--      <div class="child bg-one">-->
+<!--        <a href="#">Los Angeles</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="main-container">
+    <div class="videos" >
+      <div class="video" *ngFor="let v of videos" [style.background-image]="'url(' + v.miniatura + ')'">
+        <div class="video-time">{{v.duracion}} Minutos</div>
+        <video muted>
+          <source src="{{v.miniatura}}" type="video/mp4">
+        </video>
+        <div class="video-content">{{v.titulo}}</div>
+        <div class="view">{{v.total_visitas}} visitas</div>
+
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+</div>
+

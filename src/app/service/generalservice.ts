@@ -20,11 +20,11 @@ export class Generalservice {
   }
 
   getVideosParaTiPage(usuarioId: number) {
-    return this.http.post<Video[]>('http://localhost:8080/api/video', usuarioId)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: number) {
-    return this.http.post<Video[]>('http://localhost:8080/api/video', usuarioId)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosCanalesSuscritos', usuarioId)
   }
 
   getTipoCategorias() {

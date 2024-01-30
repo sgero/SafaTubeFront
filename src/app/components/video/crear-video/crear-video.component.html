@@ -4,42 +4,47 @@
     <h3>Eleva tu Creatividad:</h3>
     <h4>Comparte tu Material</h4>
     <fieldset>
-      <input placeholder="Título" type="text" tabindex="1" required autofocus [(ngModel)]="videoNuevo.titulo">
+      <input placeholder="Título" type="text" tabindex="1" required autofocus [(ngModel)]="videoNuevo.titulo" name="titulo">
     </fieldset>
     <label for="priv">Privacidad</label>
-    <select name="privacidad" id="priv" [(ngModel)]="videoNuevo.tipoPrivacidad">
-      <option value="publico">Público</option>
-      <option value="privado">Privado</option>
-      <option value="por_enlace">Por enlace</option>
+    <select name="privacidad" id="priv" [(ngModel)]="videoNuevo.tipoPrivacidad" [value]="videoNuevo.tipoPrivacidad">
+      <option value="Público">Público</option>
+      <option value="Privado">Privado</option>
+      <option value="Por URL">Por enlace</option>
     </select>
     <label for="cat">Categoría</label>
-    <select name="categoria" id="cat" [(ngModel)]="videoNuevo.tipoCategoria">
-      <option value="infantil">Infantil</option>
-      <option value="gameplays">Gameplays</option>
-      <option value="vlogs">Vlogs</option>
-      <option value="tutoriales">Tutoriales</option>
-      <option value="hauls">Hauls</option>
-      <option value="product_reviews">Product Reviews</option>
-      <option value="unboxing">Unboxing</option>
-      <option value="videos_formativos">Videos Formativos</option>
-      <option value="podcasts">Podcasts</option>
-      <option value="musica">Música</option>
+    <select name="categoria" id="cat" [(ngModel)]="videoNuevo.tipoCategoria" [value]="videoNuevo.tipoPrivacidad">
+      <option value="Infantil">Infantil</option>
+      <option value="Gameplays">Gameplays</option>
+      <option value="Vlogs">Vlogs</option>
+      <option value="Tutoriales">Tutoriales</option>
+      <option value="Product Reviews">Product Reviews</option>
+      <option value="Unboxing">Unboxing</option>
+      <option value="Videos Formativos">Videos Formativos</option>
+      <option value="Podcasts">Podcasts</option>
+      <option value="Música">Música</option>
+      <option value="Cocina">Cocina</option>
+      <option value="Deporte">Deporte</option>
     </select>
 
     <fieldset>
-      <input placeholder="Enlace" type="url" tabindex="3" required [(ngModel)]="videoNuevo.enlace">
+      <input placeholder="Enlace" type="url" tabindex="3" required [(ngModel)]="videoNuevo.enlace" name="enlace">
     </fieldset>
     <fieldset>
-      <textarea placeholder="Descripción" tabindex="5" required [(ngModel)]="videoNuevo.descripcion"></textarea>
+      <textarea placeholder="Descripción" tabindex="5" required [(ngModel)]="videoNuevo.descripcion" name="descripcion"></textarea>
     </fieldset>
     <fieldset>
-      <input placeholder="Duración en minutos" type="number" tabindex="3" required [(ngModel)]="videoNuevo.duracion">
+      <input placeholder="Duración en minutos" type="number" tabindex="3" required [(ngModel)]="videoNuevo.duracion" name="duracion">
     </fieldset>
     <fieldset>
-      <input placeholder="Fecha" type="datetime-local" tabindex="3" required [(ngModel)]="videoNuevo.fecha" [value]="videoNuevo.fecha">
+      <input placeholder="Fecha" type="text" tabindex="3" required [(ngModel)]="videoNuevo.fecha" [value]="videoNuevo.fecha" name="fecha">
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="crearVideo()">Subir</button>
+      <input placeholder="Canal" type="number" tabindex="3" required [(ngModel)]="videoNuevo.canal" [valueAsNumber]="videoNuevo.canal" name="canal">
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="crearVideo()"
+      href="#">Subir</button>
     </fieldset>
   </form>
 </div>

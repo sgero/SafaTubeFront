@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {TipoCategoria} from "../models/TipoCategoria";
+import {Canal} from "../models/Canal";
 
 @Injectable({
   providedIn: 'root',
@@ -31,10 +32,22 @@ export class Generalservice {
     return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
   }
   getVideosSegunCategoria(categoria: object) {
-    return this.http.post<Video[]>('http://localhost:8000/api/categoria/clasificar', categoria)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=19622', categoria)
   }
 
   BuscarVideo(palabraClave: string){
-    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=19857', palabraClave);
+    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar', palabraClave);
+  }
+
+  BuscarVideoPorCanal(canalId: number){
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_canal', canalId);
+  }
+
+  BuscarCanal(palabraClave: string) {
+    return this.http.post<Canal[]>('http://localhost:8000/api/canal/buscar', palabraClave);
+  }
+
+  CrearVideo(videoNuevo: Video){
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
   }
 }

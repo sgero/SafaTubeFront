@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Generalservice} from "../../service/generalservice";
 import {NgForOf} from "@angular/common";
 import {TipoCategoria} from "../../models/TipoCategoria";
+import {Video} from "../../models/Video";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ import {TipoCategoria} from "../../models/TipoCategoria";
 export class HomeComponent implements  OnInit{
   videos: any;
   tipocategorias: any;
-  enviado:any;
+  enviado:Video[] = [];
   // categoria: TipoCategoria= new TipoCategoria();
 
   constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
@@ -58,8 +59,8 @@ export class HomeComponent implements  OnInit{
       if (this.tipocategorias) {
         this.dataservice.getVideosSegunCategoria(this.tipocategorias)
           .subscribe(
-            data => {
-              this.enviado = data;
+            (data:any) => {
+              this.enviado.push(data);
             },
             error => {
               console.error("no funciona", error);
@@ -70,3 +71,4 @@ export class HomeComponent implements  OnInit{
     )
   }
 }
+

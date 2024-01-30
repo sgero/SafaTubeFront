@@ -1,18 +1,19 @@
+<app-header></app-header>
 <div class="container">
-  <form id="contact" action="" method="post">
+  <form id="contact" action="" method="post" [(ngModel)]="videoNuevo">
     <h3>Eleva tu Creatividad:</h3>
     <h4>Comparte tu Material</h4>
     <fieldset>
-      <input placeholder="Título" type="text" tabindex="1" required autofocus>
+      <input placeholder="Título" type="text" tabindex="1" required autofocus [(ngModel)]="videoNuevo.titulo">
     </fieldset>
     <label for="priv">Privacidad</label>
-    <select name="privacidad" id="priv">
+    <select name="privacidad" id="priv" [(ngModel)]="videoNuevo.tipoPrivacidad">
       <option value="publico">Público</option>
       <option value="privado">Privado</option>
       <option value="por_enlace">Por enlace</option>
     </select>
     <label for="cat">Categoría</label>
-    <select name="categoria" id="cat">
+    <select name="categoria" id="cat" [(ngModel)]="videoNuevo.tipoCategoria">
       <option value="infantil">Infantil</option>
       <option value="gameplays">Gameplays</option>
       <option value="vlogs">Vlogs</option>
@@ -26,13 +27,19 @@
     </select>
 
     <fieldset>
-      <input placeholder="Enlace" type="url" tabindex="3" required>
+      <input placeholder="Enlace" type="url" tabindex="3" required [(ngModel)]="videoNuevo.enlace">
     </fieldset>
     <fieldset>
-      <textarea placeholder="Descripción" tabindex="5" required></textarea>
+      <textarea placeholder="Descripción" tabindex="5" required [(ngModel)]="videoNuevo.descripcion"></textarea>
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Subir</button>
+      <input placeholder="Duración en minutos" type="number" tabindex="3" required [(ngModel)]="videoNuevo.duracion">
+    </fieldset>
+    <fieldset>
+      <input placeholder="Fecha" type="datetime-local" tabindex="3" required [(ngModel)]="videoNuevo.fecha" [value]="videoNuevo.fecha">
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="crearVideo()">Subir</button>
     </fieldset>
   </form>
 </div>

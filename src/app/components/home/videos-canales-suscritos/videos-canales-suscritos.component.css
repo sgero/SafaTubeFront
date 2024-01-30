@@ -58,177 +58,6 @@ body {
   overflow: auto;
 }
 
-.profile {
-  height: 45vh;
-  max-height: 350px;
-  min-height: 270px;
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-}
-
-.profile-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 4px 4px 6px 6px;
-}
-
-.profile-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--header-bg-color);
-  width: 100%;
-  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 4px 4px;
-  padding: 0 25px;
-  z-index: 2;
-}
-
-.profile-img {
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  object-fit: cover;
-  margin-right: 15px;
-}
-
-.profile-avatar {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.profile-name {
-  white-space: nowrap;
-}
-
-.menu-items {
-  display: flex;
-  cursor: pointer;
-}
-
-.profile-menu-link {
-  padding: 20px;
-  transition: 0.2s;
-  &.active,
-  &:hover {
-    border-bottom: 3px solid var(--logo-color);
-    color: var(--logo-color);
-  }
-}
-
-.profile-info {
-  justify-content: center;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  z-index: 2;
-}
-
-.profile-name {
-  color: var(--main-color);
-}
-
-.profile-item {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  padding: 26px 16px;
-  white-space: nowrap;
-  svg {
-    width: 22px;
-    margin-right: 10px;
-  }
-}
-
-.profile-contact-info {
-  position: absolute;
-  display: flex;
-  right: 10px;
-  top: 20px;
-  color: #fff;
-  svg {
-    width: 18px;
-  }
-}
-
-.profile-contact {
-  border: 1px solid rgba(239, 239, 239, 0.3);
-  padding: 16px;
-  margin-left: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.follow-buttons {
-  display: flex;
-}
-
-.follow {
-  border: 2px solid var(--border-color);
-  border-radius: 25px 0 0 25px;
-  color: var(--body-color);
-  padding: 8px 16px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  background-color: transparent;
-  &:hover {
-    background-color: var(--header-bg-color);
-  }
-}
-
-.follow-option {
-  border-radius: 0 25px 25px 0;
-  margin-left: -2px;
-}
-
-.trends {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 45px;
-  a {
-    text-decoration: none;
-    color: var(--body-color);
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    white-space: nowrap;
-  }
-}
-
-.trends svg {
-  width: 20px;
-  margin-right: 16px;
-}
-
-.follow-option.active {
-  background-color: var(--header-bg-color);
-  margin-left: -3px;
-}
-
-.play-all {
-  background-color: var(--logo-color);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  svg {
-    width: 12px;
-    flex-shrink: 0;
-    margin-right: 8px;
-  }
-}
-
 .videos {
   display: grid;
   grid-template-columns: repeat(4,4fr);
@@ -360,6 +189,7 @@ body {
   border-radius: 98%;
   height: 5%;
   border: 1px black solid;
+  margin-right: 5px;
 }
 
 
@@ -369,3 +199,84 @@ body {
   padding-bottom: 75%;
   width: 100%;
 }
+
+.main-container {
+  padding: 25px;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+
+.video video {
+  transition: .4s;
+  width: 100%;
+  display: block;
+  border-radius: 4px 4px 0 0;
+}
+
+.video {
+  overflow: hidden;
+  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  position: relative;
+  background-color: var(--header-bg-color);
+  cursor: pointer;
+  &:hover .video-time {
+    opacity: 1;
+  }
+  &:hover video {
+    transform: scale(1.2);
+  }
+}
+
+.video-time {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #fff;
+  bottom: 80px;
+  right: 6px;
+  transition: .3s ease-in;
+}
+
+
+.video-content {
+  width: 100%;
+  color: var(--main-color);
+  padding: 15px 10px 0;
+  border-radius: 0 0 4px 4px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.view {
+  padding: 10px;
+  position: relative;
+  background-color: var(--header-bg-color);
+  font-size: 13px;
+}
+
+.tipo-categoria{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  width: 100%;
+}
+.tipo-categoria a{
+  display: flex;
+  margin: 5px;
+}
+

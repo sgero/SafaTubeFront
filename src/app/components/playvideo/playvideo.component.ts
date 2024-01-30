@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-playvideo',
   standalone: true,
   imports: [
-    HeaderComponent
+    HeaderComponent,
+    NgIf
   ],
   templateUrl: './playvideo.component.html',
   styleUrl: './playvideo.component.css'

@@ -30,10 +30,11 @@ export class HomeComponent implements  OnInit{
     this.route.params.subscribe(params =>
       {const usuarioId= +params['id'];
         if (usuarioId) {
-          this.dataservice.getVideosParaTiPage(usuarioId)
+          this.dataservice.getVideosRecomendados(usuarioId)
             .subscribe(
               data => {
                 this.videos = data;
+                this.videos = this.videos.videos;
               },
               error => {
                 console.error("no funciona", error);

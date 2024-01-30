@@ -42,20 +42,20 @@ export class HeaderComponent {
       }
     })
     }
-  buscarCanal() {
-    console.log('Valor recibido:', this.palabraClave);
-    this.route.params.subscribe(params => {
-      if (this.palabraClave) {
-        this.service.BuscarCanal(this.palabraClave)
-          .subscribe(data => {
-              this.datos = data;
-              console.log(data);
-            },
-            error => {
-              console.error("no funciona", error);
-            })
-      }
-    })
-  }
+  // buscarCanal() {
+  //   console.log('Valor recibido:', this.palabraClave);
+  //   this.route.params.subscribe(params => {
+  //     if (this.palabraClave) {
+  //       this.service.BuscarCanal(this.palabraClave)
+  //         .subscribe(data => {
+  //             this.datos = data;
+  //             console.log(data);
+  //           },
+  //           error => {
+  //             console.error("no funciona", error);
+  //           })
+  //     }
+  //   })
+  // }
 }
 

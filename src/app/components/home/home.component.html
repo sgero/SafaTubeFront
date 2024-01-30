@@ -6,10 +6,10 @@
       <a type="button" *ngFor="let categoria of tipocategorias" class="btn btn-outline-primary" (click)="getVideos(categoria)">{{categoria.nombre}}</a>
   </div>
 
-    <div class="main-container">
+    <div class="main-container" *ngFor="let video of enviado">
       <div class="videos">
         <div class="video">
-          <div class="video-time">15.13</div>
+          <div class="video-time">{{video.titulo}}</div>
           <video muted>
             <source src="https://player.vimeo.com/external/368244254.sd.mp4?s=2dc98d46cc5c55913b309928d1d14769f76bc6f9&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
           </video>

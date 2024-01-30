@@ -32,7 +32,7 @@ export class Generalservice {
     return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
   }
   getVideosSegunCategoria(categoria: object) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria', categoria)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=19622', categoria)
   }
 
   BuscarVideo(palabraClave: string){
@@ -45,5 +45,9 @@ export class Generalservice {
 
   BuscarCanal(palabraClave: string) {
     return this.http.post<Canal[]>('http://localhost:8000/api/canal/buscar', palabraClave);
+  }
+
+  CrearVideo(videoNuevo: Video){
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
   }
 }

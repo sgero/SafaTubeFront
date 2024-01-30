@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Generalservice} from "../../../service/generalservice";
 import {Video} from "../../../models/Video";
 import {repeat} from "rxjs";
+import {Canal} from "../../../models/Canal";
 
 @Component({
   selector: 'app-videos-canales-suscritos',
@@ -19,6 +20,7 @@ import {repeat} from "rxjs";
 })
 export class VideosCanalesSuscritosComponent implements OnInit{
   videos: any ;
+  canal: any;
   constructor(private route:ActivatedRoute, private dataservice: Generalservice) {}
 
   ngOnInit() {

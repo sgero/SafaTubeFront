@@ -1,30 +1,27 @@
 <div class="video-app">
   <app-header></app-header>
 
-<!--  <div class="wrapper">-->
-<!--    <div class="parent" onclick="">-->
-<!--      <div class="child bg-one">-->
-<!--        <a href="#">Los Angeles</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
   <div class="main-container">
-    <div class="videos" >
-      <div class="video" *ngFor="let v of videos" [style.background-image]="'url(' + v.miniatura + ')'">
-        <div class="video-time">{{v.duracion}} Minutos</div>
-        <video muted>
-          <source src="{{v.miniatura}}" type="video/mp4">
-        </video>
-        <div class="video-content">{{v.titulo}}</div>
-        <div class="view">{{v.total_visitas}} visitas</div>
-
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-3 my-3" *ngFor="let v of videos">
+          <div class="video-card w-100 rounded shadow position-relative" [style.background-image]="'url(' + v.miniatura + ')'" style="background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
+            <div class="video-title position-absolute text-white p-3 p-xl-4">
+              <div class="font-weight-bold pb-2">
+                {{v.titulo}}
+              </div>
+              <div class="small">
+                <img src="{{v.foto_canal}}">{{v.nombre_canal}}
+              </div>
+            </div>
+            <div class="hover text-white">
+              <i class="fas fa-play small"></i>
+            </div>
+          </div>
+        </div>
       </div>
-
-
-
-
     </div>
-
   </div>
+
 </div>
 

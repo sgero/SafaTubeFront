@@ -3,7 +3,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 12h18M3 6h18M3 18h18" /></svg>
     <div class="logo-safatube" [routerLink]="['/safaTube']">
-      <h3>safaTube</h3>
+      <h1>safaTube</h1>
       <img src="assets/images/logo.png" class="logosafatube">
     </div>
 
@@ -15,10 +15,10 @@
   <div class="header-menu">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        <a class="nav-link active" aria-current="page" [routerLink]="['/safaTube/home']">Para Ti</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Suscrito</a>
+        <a class="nav-link" [routerLink]="['/safaTube/home/suscritos']">Suscrito</a>
       </li>
     </ul>
   </div>

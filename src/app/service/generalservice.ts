@@ -13,15 +13,18 @@ export class Generalservice {
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
   enviarIdVideoPlayingBaseDatos(id:number){
-    return this.http.post<Video>('http://localhost:8080/api/video/get/', id)
+    return this.http.get<Video>('http://localhost:8000/api/video/get/'+id)
   }
 
   crearMensaje(data: Mensaje){
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
   }
 
-  getVideosParaTiPage(usuarioId: number) {
+  getVideosRecomendados(usuarioId: number) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
+  }
+  getVideosRecomendadosAPartirDeVideo(videoId: number) {
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: number) {

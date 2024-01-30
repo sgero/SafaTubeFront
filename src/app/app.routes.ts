@@ -8,6 +8,9 @@ import {HOME} from "@angular/cdk/keycodes";
 import {HomeComponent} from "./components/home/home.component";
 import {PlayvideoComponent} from "./components/playvideo/playvideo.component";
 import {ChatComponent} from "./components/chat/chat.component";
+import {
+  VideosCanalesSuscritosComponent
+} from "./components/home/videos-canales-suscritos/videos-canales-suscritos.component";
 
 export const routes: Routes = [
   {path:'safaTube', component:LandingpageComponent},
@@ -16,6 +19,7 @@ export const routes: Routes = [
   {path:'safaTube/login', component:LoginComponent},
   {path:'safaTube/subir_video', component:CrearVideoComponent},
   {path:'safaTube/home', component:HomeComponent},
+  {path:'safaTube/home/suscritos/:id', component:VideosCanalesSuscritosComponent},
   {path:'safaTube/video', component:PlayvideoComponent},
   {path:'safaTube/video/:id', component:PlayvideoComponent},
   {path:'safaTube/chat', component:ChatComponent},

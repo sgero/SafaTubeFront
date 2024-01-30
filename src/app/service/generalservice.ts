@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
+import {Canal} from "../models/Canal";
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,6 @@ export class Generalservice {
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
   }
   buscarMensaje(data: Mensaje){
-    return this.http.post<Usuario[]>(this.url + "/api/mensaje/buscar", data);
+    return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
   }
 }

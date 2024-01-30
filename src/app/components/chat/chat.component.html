@@ -1,20 +1,21 @@
 <app-header></app-header>
 <body>
 
-<div class="div1">
+<div class="div1" id="div1">
   <div class="div1-content">
     <a>Home</a>
     <a>Canal</a>
   </div>
   <div class="personas">
-    <form class="persona" (ngSubmit)="listarMensaje()">
-      <button type="submit"><img src="assets/images/video.jpg"><span>hola</span><span id="number" style="text-align:center; width: 25px; height:25px; background-color: indianred; border-radius: 100%;">11</span></button>
+    <form class="persona" *ngFor="let c of canales" (ngSubmit)="listarMensaje(c.usuario.id)">
+<!--      <input type="text" id="{{c.id}}" name="{{c.id}}" [(ngModel)]="emisor.usuario_receptor" required>-->
+      <button type="submit"><img src="{{c.foto}}"><span>{{c.usuario.username}}</span><span id="number" style="text-align:center; width: 25px; height:25px; background-color: indianred; border-radius: 100%;">11</span></button>
     </form>
 
   </div>
 </div>
 
-<div class="div2">
+<div class="div2" id="div2">
   <div *ngFor="let m of mensajes">
     <p class="pamplina" *ngIf="m.id_usuario_emisor === comparador">{{ m.texto }}</p>
     <p id="prueba" *ngIf="m.id_usuario_emisor !== comparador">{{m.texto}}</p>

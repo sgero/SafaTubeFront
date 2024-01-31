@@ -5,6 +5,7 @@ import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {TipoCategoria} from "../models/TipoCategoria";
 import {Canal} from "../models/Canal";
+import {Comentario} from "../models/Comentario";
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,12 @@ export class Generalservice {
   enviarIdVideoPlayingBaseDatos(id:number){
     return this.http.get<Video>('http://localhost:8000/api/video/get/'+id)
   }
+  enviarIdVideoRecibirComentarios(id:number){
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista',id)
+  }
+  enviarComentarioPadreRecibirRespuestasLista(comentarios: any) {
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista?XDEBUG_SESSION_START=15901', comentarios);
+  }
 
   crearMensaje(data: Mensaje){
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
@@ -24,7 +31,7 @@ export class Generalservice {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
   getVideosRecomendadosAPartirDeVideo(videoId: number) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?XDEBUG_SESSION_START=15594', videoId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: number) {
@@ -53,4 +60,6 @@ export class Generalservice {
   CrearVideo(videoNuevo: Video){
     return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
   }
+
+
 }

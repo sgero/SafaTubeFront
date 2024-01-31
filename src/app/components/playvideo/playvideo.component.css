@@ -70,5 +70,50 @@ body {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  padding-right: 10%;
+}
+.interactuar-comentarios{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: left;
+}
+.interactuar-comentarios article{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.interactuar-comentarios article div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.interdiv{
+  display: flex;
+  flex-direction: row;
+  margin-right: 39%;
+}
+
+.interactuar-comentarios article div div div p a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+.interactuar-comentarios article div div div p a small{
+  margin-left: 5px;
+}
+.interactuar-comentarios .media div .media-content .content{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.interactuar-respuestas{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  justify-content: left;
 }

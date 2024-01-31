@@ -24,13 +24,11 @@ export class ChatComponent implements OnInit{
   mensajes: any;
   comparador?: number;
   canales: any;
-  div1:any;
   div2:any;
   constructor(private service:Generalservice, private router: Router) {
 
   }
   ngOnInit() {
-    this.div1 = document.getElementById('div1');
     this.div2 = document.getElementById('div2');
     this.service.buscarMensaje(this.emisor).subscribe(data =>{
       this.canales = data;
@@ -47,9 +45,16 @@ export class ChatComponent implements OnInit{
     this.service.listarMensaje(this.emisor).subscribe(data =>{
       this.comparador = this.emisor.usuario_receptor;
       this.mensajes = data;
-
     });
-    // this.scrollDivToBottom();
+    // Simula la carga de datos después de un cierto tiempo (por ejemplo, 2 segundos)
+    setTimeout(() => {
+      // const miDiv: HTMLElement | null = this.elRef.nativeElement.querySelector('#miDiv');
+
+      if (this.div2) {
+        // Establece la posición del scrollbar al final
+        this.div2.scrollTop = this.div2.scrollHeight;
+      }
+    }, 1200); // Cambia este valor según sea necesario
   }
   crearMensaje(){
     this.service.
@@ -62,9 +67,6 @@ export class ChatComponent implements OnInit{
   };
   // private scrollDivToBottom(): void {
   //   // Ajustar el scrollTop al fondo para ambas divs
-  //   if (this.div1) {
-  //     this.div1.nativeElement.scrollTop = this.div1.nativeElement.scrollHeight;
-  //   }
   //
   //   if (this.div2) {
   //     this.div2.nativeElement.scrollTop = this.div2.nativeElement.scrollHeight;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from "../../header/header.component";
 import {Generalservice} from "../../../service/generalservice";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {Video} from "../../../models/Video";
@@ -11,7 +11,8 @@ import {Video} from "../../../models/Video";
   standalone: true,
   imports: [
     HeaderComponent,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './crear-video.component.html',
   styleUrl: './crear-video.component.css'

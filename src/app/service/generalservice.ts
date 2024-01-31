@@ -42,7 +42,7 @@ export class Generalservice {
   }
 
   BuscarVideo(palabraClave: string){
-    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar', palabraClave);
+    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=10976', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){
@@ -54,7 +54,7 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video){
-    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear', videoNuevo);
   }
   listarMensaje(data: Mensaje){
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);

@@ -5,6 +5,7 @@ import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
 import {BusquedaVideo} from "../../models/BusquedaVideo";
 import {HttpClient} from "@angular/common/http";
+import {Video} from "../../models/Video";
 
 @Component({
   selector: 'app-header',
@@ -21,9 +22,14 @@ export class HeaderComponent {
 
   palabraClave: any;
   datos: any;
+  buscadorVideoComponent: any;
 
 
   constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
+  }
+  ngOnInit(): void {
+    // Llama a buscarVideo() cuando el componente se inicia
+    this.buscarVideo();
   }
 
   buscarVideo(){
@@ -34,6 +40,7 @@ export class HeaderComponent {
         this.service.BuscarVideo(this.palabraClave)
           .subscribe(data=> {
               this.datos=data;
+              this.buscadorVideoComponent.videos = data;
               console.log(data);
             },
             error => {

@@ -11,6 +11,7 @@ import {ChatComponent} from "./components/chat/chat.component";
 import {
   VideosCanalesSuscritosComponent
 } from "./components/home/videos-canales-suscritos/videos-canales-suscritos.component";
+import {BuscadorVideoComponent} from "./components/home/buscador-video/buscador-video.component";
 
 export const routes: Routes = [
   {path:'safaTube', component:LandingpageComponent},
@@ -24,6 +25,7 @@ export const routes: Routes = [
   {path:'safaTube/video/:id', component:PlayvideoComponent},
   {path:'safaTube/chat', component:ChatComponent},
   {path:'safaTube/video/buscar', component:HomeComponent},
-  {path:'safaTube/home/crear_video', component:CrearVideoComponent},
+  {path:'safaTube/home/:id/crear_video', component:CrearVideoComponent},
+  {path:'safaTube/buscador-video', component:BuscadorVideoComponent},
 
 ];

@@ -6,7 +6,7 @@ import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
 import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
-import {Canal} from "../models/Canal";
+
 
 @Injectable({
   providedIn: 'root',

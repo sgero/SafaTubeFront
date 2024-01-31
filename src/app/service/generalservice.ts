@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/co
 import {Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
+import {Usuario} from "../models/Usuario";
+import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
 import {Canal} from "../models/Canal";
 
@@ -10,6 +12,7 @@ import {Canal} from "../models/Canal";
   providedIn: 'root',
 })
 export class Generalservice {
+
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
   enviarIdVideoPlayingBaseDatos(id:number){
@@ -52,5 +55,11 @@ export class Generalservice {
 
   CrearVideo(videoNuevo: Video){
     return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
+  }
+  listarMensaje(data: Mensaje){
+    return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
+  }
+  buscarMensaje(data: Mensaje){
+    return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
   }
 }

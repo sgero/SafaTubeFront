@@ -117,3 +117,16 @@ body {
   flex-direction: row;
   justify-content: left;
 }
+.media-left1{
+  width: 37%;
+}
+.media1:hover{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  transform: scale(1.1);
+  opacity: 1;
+}
+.media-content1{
+  margin-left: 5px;
+}

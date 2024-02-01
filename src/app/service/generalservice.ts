@@ -22,6 +22,9 @@ export class Generalservice {
   enviarComentarioPadreRecibirRespuestasLista(comentarios: any) {
     return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista?XDEBUG_SESSION_START=15901', comentarios);
   }
+  enviarRespuestaPadreRecibirRespuestasLista(respuesta: any) {
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaDeRespuestasLista?XDEBUG_SESSION_START=18570', respuesta);
+  }
 
   crearMensaje(data: Mensaje){
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
@@ -31,7 +34,7 @@ export class Generalservice {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
   getVideosRecomendadosAPartirDeVideo(videoId: number) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?XDEBUG_SESSION_START=15594', videoId)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: number) {

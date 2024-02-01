@@ -6,6 +6,8 @@ import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
 import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
+// import { HttpClient } from '@angular/common/http';
+// import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -62,4 +64,37 @@ export class Generalservice {
   buscarMensaje(data: Mensaje){
     return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
   }
+
+  listarCanal(data: Canal){
+    return this.http.post<Canal[]>(this.url + "/api/canal/listar", data);
+  }
+
+  buscarCanal(data: Canal){
+    return this.http.post<Canal[]>(this.url + "/api/canal/buscar", data);
+  }
+
+  listarUsuario(data: Usuario){
+    return this.http.post<Usuario[]>(this.url + "/api/usuario/listar", data);
+  }
+
+  buscarUsuario(data: Usuario){
+    return this.http.post<Usuario[]>(this.url + "/api/usuario/buscar", data);
+  }
+
+  editarCanal(data: Canal){
+    return this.http.post<Canal[]>(this.url + "/api/canal/editar", data);
+  }
+
+  editarUsuario(data: Usuario){
+    return this.http.post<Usuario[]>(this.url + "/api/usuario/editar", data);
+  }
+
+  // register(user: any): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/register`, user);
+  // }
+
+  registerUser(data: Usuario){
+    return this.http.post<Usuario[]>('http://127.0.0.1:8000/api/registro', data);
+  }
+
 }

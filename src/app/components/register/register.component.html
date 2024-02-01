@@ -1,0 +1,46 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <!-- Campos para el usuario -->
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" formControlName="username" />
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" formControlName="password" />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" formControlName="email" />
+
+  <!-- Campos para el canal -->
+  <label for="nombre">Nombre del Canal:</label>
+  <input type="text" id="nombre" formControlName="canal.nombre" />
+
+  <label for="apellidos">Apellidos del Canal:</label>
+  <input type="text" id="apellidos" formControlName="canal.apellidos" />
+
+  <label for="descripcion">Descripción del Canal:</label>
+  <textarea id="descripcion" formControlName="canal.descripcion"></textarea>
+
+  <label for="fecha_nacimiento">Fecha de Nacimiento del Canal:</label>
+  <input type="text" id="fecha_nacimiento" formControlName="canal.fecha_nacimiento" />
+
+  <label for="telefono">Teléfono del Canal:</label>
+  <input type="text" id="telefono" formControlName="canal.telefono" />
+
+  <label for="foto">Foto del Canal:</label>
+  <input type="text" id="foto" formControlName="canal.foto" />
+
+  <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
+  <select id="tipo_contenido" formControlName="canal.tipo_contenido.id">
+    <!-- Opciones del select según tus necesidades -->
+    <option value="1">Personal</option>
+    <option value="2">Profesional</option>
+    <option value="3">Divulgativo</option>
+    <!-- ... -->
+  </select>
+
+  <label for="banner">Banner del Canal:</label>
+  <input type="text" id="banner" formControlName="canal.banner" />
+
+  <button (click)="enviarRegistro()" type="submit">Registrar</button>
+
+</form>

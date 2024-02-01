@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {BusquedaVideo} from "../../models/BusquedaVideo";
 import {HttpClient} from "@angular/common/http";
 import {Video} from "../../models/Video";
+import {BuscadorVideoComponent} from "../home/buscador-video/buscador-video.component";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent {
 
   palabraClave: any;
   datos: any;
-  buscadorVideoComponent: any;
+  buscadorDeVideoComponent: Video[] = [];
 
 
   constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
@@ -39,8 +40,9 @@ export class HeaderComponent {
       if (this.palabraClave){
         this.service.BuscarVideo(this.palabraClave)
           .subscribe(data=> {
-              this.datos=data;
-              this.buscadorVideoComponent.videos = data;
+              // this.datos=data;
+              this.buscadorDeVideoComponent=data;
+
               console.log(data);
             },
             error => {

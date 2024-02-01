@@ -1,11 +1,11 @@
+<app-header></app-header>
 <div class="video-app">
-  <app-header></app-header>
   <div class="wrapper">
   </div>
   <div class="main-container">
-    <div class="videos" >
-<!--      <p>{{ v.titulo }}</p>-->
-<!--      <p>{{ v.descripcion }}</p>-->
+    <div class="videos" *ngFor="let v of videos">
+      <p>{{ v.titulo }}</p>
+      <p>{{ v.descripcion }}</p>
       <div class="video">
         <div class="video-time">15.13</div>
         <video muted>

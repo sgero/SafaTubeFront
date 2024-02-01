@@ -42,7 +42,7 @@ export class Generalservice {
   }
 
   BuscarVideo(palabraClave: string){
-    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=10976', palabraClave);
+    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=19898', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){

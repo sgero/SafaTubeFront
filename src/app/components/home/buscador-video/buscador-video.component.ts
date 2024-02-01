@@ -19,7 +19,8 @@ import {HttpClient} from "@angular/common/http";
 export class BuscadorVideoComponent implements OnInit{
   // palabraClave: any;
   // datos: any;
-  videos: Video[] = [];
+  buscadorVideoComponent: any;
+  listaVideos: Video[] = [];
 
 
   constructor() {

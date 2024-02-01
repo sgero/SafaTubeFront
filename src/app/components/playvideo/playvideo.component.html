@@ -4,8 +4,15 @@
 <div class="container">
   <div class="columns">
     <div class="column is-8">
-      <div class="ratio ratio-16x9">
-        <iframe src="https://www.youtube.com/embed/NaoNcERVF78" title="YouTube video" allowfullscreen></iframe>
+      <div class="ratio ratio-16x9" #demoYouTubePlayer>
+        <youtube-player
+          videoId="{{video.enlace}}"
+          suggestedQuality="highres"
+          [height]="videoHeight"
+          [width]="videoWidth"
+          [startSeconds]="4"
+          [endSeconds]="300">
+        </youtube-player>
       </div>
       <br>
       <div class="box video-meta">
@@ -34,8 +41,8 @@
                         <a class="nav-item is-tab is-active">
                           <span class="title is-4">{{video.totalVisitas}} visitas</span>
                           <div>
-                            <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> 5254</a>
-                            <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> 1</a>
+                            <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{ video.contadorLikes }}</a>
+                            <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{ video.contadorDislikes }}</a>
                           </div>
                         </a>
                       </div>
@@ -88,130 +95,124 @@
           </div>
         </article>
         <hr>
-        <article class="media">
+        <article class="media" *ngFor="let c of comentarios">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="http://placehold.it/128x128">
+              <img src="{{c.foto_canal}}">
             </p>
           </figure>
           <div class="media-content">
             <div class="content">
               <p>
-                <strong>Barbara Middleton</strong> <small> · 3 hrs</small>
+                <strong>{{c.nombre_canal}}</strong>
+                <small> {{c.fecha}}</small>
                 <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                {{c.texto}}
                 <br>
-                <small><a>Like</a> · <a>Reply</a></small>
+                <small class="interactuar-comentarios">
+                  <div class="interdiv">
+                    <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{c.contador_likes}}</a>
+                    <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{c.contador_dislikes}}</a>
+                    <a class="button is-default" (click)="verRespuestas(c)">Ver Respuestas</a>
+                    <a class="button is-default" (click)="darDislikeVideo">Responder</a>
+                  </div>
+
+                  <article class="media" *ngFor="let r of respuestas">
+                    <div *ngIf="r.id_comentario_padre == c.id">
+                      <figure class="media-left">
+                        <p class="image is-64x64">
+                          <img src="{{r.foto_canal}}">
+                        </p>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <a>
+                              <strong>{{r.nombre_canal}} </strong>
+                              <small> &#64;<b>{{r.nombre_canal_comentario_padre}} </b></small>
+                              <small> {{r.fecha}}</small>
+                            </a>
+                            {{r.texto}}
+                            <small class="interactuar-respuestas">
+                              <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
+                              <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
+                              <a class="button is-default" (click)="responderRespuesta(r)">Responder</a>
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+
+                  <article class="media" *ngFor="let r2 of respuestasDeRespuestaPadre">
+<!--                    <div *ngIf="r2.id_comentario_padre == respuestas.let.r.id">-->
+                      <figure class="media-left">
+                        <p class="image is-64x64">
+                          <img src="{{r2.foto_canal}}">
+                        </p>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <a>
+                              <strong>{{r2.nombre_canal}} </strong>
+                              <small> &#64;<b>{{r2.nombre_canal_comentario_padre}} </b></small>
+                              <small> {{r2.fecha}}</small>
+                            </a>
+                            {{r2.texto}}
+                            <small class="interactuar-respuestas">
+                              <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r2.contador_likes}}</a>
+                              <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r2.contador_dislikes}}</a>
+                              <a class="button is-default" (click)="darDislikeVideo">Responder</a>
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+<!--                    </div>-->
+                  </article>
+
+
+
+
+
+
+                </small>
               </p>
             </div>
           </div>
         </article>
+
+
         <div class="spacer"></div>
 
       </div>
     </div>
+
+
     <div class="column is-4">
       <div class="box related-list">
         <p class="autoplay">
           <span class="autoplay-title">Siguiente</span>
         </p>
-        <article class="media related-card">
-          <div class="media-left">
+        <article class="media related-card" *ngFor="let recomend of recomendaciones" [routerLink]="['/safaTube/video', recomend.id]">
+          <div class="media-left1">
             <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
+              <img src="{{recomend.miniatura}}" alt="Image">
             </figure>
           </div>
-          <div class="media-content">
+          <div class="media-content1">
             <div class="content">
               <p>
-                <span class="video-title">Título</span>
-                <span class="video-account">canal</span>
-                <span class="video-views">239 views</span>
+                <span class="video-title">{{ recomend.titulo }}</span>
+                <span class="video-account">{{ recomend.nombre_canal }}</span>
+                <span class="video-views">{{ recomend.total_visitas }} views</span>
               </p>
             </div>
           </div>
         </article>
-        <hr>
-        <article class="media related-card">
-          <div class="media-left">
-            <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <span class="video-title">A video title</span>
-                <span class="video-account">asasdas</span>
-                <span class="video-views">239 views</span>
-              </p>
-            </div>
-          </div>
-        </article>
-        <article class="media related-card">
-          <div class="media-left">
-            <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <span class="video-title">A video title</span>
-                <span class="video-account">asasdas</span>
-                <span class="video-views">239 views</span>
-              </p>
-            </div>
-          </div>
-        </article>
-        <article class="media related-card">
-          <div class="media-left">
-            <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <span class="video-title">A video title</span>
-                <span class="video-account">asasdas</span>
-                <span class="video-views">239 views</span>
-              </p>
-            </div>
-          </div>
-        </article>
-        <article class="media related-card">
-          <div class="media-left">
-            <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <span class="video-title">A video title</span>
-                <span class="video-account">asasdas</span>
-                <span class="video-views">239 views</span>
-              </p>
-            </div>
-          </div>
-        </article>
-        <article class="media related-card">
-          <div class="media-left">
-            <figure class="image">
-              <img src="http://placehold.it/120x90" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <span class="video-title">A video title</span>
-                <span class="video-account">asasdas</span>
-                <span class="video-views">239 views</span>
-              </p>
-            </div>
-          </div>
-        </article>
+
+
       </div>
     </div>
   </div>

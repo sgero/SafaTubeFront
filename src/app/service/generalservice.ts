@@ -7,6 +7,7 @@ import {Usuario} from "../models/Usuario";
 import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
 
+import {Comentario} from "../models/Comentario";
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,15 @@ export class Generalservice {
   constructor(private http: HttpClient) { }
   enviarIdVideoPlayingBaseDatos(id:number){
     return this.http.get<Video>('http://localhost:8000/api/video/get/'+id)
+  }
+  enviarIdVideoRecibirComentarios(id:number){
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista',id)
+  }
+  enviarComentarioPadreRecibirRespuestasLista(comentarios: any) {
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista?XDEBUG_SESSION_START=15901', comentarios);
+  }
+  enviarRespuestaPadreRecibirRespuestasLista(respuesta: any) {
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaDeRespuestasLista?XDEBUG_SESSION_START=18570', respuesta);
   }
 
   crearMensaje(data: Mensaje){
@@ -62,4 +72,6 @@ export class Generalservice {
   buscarMensaje(data: Mensaje){
     return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
   }
+
+
 }

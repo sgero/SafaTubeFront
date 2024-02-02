@@ -25,6 +25,7 @@ export class ChatComponent implements OnInit{
   comparador?: number;
   canales: any;
   div2:any;
+  creamensajes:any;
   constructor(private service:Generalservice, private router: Router) {
 
   }
@@ -34,13 +35,17 @@ export class ChatComponent implements OnInit{
       this.canales = data;
       console.log(data);
     });
-
+    this.creamensajes = document.getElementById('crear_mensaje');
+    this.creamensajes.style.display = 'none';
   };
 
   listarMensaje(id?: number){
     if (id != null) {
       this.emisor.usuario_receptor = id;
       this.mensaje.usuario_receptor = id;
+    }
+    if (this.emisor.usuario_receptor > 0){
+      this.creamensajes.style.display = 'flex';
     }
     this.service.listarMensaje(this.emisor).subscribe(data =>{
       this.comparador = this.emisor.usuario_receptor;
@@ -54,7 +59,7 @@ export class ChatComponent implements OnInit{
         // Establece la posición del scrollbar al final
         this.div2.scrollTop = this.div2.scrollHeight;
       }
-    }, 1200); // Cambia este valor según sea necesario
+    }, 2000); // Cambia este valor según sea necesario
   }
   crearMensaje(){
     this.service.
@@ -65,6 +70,7 @@ export class ChatComponent implements OnInit{
     this.textob = document.getElementById('texto');
     this.textob.value = '';
   };
+
   // private scrollDivToBottom(): void {
   //   // Ajustar el scrollTop al fondo para ambas divs
   //

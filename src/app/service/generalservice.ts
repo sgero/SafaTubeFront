@@ -23,10 +23,7 @@ export class Generalservice {
     return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista',id)
   }
   enviarComentarioPadreRecibirRespuestasLista(comentarios: any) {
-    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista?XDEBUG_SESSION_START=15901', comentarios);
-  }
-  enviarRespuestaPadreRecibirRespuestasLista(respuesta: any) {
-    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaDeRespuestasLista?XDEBUG_SESSION_START=18570', respuesta);
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista', comentarios);
   }
 
   crearMensaje(data: Mensaje){

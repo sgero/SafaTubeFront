@@ -130,3 +130,10 @@ body {
 .media-content1{
   margin-left: 5px;
 }
+
+.articlevideo:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+  background-color: #efefef;
+  opacity: 1;
+}

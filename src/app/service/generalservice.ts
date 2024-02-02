@@ -97,4 +97,16 @@ export class Generalservice {
     return this.http.post<Usuario[]>(this.url + "/api/registro", data);
   }
 
+
+
+  loginUser(data: Usuario){
+    const headers = new HttpHeaders({
+
+      'Content-Type': 'application/json',
+
+      'Access-Control-Allow-Origin': '*',
+
+    });
+    return this.http.post<Usuario[]>(this.url + "/api/login_check", data, {headers});
+  }
 }

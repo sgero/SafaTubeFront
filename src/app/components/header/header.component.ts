@@ -7,6 +7,7 @@ import {BusquedaVideo} from "../../models/BusquedaVideo";
 import {HttpClient} from "@angular/common/http";
 import {Video} from "../../models/Video";
 import {BuscadorVideoComponent} from "../home/buscador-video/buscador-video.component";
+import {Busqueda} from "../../models/Busqueda";
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent {
 
   palabraClave: any;
   datos: any;
-  // videos: Video[] = [];
+  videos: any;
   @Output() videosEvent = new EventEmitter<Video[]>()
 
   constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
@@ -44,10 +45,11 @@ export class HeaderComponent {
       if (this.palabraClave){
         this.service.BuscarVideo(this.palabraClave)
           .subscribe(data=> {
-              this.datos= data;
-              this.datos = this.datos.videos[0];
+              let busqueda:Busqueda = data;
+              let lista = busqueda.videos;
+              this.videos = lista;
               // this.videos = this.datos;
-              console.log(data);
+              console.log(this.datos);
             },
             error => {
               console.error("no funciona", error);

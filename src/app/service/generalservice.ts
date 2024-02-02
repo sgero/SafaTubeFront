@@ -6,6 +6,7 @@ import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
 import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
+import {Busqueda} from "../models/Busqueda";
 
 
 @Injectable({
@@ -42,7 +43,8 @@ export class Generalservice {
   }
 
   BuscarVideo(palabraClave: string){
-    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=15623', palabraClave);
+    let json=  {busqueda: palabraClave}
+    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=14916', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){

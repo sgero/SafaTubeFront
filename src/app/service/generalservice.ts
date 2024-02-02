@@ -94,7 +94,7 @@ export class Generalservice {
   // }
 
   registerUser(data: Usuario){
-    return this.http.post<Usuario[]>('http://127.0.0.1:8000/api/registro', data);
+    return this.http.post<Usuario[]>(this.url + "/api/registro", data);
   }
 
 }

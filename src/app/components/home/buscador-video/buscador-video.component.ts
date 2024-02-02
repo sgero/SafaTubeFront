@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {HeaderComponent} from "../../header/header.component";
 import {NgForOf} from "@angular/common";
 import {Video} from "../../../models/Video";
@@ -16,19 +16,31 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './buscador-video.component.html',
   styleUrl: './buscador-video.component.css'
 })
-export class BuscadorVideoComponent implements OnInit{
-  // palabraClave: any;
+export class BuscadorVideoComponent {
+
+  // @ViewChild(HeaderComponent) child: any;
+
+  constructor() {}
+
+  // videos: Video[]=[];
+  datos: any;
+
+  receiveMessage($event: Video[]) {
+    this.datos = $event;
+  }
+
   // datos: any;
-  buscadorVideoComponent: any;
-  listaVideos: Video[] = [];
+  // ngAfterViewInit() {
+  //   this.datos = this.child.datos
+  // }
 
 
-  constructor() {
+
+  ngDoCheck(e: any){
+    console.log()
   }
 
-  ngOnInit(): void {
-    // Puedes inicializar datos aquí si es necesario
-  }
+
 
   // buscarVideo2(){
   //   console.log('Valor recibido:', this.palabraClave);

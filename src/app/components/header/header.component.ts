@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
@@ -14,7 +14,7 @@ import {BuscadorVideoComponent} from "../home/buscador-video/buscador-video.comp
   imports: [
     RouterLink,
     CampanaComponent,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -23,14 +23,18 @@ export class HeaderComponent {
 
   palabraClave: any;
   datos: any;
-  buscadorDeVideoComponent: Video[] = [];
+  // videos: Video[] = [];
+  @Output() videosEvent = new EventEmitter<Video[]>()
 
-
-  constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
+  constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
+
   ngOnInit(): void {
     // Llama a buscarVideo() cuando el componente se inicia
-    this.buscarVideo();
+  }
+
+  sendVideos(){
+    this.videosEvent.emit(this.datos)
   }
 
   buscarVideo(){
@@ -40,9 +44,9 @@ export class HeaderComponent {
       if (this.palabraClave){
         this.service.BuscarVideo(this.palabraClave)
           .subscribe(data=> {
-              // this.datos=data;
-              this.buscadorDeVideoComponent=data;
-
+              this.datos= data;
+              this.datos = this.datos.videos[0];
+              // this.videos = this.datos;
               console.log(data);
             },
             error => {

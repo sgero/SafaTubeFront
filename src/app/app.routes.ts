@@ -26,4 +26,5 @@ export const routes: Routes = [
   {path:'safaTube/video/buscar', component:HomeComponent},
   {path:'safaTube/home/crear_video', component:CrearVideoComponent},
 
+
 ];

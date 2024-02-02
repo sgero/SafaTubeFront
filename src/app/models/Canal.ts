@@ -6,11 +6,12 @@ export class Canal{
   descripcion?: string;
   nombre?: string;
   apellidos?: string;
-  email?: string;
   fechaNacimiento?: Date;
   telefono?: number;
   foto?: string;
   usuario?: Usuario;
   tipoContenido?: TipoContenido;
   total_suscriptores?: number;
+  banner?: string;
+
 }

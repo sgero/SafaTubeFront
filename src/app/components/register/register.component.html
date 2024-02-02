@@ -1,48 +1,133 @@
-<form [formGroup]="registerForm">
-  <!-- Campos para el usuario -->
-  <label for="username">Username:</label>
-  <input class='form-style' type="text" id="username" formControlName="username" />
+<!--<form [formGroup]="registerForm">-->
+<!--  &lt;!&ndash; Campos para el usuario &ndash;&gt;-->
+<!--  <label for="username">Username:</label>-->
+<!--  <input  type="text" id="username" formControlName="username" />-->
 
-  <label for="password">Password:</label>
-  <input class='form-style' type="password" id="password" formControlName="password" />
+<!--  <label for="password">Password:</label>-->
+<!--  <input  type="password" id="password" formControlName="password" />-->
 
-  <label for="email">Email:</label>
-  <input class='form-style' type="email" id="email" formControlName="email" />
+<!--  <label for="email">Email:</label>-->
+<!--  <input  type="email" id="email" formControlName="email" />-->
 
-  <!-- Campos para el canal -->
-  <label for="nombre">Nombre:</label>
-  <input class='form-style' type="text" id="nombre" formControlName="canal.nombre" />
-
-
-  <label for="apellidos">Apellidos:</label>
-  <input class='form-style' type="text" id="apellidos" formControlName="canal.apellidos" />
-
-  <label for="descripcion">Descripción del Canal:</label>
-  <textarea class='form-style' id="descripcion" formControlName="canal.descripcion"></textarea>
-
-  <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-  <input class='form-style' type="text" id="fecha_nacimiento" formControlName="canal.fecha_nacimiento" />
-
-  <label for="telefono">Teléfono:</label>
-  <input class='form-style' type="text" id="telefono" formControlName="canal.telefono" />
-
-  <label for="foto">Foto:</label>
-  <input class='form-style' type="text" id="foto" formControlName="canal.foto" />
-
-  <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
-  <select class='form-style' id="tipo_contenido" formControlName="canal.tipo_contenido.id">
-    <!-- Opciones del select según tus necesidades -->
-    <option value="1">Personal</option>
-    <option value="2">Profesional</option>
-    <option value="3">Divulgativo</option>
-    <!-- ... -->
-  </select>
-
-  <label for="banner">Banner del Canal:</label>
-  <input class='form-style' type="text" id="banner" formControlName="canal.banner" />
-
-  <button (click)="enviarRegistro()" type="button">Registrar</button>
-</form>
+<!--  &lt;!&ndash; Campos para el canal &ndash;&gt;-->
+<!--  <label for="nombre">Nombre:</label>-->
+<!--  <input  type="text" id="nombre" formControlName="canal.nombre" />-->
 
 
+<!--  <label for="apellidos">Apellidos:</label>-->
+<!--  <input  type="text" id="apellidos" formControlName="canal.apellidos" />-->
 
+<!--  <label for="descripcion">Descripción del Canal:</label>-->
+<!--  <textarea  id="descripcion" formControlName="canal.descripcion"></textarea>-->
+
+<!--  <label for="fecha_nacimiento">Fecha de Nacimiento:</label>-->
+<!--  <input class='form-style' type="text" id="fecha_nacimiento" formControlName="canal.fecha_nacimiento" />-->
+
+<!--  <label for="telefono">Teléfono:</label>-->
+<!--  <input  type="text" id="telefono" formControlName="canal.telefono" />-->
+
+<!--  <label for="foto">Foto:</label>-->
+<!--  <input  type="text" id="foto" formControlName="canal.foto" />-->
+
+<!--  <label for="tipo_contenido">Tipo de Contenido del Canal:</label>-->
+<!--  <select id="tipo_contenido" formControlName="canal.tipo_contenido.id">-->
+<!--    &lt;!&ndash; Opciones del select según tus necesidades &ndash;&gt;-->
+<!--    <option value="1">Personal</option>-->
+<!--    <option value="2">Profesional</option>-->
+<!--    <option value="3">Divulgativo</option>-->
+<!--    &lt;!&ndash; ... &ndash;&gt;-->
+<!--  </select>-->
+
+<!--  <label for="banner">Banner del Canal:</label>-->
+<!--  <input  type="text" id="banner" formControlName="canal.banner" />-->
+
+<!--  <button (click)="enviarRegistro()" type="button">Registrar</button>-->
+<!--</form>-->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+<body>
+
+
+<div class="testbox">
+  <h1>Registro</h1>
+
+  <form action="/">
+
+    <hr>
+    <strong>USUARIO:</strong><br>
+
+    <label id="icon" for="name"><i class="icon-envelope "></i></label>
+    <input type="text" name="name" id="name" placeholder="Email" required/>
+    <label id="icon" for="name"><i class="icon-user"></i></label>
+    <input type="text" name="name" id="name" placeholder="Name" required/>
+    <label id="icon" for="name"><i class="icon-shield"></i></label>
+    <input type="password" name="name" id="name" placeholder="Password" required/>
+
+    <hr>
+<!--    <div class="accounttype" >-->
+<!--      CANAL:<br><br>-->
+
+<!--      Tipo de Contenido<br>-->
+
+<!--      <input type="radio" value="None" id="radioOne" name="account" checked/>-->
+<!--      <label for="radioOne" class="radio" chec>Personal</label>-->
+<!--      <input type="radio" value="None" id="radioTwo" name="account" />-->
+<!--      <label for="radioTwo" class="radio">Profesional</label>-->
+<!--      <input type="radio" value="None" id="radioThree" name="account" />-->
+<!--      <label for="radioThree" class="radio">Divulgativo</label>-->
+<!--    </div>-->
+
+
+<!--    <div class="gender">-->
+<!--      <input type="radio" value="None" id="male" name="gender" checked/>-->
+<!--      <label for="male" class="radio" chec>Male</label>-->
+<!--      <input type="radio" value="None" id="female" name="gender" />-->
+<!--      <label for="female" class="radio">Female</label>-->
+<!--    </div>-->
+
+    <div class="accounttype">
+      <strong>CANAL:</strong><br>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" formControlName="canal.nombre" placeholder="Nombre" required/>
+<br>
+      <label for="apellidos">Apellidos:</label>
+      <input type="text" id="apellidos" formControlName="canal.apellidos" placeholder="Apellidos" required/>
+      <br>
+      <label for="descripcion">Descripción del Canal:</label>
+      <textarea id="descripcion" formControlName="canal.descripcion" placeholder="Descripción"></textarea>
+      <br>
+      <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+      <input class='form-style' type="text" id="fecha_nacimiento" formControlName="canal.fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
+      <br>
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" formControlName="canal.telefono" placeholder="Teléfono"/>
+      <br>
+      <label for="foto">Foto:</label>
+      <input type="text" id="foto" formControlName="canal.foto" placeholder="Foto (url)"/>
+      <br>
+      <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
+      <select id="tipo_contenido" formControlName="canal.tipo_contenido.id">
+        <!-- Opciones del select según tus necesidades -->
+        <option value="1">Personal</option>
+        <option value="2">Profesional</option>
+        <option value="3">Divulgativo</option>
+        <!-- ... -->
+      </select>
+      <br>
+      <label for="banner">Banner del Canal:</label>
+      <input type="text" id="banner" formControlName="canal.banner" placeholder="Banner (url)"/>
+    </div>
+
+
+
+    <br><br>
+    <div class="fin">
+    <p>Registrándote, accedes a aceptar nuestros <a href="#">términos y condiciones</a>.</p>
+    <a href="#" class="button">Registrar</a>
+    </div>
+  </form>
+</div>
+
+
+</body>

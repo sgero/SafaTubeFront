@@ -38,7 +38,17 @@ export class ChatComponent implements OnInit{
     this.creamensajes = document.getElementById('crear_mensaje');
     this.creamensajes.style.display = 'none';
   };
+  ngAfterViewChecked(){
+    // Simula la carga de datos después de un cierto tiempo (por ejemplo, 2 segundos)
+    setTimeout(() => {
+      // const miDiv: HTMLElement | null = this.elRef.nativeElement.querySelector('#miDiv');
 
+      if (this.div2) {
+        // Establece la posición del scrollbar al final
+        this.div2.scrollTop = this.div2.scrollHeight;
+      }
+    }, 500); // Cambia este valor según sea necesario
+  }
   listarMensaje(id?: number){
     if (id != null) {
       this.emisor.usuario_receptor = id;
@@ -51,22 +61,15 @@ export class ChatComponent implements OnInit{
       this.comparador = this.emisor.usuario_receptor;
       this.mensajes = data;
     });
-    // Simula la carga de datos después de un cierto tiempo (por ejemplo, 2 segundos)
-    setTimeout(() => {
-      // const miDiv: HTMLElement | null = this.elRef.nativeElement.querySelector('#miDiv');
 
-      if (this.div2) {
-        // Establece la posición del scrollbar al final
-        this.div2.scrollTop = this.div2.scrollHeight;
-      }
-    }, 2000); // Cambia este valor según sea necesario
   }
   crearMensaje(){
     this.service.
     crearMensaje(this.mensaje).subscribe(data => {
       console.log(data);
+      this.listarMensaje(this.mensaje.usuario_receptor);
     });
-    this.listarMensaje(this.mensaje.usuario_receptor);
+
     this.textob = document.getElementById('texto');
     this.textob.value = '';
   };

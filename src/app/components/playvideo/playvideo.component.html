@@ -129,51 +129,20 @@
                           <p>
                             <a>
                               <strong>{{r.nombre_canal}} </strong>
-                              <small> &#64;<b>{{r.nombre_canal_comentario_padre}} </b></small>
+                              <small> &#64;<b>{{r.nombre_usuario_mencionado}} </b></small>
                               <small> {{r.fecha}}</small>
                             </a>
                             {{r.texto}}
                             <small class="interactuar-respuestas">
                               <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
                               <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
-                              <a class="button is-default" (click)="responderRespuesta(r)">Responder</a>
+                              <a class="button is-default">Responder</a>
                             </small>
                           </p>
                         </div>
                       </div>
                     </div>
                   </article>
-
-
-                  <article class="media" *ngFor="let r2 of respuestasDeRespuestaPadre">
-<!--                    <div *ngIf="r2.id_comentario_padre == respuestas.let.r.id">-->
-                      <figure class="media-left">
-                        <p class="image is-64x64">
-                          <img src="{{r2.foto_canal}}">
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                        <div class="content">
-                          <p>
-                            <a>
-                              <strong>{{r2.nombre_canal}} </strong>
-                              <small> &#64;<b>{{r2.nombre_canal_comentario_padre}} </b></small>
-                              <small> {{r2.fecha}}</small>
-                            </a>
-                            {{r2.texto}}
-                            <small class="interactuar-respuestas">
-                              <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r2.contador_likes}}</a>
-                              <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r2.contador_dislikes}}</a>
-                              <a class="button is-default" (click)="darDislikeVideo">Responder</a>
-                            </small>
-                          </p>
-                        </div>
-                      </div>
-<!--                    </div>-->
-                  </article>
-
-
-
 
 
 
@@ -195,7 +164,7 @@
         <p class="autoplay">
           <span class="autoplay-title">Siguiente</span>
         </p>
-        <article class="media related-card" *ngFor="let recomend of recomendaciones" [routerLink]="['/safaTube/video', recomend.id]">
+        <article class="media related-card articlevideo" *ngFor="let recomend of recomendaciones" [routerLink]="['/safaTube/video', recomend.id]">
           <div class="media-left1">
             <figure class="image">
               <img src="{{recomend.miniatura}}" alt="Image">

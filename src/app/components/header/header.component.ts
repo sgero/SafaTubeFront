@@ -3,11 +3,10 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
-import {BusquedaVideo} from "../../models/BusquedaVideo";
 import {HttpClient} from "@angular/common/http";
 import {Video} from "../../models/Video";
-import {BuscadorVideoComponent} from "../home/buscador-video/buscador-video.component";
 import {Busqueda} from "../../models/Busqueda";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-header',
@@ -23,9 +22,6 @@ import {Busqueda} from "../../models/Busqueda";
 export class HeaderComponent {
 
   palabraClave: any;
-  datos: any;
-  videos: any;
-  @Output() videosEvent = new EventEmitter<Video[]>()
 
   constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
@@ -34,43 +30,12 @@ export class HeaderComponent {
     // Llama a buscarVideo() cuando el componente se inicia
   }
 
-  sendVideos(){
-    this.videosEvent.emit(this.datos)
+  mandarCosulta():void{
+    this.service.sendVariable(this.palabraClave)
   }
 
-  buscarVideo(){
-    console.log('Valor recibido:', this.palabraClave);
-    this.route.params.subscribe(params =>
-    {
-      if (this.palabraClave){
-        this.service.BuscarVideo(this.palabraClave)
-          .subscribe(data=> {
-              let busqueda:Busqueda = data;
-              let lista = busqueda.videos;
-              this.videos = lista;
-              // this.videos = this.datos;
-              console.log(this.datos);
-            },
-            error => {
-              console.error("no funciona", error);
-            })
-      }
-    })
-    }
-  // buscarCanal() {
-  //   console.log('Valor recibido:', this.palabraClave);
-  //   this.route.params.subscribe(params => {
-  //     if (this.palabraClave) {
-  //       this.service.BuscarCanal(this.palabraClave)
-  //         .subscribe(data => {
-  //             this.datos = data;
-  //             console.log(data);
-  //           },
-  //           error => {
-  //             console.error("no funciona", error);
-  //           })
-  //     }
-  //   })
-  // }
+
+
+
 }
 

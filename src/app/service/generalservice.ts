@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
@@ -13,6 +13,14 @@ import {Busqueda} from "../models/Busqueda";
   providedIn: 'root',
 })
 export class Generalservice {
+
+
+  private busqueda = new BehaviorSubject<any>(null);
+  currentVariable = this.busqueda.asObservable();
+
+  sendVariable(variable: any) {
+    this.busqueda.next(variable);
+  }
 
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
@@ -44,7 +52,7 @@ export class Generalservice {
 
   BuscarVideo(palabraClave: string){
     let json=  {busqueda: palabraClave}
-    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=14916', palabraClave);
+    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=12578', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){

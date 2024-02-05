@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {HeaderComponent} from "../../header/header.component";
-import {NgForOf} from "@angular/common";
+import {KeyValuePipe, NgForOf} from "@angular/common";
 import {Video} from "../../../models/Video";
 import {Generalservice} from "../../../service/generalservice";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,7 +11,8 @@ import {HttpClient} from "@angular/common/http";
   standalone: true,
   imports: [
     HeaderComponent,
-    NgForOf
+    NgForOf,
+    KeyValuePipe
   ],
   templateUrl: './buscador-video.component.html',
   styleUrl: './buscador-video.component.css'
@@ -20,19 +21,30 @@ export class BuscadorVideoComponent {
 
   // @ViewChild(HeaderComponent) child: any;
 
-  constructor() {}
-
-  // videos: Video[]=[];
-  datos: any;
-
-  receiveMessage($event: Video[]) {
-    this.datos = $event;
+  constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
 
-  // datos: any;
-  // ngAfterViewInit() {
-  //   this.datos = this.child.datos
-  // }
+  videos: any;
+
+  ngOnInit() {
+      this.service.currentVariable.subscribe({
+        next: (v) => this.buscarVideo(v)
+
+    });
+
+  }
+
+
+  buscarVideo(busqueda:any){
+
+    console.log('Valor recibido:', busqueda);
+      this.service.BuscarVideo(busqueda)
+        .subscribe({
+          next: (content) => this.videos = content.videos,
+          error: (e) => console.error("no funciona", e),
+          complete:() => console.info(this.videos)
+        })
+  }
 
 
 
@@ -42,20 +54,5 @@ export class BuscadorVideoComponent {
 
 
 
-  // buscarVideo2(){
-  //   console.log('Valor recibido:', this.palabraClave);
-  //   this.route.params.subscribe(params =>
-  //   {
-  //     if (this.palabraClave){
-  //       this.service.BuscarVideo(this.palabraClave)
-  //         .subscribe(data=> {
-  //             this.datos=data;
-  //             console.log(data);
-  //           },
-  //           error => {
-  //             console.error("no funciona", error);
-  //           })
-  //     }
-  //   })
-  // }
+
 }

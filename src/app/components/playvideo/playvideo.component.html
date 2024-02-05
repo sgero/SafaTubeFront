@@ -28,11 +28,14 @@
             <div class="content">
               <div class="columns">
                 <div class="column is-6">
-                  <p>
                     <strong>{{video.canal.nombre}}</strong>
                     <br>
-                    <a href="#" class="button is-danger">Suscribirse</a>
-                  </p>
+                    <div *ngIf="estaSuscrito == true; else noestasuscrito">
+                      <a class="button is-dark">Suscrito</a>
+                    </div>
+                    <ng-template #noestasuscrito>
+                      <a class="button is-danger">Suscribirse</a>
+                    </ng-template>
                 </div>
                 <div class="column is-6">
                   <nav class="nav">
@@ -82,16 +85,18 @@
             </p>
           </figure>
           <div class="media-content">
+
             <p class="control">
-              <textarea class="textarea" placeholder="Comenta algo..."></textarea>
+              <textarea class="textarea" placeholder="Comenta algo..." [(ngModel)]="texto"></textarea>
             </p>
             <nav class="level">
               <div class="level-left">
                 <div class="level-item">
-                  <a class="button is-info">Publicar</a>
+                  <button type="submit" class="button is-info" (click)="comentar(video)">Publicar</button>
                 </div>
               </div>
             </nav>
+
           </div>
         </article>
         <hr>
@@ -114,7 +119,21 @@
                     <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{c.contador_likes}}</a>
                     <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{c.contador_dislikes}}</a>
                     <a class="button is-default" (click)="verRespuestas(c)">Ver Respuestas</a>
-                    <a class="button is-default" (click)="darDislikeVideo">Responder</a>
+                    <a class="button is-default" (click)="toggleResponder(c)">Responder</a>
+                    <div *ngIf="(mostrarContenido && c == idcomentario)" class="media-content">
+                      <p class="control">
+                        <textarea class="textarea" placeholder="Comenta algo..." [(ngModel)]="textoRespuesta"></textarea>
+                      </p>
+                      <nav class="level">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <button type="submit" class="button is-info" (click)="responderComentario(video, c, c.id_usuario)">Publicar</button>
+                          </div>
+                        </div>
+                      </nav>
+                    </div>
+
+
                   </div>
 
                   <article class="media" *ngFor="let r of respuestas">
@@ -133,10 +152,22 @@
                               <small> {{r.fecha}}</small>
                             </a>
                             {{r.texto}}
-                            <small class="interactuar-respuestas">
+                            <small class="interactuar-respuestas alineardiv">
                               <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
                               <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
-                              <a class="button is-default">Responder</a>
+                              <a class="button is-default" (click)="toggleResponder(r)">Responder</a>
+                              <div *ngIf="(mostrarContenido && r == idcomentario)" class="media-content">
+                                <p class="control textarea1">
+                                  <textarea class="textarea" placeholder="Comenta algo..." [(ngModel)]="textoRespuesta"></textarea>
+                                </p>
+                                <nav class="level">
+                                  <div class="level-left">
+                                    <div class="level-item">
+                                      <button type="submit" class="button is-info" (click)="responderComentario(video, c, c.id_usuario)">Publicar</button>
+                                    </div>
+                                  </div>
+                                </nav>
+                              </div>
                             </small>
                           </p>
                         </div>

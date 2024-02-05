@@ -112,4 +112,16 @@ export class Generalservice {
     return this.http.post<Usuario[]>(this.url + "/api/registro", data);
   }
 
+  crearComentario(respuesta: object) {
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=19195',respuesta)
+  }
+
+
+  estaSuscrito(usuario: any, video: any) {
+    const datos = {
+      usuario: usuario,
+      canal: video
+    };
+    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=19195',datos)
+  }
 }

@@ -4,6 +4,10 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
 import {NgForOf, NgIf} from "@angular/common";
 import {YouTubePlayer} from "@angular/youtube-player";
+import {Comentario} from "../../models/Comentario";
+import {Usuario} from "../../models/Usuario";
+import {FormsModule} from "@angular/forms";
+import {HttpEvent} from "@angular/common/http";
 
 @Component({
   selector: 'app-playvideo',
@@ -13,7 +17,8 @@ import {YouTubePlayer} from "@angular/youtube-player";
     NgIf,
     NgForOf,
     YouTubePlayer,
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   templateUrl: './playvideo.component.html',
   styleUrl: './playvideo.component.css'
@@ -22,6 +27,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   @ViewChild('demoYouTubePlayer') demoYouTubePlayer: ElementRef<HTMLDivElement>;
   videoWidth: number | undefined;
   videoHeight: number | undefined;
+  respuestaCreada: any;
   constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef) {
     this.demoYouTubePlayer = this.video;
   }
@@ -31,6 +37,10 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   comentarios: any;
   respuestas:any;
   recomendaciones:any;
+  crearComentario:Comentario = new Comentario();
+  texto:any;
+  estaSuscrito:any;
+  usuario = new Usuario();
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -89,6 +99,17 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       }
     )
 
+    this.dataservice.estaSuscrito(12, 1)
+      .subscribe(
+        data => {
+          this.estaSuscrito = data;
+          this.estaSuscrito = this.estaSuscrito[0];
+        },
+        error => {
+          console.error("no funciona", error);
+        }
+      )
+
 
 
 
@@ -107,6 +128,48 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       )
   }
+
+  comentar(video:object) {
+    this.crearComentario.video = video;
+    this.crearComentario.texto = this.texto;
+    this.crearComentario.comentarioPadre = new Comentario();
+    this.crearComentario.usuario = new Usuario();
+    this.crearComentario.usuarioMencionado = new Usuario();
+    this.dataservice.crearComentario(this.crearComentario)
+      .subscribe(
+        data =>{
+          this.respuestaCreada = data;
+        },error => {
+          console.error("no funciona", error);
+        }
+      )
+  }
+
+  responderComentario(video:object, comentario_padre: object, usuario_mencionado:object) {
+    this.crearComentario.video = video;
+    this.crearComentario.texto = this.textoRespuesta;
+    this.crearComentario.comentarioPadre = comentario_padre;
+    this.crearComentario.usuario = new Usuario();
+    this.crearComentario.usuarioMencionado = usuario_mencionado;
+    this.dataservice.crearComentario(this.crearComentario)
+      .subscribe(
+        data =>{
+          this.respuestaCreada = data;
+        },error => {
+          console.error("no funciona", error);
+        }
+      )
+  }
+
+  mostrarContenido: boolean = false;
+  idcomentario:any;
+  textoRespuesta:any;
+  toggleResponder(c:object) {
+    this.mostrarContenido = !this.mostrarContenido;
+    this.idcomentario = c;
+  }
+
+
 
 
 

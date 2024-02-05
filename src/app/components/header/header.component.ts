@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
-import {BusquedaVideo} from "../../models/BusquedaVideo";
 import {HttpClient} from "@angular/common/http";
+import {Video} from "../../models/Video";
+import {Busqueda} from "../../models/Busqueda";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ import {HttpClient} from "@angular/common/http";
   imports: [
     RouterLink,
     CampanaComponent,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -20,42 +22,20 @@ import {HttpClient} from "@angular/common/http";
 export class HeaderComponent {
 
   palabraClave: any;
-  datos: any;
 
-
-  constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
+  constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
 
-  buscarVideo(){
-    console.log('Valor recibido:', this.palabraClave);
-    this.route.params.subscribe(params =>
-    {
-      if (this.palabraClave){
-        this.service.BuscarVideo(this.palabraClave)
-          .subscribe(data=> {
-              this.datos=data;
-              console.log(data);
-            },
-            error => {
-              console.error("no funciona", error);
-            })
-      }
-    })
-    }
-  // buscarCanal() {
-  //   console.log('Valor recibido:', this.palabraClave);
-  //   this.route.params.subscribe(params => {
-  //     if (this.palabraClave) {
-  //       this.service.BuscarCanal(this.palabraClave)
-  //         .subscribe(data => {
-  //             this.datos = data;
-  //             console.log(data);
-  //           },
-  //           error => {
-  //             console.error("no funciona", error);
-  //           })
-  //     }
-  //   })
-  // }
+  ngOnInit(): void {
+    // Llama a buscarVideo() cuando el componente se inicia
+  }
+
+  mandarCosulta():void{
+    this.service.sendVariable(this.palabraClave)
+  }
+
+
+
+
 }
 

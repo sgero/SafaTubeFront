@@ -7,6 +7,7 @@ export class Video{
   titulo?: string;
   descripcion?: string;
   enlace?: string;
+  miniatura?: string;
   duracion?: number;
   fecha?: Date;
   totalVisitas?: number;

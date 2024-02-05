@@ -31,6 +31,9 @@
       <input placeholder="Enlace" type="url" tabindex="3" required [(ngModel)]="videoNuevo.enlace" name="enlace">
     </fieldset>
     <fieldset>
+      <input placeholder="Miniatura (URL)" type="url" tabindex="3" required [(ngModel)]="videoNuevo.miniatura" [value]="videoNuevo.miniatura" name="miniatura">
+    </fieldset>
+    <fieldset>
       <textarea placeholder="Descripción" tabindex="5" required [(ngModel)]="videoNuevo.descripcion" name="descripcion"></textarea>
     </fieldset>
     <fieldset>
@@ -44,7 +47,7 @@
     </fieldset>
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="crearVideo()"
-      href="#">Subir</button>
+      >Subir</button>
     </fieldset>
   </form>
 </div>

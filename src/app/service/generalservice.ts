@@ -1,13 +1,12 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
 import {Canal} from "../models/Canal";
 import {TipoCategoria} from "../models/TipoCategoria";
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
+import {Busqueda} from "../models/Busqueda";
 
 import {Comentario} from "../models/Comentario";
 
@@ -15,6 +14,14 @@ import {Comentario} from "../models/Comentario";
   providedIn: 'root',
 })
 export class Generalservice {
+
+
+  private busqueda = new BehaviorSubject<any>(null);
+  currentVariable = this.busqueda.asObservable();
+
+  sendVariable(variable: any) {
+    this.busqueda.next(variable);
+  }
 
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
@@ -51,7 +58,8 @@ export class Generalservice {
   }
 
   BuscarVideo(palabraClave: string){
-    return this.http.post<Video[]>('http://localhost:8000/api/video/buscar', palabraClave);
+    let json=  {busqueda: palabraClave}
+    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=12578', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){
@@ -63,7 +71,7 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video){
-    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=13680', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear', videoNuevo);
   }
   listarMensaje(data: Mensaje){
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);

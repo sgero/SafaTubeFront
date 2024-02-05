@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {firstValueFrom, Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
@@ -15,6 +15,8 @@ import {TipoCategoria} from "../models/TipoCategoria";
 })
 export class Generalservice {
 
+  private token: string | null = null;
+  private tokenKey = 'token';
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
   enviarIdVideoPlayingBaseDatos(id:number){
@@ -99,7 +101,7 @@ export class Generalservice {
 
 
 
-  loginUser(data: Usuario){
+  loginUser(data: any){
     const headers = new HttpHeaders({
 
       'Content-Type': 'application/json',
@@ -107,6 +109,6 @@ export class Generalservice {
       'Access-Control-Allow-Origin': '*',
 
     });
-    return this.http.post<Usuario[]>(this.url + "/api/login_check", data, {headers});
+    return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));
   }
 }

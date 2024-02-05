@@ -19,16 +19,18 @@
 <!--  </form>-->
 <!--</div>-->
 
+<div class="formulario">
+<p>Hola</p>
+  <form [formGroup]="Logear" (ngSubmit)="login()" #loginForm="ngForm">
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" formControlName="username" name="username" ngModel required>
 
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" formControlName="password" name="password" ngModel required>
 
-<form [formGroup]="Logear" ](ngSubmit)="login()" #loginForm="ngForm">
-  <label for="username">Usuario:</label>
-  <input type="text" id="username" formControlName="username" name="username" ngModel required>
+    <button type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</button>
+  </form>
 
-  <label for="password">Contraseña:</label>
-  <input type="password" id="password" formControlName="password" name="password" ngModel required>
-
-  <button type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</button>
-</form>
+</div>
 </div>
 </body>

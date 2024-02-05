@@ -1,11 +1,11 @@
 import {Usuario} from "./Usuario";
 
 export class Login {
-  usuario?: string;
+  username?: string;
   password?: string;
 
   constructor(username: string, password: string) {
-    this.usuario = username;
+    this.username = username;
     this.password = password;
   }
 }

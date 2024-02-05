@@ -92,7 +92,6 @@ body {
 .interdiv{
   display: flex;
   flex-direction: row;
-  margin-right: 39%;
 }
 
 .interactuar-comentarios article div div div p a{
@@ -136,4 +135,7 @@ body {
   cursor: pointer;
   background-color: #efefef;
   opacity: 1;
+}
+.textarea1 {
+  height: 10px;
 }

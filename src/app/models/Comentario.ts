@@ -7,6 +7,7 @@ export class Comentario{
   fecha?: Date;
   contadorLikes?: number;
   contadorDislikes?: number;
+  usuarioMencionado?:Usuario;
   usuario?: Usuario;
   video?: Video;
   comentarioPadre?: Comentario;

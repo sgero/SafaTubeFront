@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit{
   canales: any;
   div2:any;
   creamensajes:any;
+  usao = false;
   constructor(private service:Generalservice, private router: Router) {
 
   }
@@ -40,14 +41,15 @@ export class ChatComponent implements OnInit{
   };
   ngAfterViewChecked(){
     // Simula la carga de datos después de un cierto tiempo (por ejemplo, 2 segundos)
-    setTimeout(() => {
+    // setTimeout(() => {
       // const miDiv: HTMLElement | null = this.elRef.nativeElement.querySelector('#miDiv');
-
+    if (!this.usao) {
       if (this.div2) {
         // Establece la posición del scrollbar al final
         this.div2.scrollTop = this.div2.scrollHeight;
       }
-    }, 500); // Cambia este valor según sea necesario
+    }
+    // }, 500); // Cambia este valor según sea necesario
   }
   listarMensaje(id?: number){
     if (id != null) {
@@ -61,7 +63,7 @@ export class ChatComponent implements OnInit{
       this.comparador = this.emisor.usuario_receptor;
       this.mensajes = data;
     });
-
+  this.cacharra()
   }
   crearMensaje(){
     this.service.
@@ -73,7 +75,11 @@ export class ChatComponent implements OnInit{
     this.textob = document.getElementById('texto');
     this.textob.value = '';
   };
-
+  cacharra(){
+    setTimeout(() => {
+      this.listarMensaje(this.emisor.usuario_receptor);
+    }, 3000);
+  }
   // private scrollDivToBottom(): void {
   //   // Ajustar el scrollTop al fondo para ambas divs
   //
@@ -81,4 +87,5 @@ export class ChatComponent implements OnInit{
   //     this.div2.nativeElement.scrollTop = this.div2.nativeElement.scrollHeight;
   //   }
   // }
+  boleanochange(){this.usao = false; setTimeout(()=>{this.usao=true;}, 3000)}
 }

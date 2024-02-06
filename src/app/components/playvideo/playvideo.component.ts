@@ -8,6 +8,7 @@ import {Comentario} from "../../models/Comentario";
 import {Usuario} from "../../models/Usuario";
 import {FormsModule} from "@angular/forms";
 import {HttpEvent} from "@angular/common/http";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-playvideo',
@@ -170,7 +171,34 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
 
+  eliminarSuscripcion(){
+    Swal.fire({
+      title: '¿Quieres eleminar tu suscripción?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: '¡Eliminar!',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.eliminarSuscripcion(12,1)
+          .subscribe(
+            data =>{
+              this.respuestas = data;
+              Swal.fire('¡Eliminado!', '', 'success');
+            },error => {
+              Swal.fire('¡error!', '', 'error');
+              console.error("no funciona", error);
+            }
+          )
+      } else if (result.isDenied) {
+        Swal.fire('Suscripción no eliminada', '', 'error');
+      }
+    });
 
+  }
+  suscribirse() {
+
+  }
 
 
 }

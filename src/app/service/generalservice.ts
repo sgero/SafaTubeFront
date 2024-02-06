@@ -10,6 +10,7 @@ import {Busqueda} from "../models/Busqueda";
 
 import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
+import {Suscripcion} from "../models/Suscripcion";
 
 @Injectable({
   providedIn: 'root',
@@ -141,5 +142,13 @@ export class Generalservice {
 
     });
     return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));
+  }
+
+  eliminarSuscripcion(usuario: any, video: any) {
+    const datos = {
+      usuario: usuario,
+      canal: video
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
   }
 }

@@ -120,7 +120,7 @@ export class Generalservice {
   }
 
   crearComentario(respuesta: object) {
-    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=19195',respuesta)
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=11300',respuesta)
   }
 
 
@@ -158,5 +158,12 @@ export class Generalservice {
       canal: video
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/crear',datos)
+  }
+
+  getUsuarioLogeado(username: any) {
+    const datos = {
+      usuario: username,
+    };
+    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get?XDEBUG_SESSION_START=15994',datos)
   }
 }

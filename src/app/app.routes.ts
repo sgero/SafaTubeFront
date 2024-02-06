@@ -21,7 +21,6 @@ export const routes: Routes = [
   {path:'safaTube/subir_video', component:CrearVideoComponent},
   {path:'safaTube/home/:id', component:HomeComponent},
   {path:'safaTube/home/suscritos/:id', component:VideosCanalesSuscritosComponent},
-  {path:'safaTube/video', component:PlayvideoComponent},
   {path:'safaTube/video/:id', component:PlayvideoComponent},
   {path:'safaTube/chat', component:ChatComponent},
   {path:'safaTube/video/buscar', component:HomeComponent},

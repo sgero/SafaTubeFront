@@ -9,6 +9,8 @@ import {Usuario} from "../../models/Usuario";
 import {FormsModule} from "@angular/forms";
 import {HttpEvent} from "@angular/common/http";
 import Swal from 'sweetalert2';
+import {AppComponent} from "../../app.component";
+import {LoginComponent} from "../login/login.component";
 
 @Component({
   selector: 'app-playvideo',
@@ -29,7 +31,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   videoWidth: number | undefined;
   videoHeight: number | undefined;
   respuestaCreada: any;
-  constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef) {
+  constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
+              private login:LoginComponent) {
     this.demoYouTubePlayer = this.video;
   }
   video:any;
@@ -40,6 +43,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   texto:any;
   estaSuscrito:any;
   usuario = new Usuario();
+  username:any;
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -129,20 +133,29 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   comentar(video:object) {
-    this.crearComentario.video = video;
-    this.crearComentario.texto = this.texto;
-    this.crearComentario.comentarioPadre = new Comentario();
-    this.crearComentario.usuario = new Usuario();
-    this.crearComentario.usuarioMencionado = new Usuario();
-    this.dataservice.crearComentario(this.crearComentario)
-      .subscribe(
-        data =>{
-          this.respuestaCreada = data;
-          location.reload();
-        },error => {
-          console.error("no funciona", error);
-        }
-      )
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+    .subscribe(
+      usuario => {
+        this.crearComentario.usuario = usuario;
+        this.crearComentario.video = video;
+        this.crearComentario.texto = this.texto;
+        this.crearComentario.comentarioPadre = new Comentario();
+        this.crearComentario.usuarioMencionado = new Usuario();
+        this.dataservice.crearComentario(this.crearComentario)
+          .subscribe(
+            data =>{
+              this.respuestaCreada = data;
+              location.reload();
+            },error => {
+              console.error("no funciona", error);
+            }
+          )
+      },
+      error => {
+        console.error("No se pudo obtener el usuario logeado", error);
+      })
+
+
   }
 
   responderComentario(video:object, comentario_padre: object, usuario_mencionado:object) {

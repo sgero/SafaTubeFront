@@ -135,13 +135,10 @@ export class Generalservice {
 
   loginUser(data: any){
     const headers = new HttpHeaders({
-
       'Content-Type': 'application/json',
-
       'Access-Control-Allow-Origin': '*',
-
     });
-    return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));
+    return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
   }
 
   eliminarSuscripcion(usuario: any, video: any) {

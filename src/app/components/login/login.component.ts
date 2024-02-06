@@ -195,7 +195,7 @@ export class LoginComponent implements AfterViewInit{
 
 
   async login() {
-    const credentials = new Login(this.Logear.value.username, this.Logear.value.password);
+    const credentials= new Login(this.Logear.value.username, this.Logear.value.password);
 
     try {
       const response = await this.generalservice.loginUser(credentials);

@@ -9,6 +9,7 @@ import {TipoCategoria} from "../models/TipoCategoria";
 import {Busqueda} from "../models/Busqueda";
 
 import {Comentario} from "../models/Comentario";
+import {Suscripcion} from "../models/Suscripcion";
 
 @Injectable({
   providedIn: 'root',
@@ -123,5 +124,13 @@ export class Generalservice {
       canal: video
     };
     return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=19195',datos)
+  }
+
+  eliminarSuscripcion(usuario: any, video: any) {
+    const datos = {
+      usuario: usuario,
+      canal: video
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, firstValueFrom, Observable} from "rxjs";
 import {Video} from "../models/Video";
 import {Mensaje} from "../models/Mensaje";
 import {Usuario} from "../models/Usuario";
@@ -24,6 +24,8 @@ export class Generalservice {
     this.busqueda.next(variable);
   }
 
+  private token: string | null = null;
+  private tokenKey = 'token';
   private url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
   enviarIdVideoPlayingBaseDatos(id:number){
@@ -127,5 +129,17 @@ export class Generalservice {
       canal: video
     };
     return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=19195',datos)
+  }
+
+
+  loginUser(data: any){
+    const headers = new HttpHeaders({
+
+      'Content-Type': 'application/json',
+
+      'Access-Control-Allow-Origin': '*',
+
+    });
+    return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));
   }
 }

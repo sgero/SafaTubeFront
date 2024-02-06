@@ -151,4 +151,12 @@ export class Generalservice {
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
   }
+
+  suscribirse(usuario: any, video: any) {
+    const datos = {
+      usuario: usuario,
+      canal: video
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/crear',datos)
+  }
 }

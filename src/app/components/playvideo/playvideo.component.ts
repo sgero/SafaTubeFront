@@ -33,8 +33,6 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     this.demoYouTubePlayer = this.video;
   }
   video:any;
-  darLikeVideo: any;
-  darDislikeVideo: any;
   comentarios: any;
   respuestas:any;
   recomendaciones:any;
@@ -140,6 +138,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       .subscribe(
         data =>{
           this.respuestaCreada = data;
+          location.reload();
         },error => {
           console.error("no funciona", error);
         }
@@ -156,6 +155,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       .subscribe(
         data =>{
           this.respuestaCreada = data;
+          location.reload();
         },error => {
           console.error("no funciona", error);
         }
@@ -184,7 +184,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
           .subscribe(
             data =>{
               this.respuestas = data;
-              Swal.fire('¡Eliminado!', '', 'success');
+              location.reload();
             },error => {
               Swal.fire('¡error!', '', 'error');
               console.error("no funciona", error);
@@ -194,11 +194,41 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         Swal.fire('Suscripción no eliminada', '', 'error');
       }
     });
-
   }
+
   suscribirse() {
+    Swal.fire({
+      title: '¿Quieres suscribirte?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: '¡Sí!',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.suscribirse(12,1)
+          .subscribe(
+            data =>{
+              this.respuestas = data;
+              location.reload();
+            },error => {
+              Swal.fire('¡error!', '', 'error');
+              console.error("no funciona", error);
+            }
+          )
+      } else if (result.isDenied) {
+        Swal.fire('Suscripción no realizada', '', 'error');
+      }
+    });
+  }
+
+  darLikeVideo(){
 
   }
+
+  darDislikeVideo(){
+
+  }
+
 
 
 }

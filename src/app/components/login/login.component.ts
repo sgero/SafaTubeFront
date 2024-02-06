@@ -104,6 +104,7 @@ import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Generalservice} from "../../service/generalservice";
 import {Login} from "../../models/Login";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -112,7 +113,8 @@ import {Login} from "../../models/Login";
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   styleUrls: ['./login.component.css']
 })
@@ -203,7 +205,10 @@ export class LoginComponent implements AfterViewInit{
       // Verifica si 'response' es un objeto con una propiedad 'token'
       if (response && response.token) {
         // this.generalservice.setToken(response.token);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('username', <string>credentials.username);
         console.log('Inicio de sesión exitoso', response);
+
         // Maneja la respuesta del backend, por ejemplo, redirige a la página principal.
       } else {
         console.error('Error en el inicio de sesión', 'Token no válido');

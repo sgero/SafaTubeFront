@@ -9,6 +9,7 @@ import {TipoCategoria} from "../models/TipoCategoria";
 import {Busqueda} from "../models/Busqueda";
 
 import {Comentario} from "../models/Comentario";
+import {Notificacion} from "../models/Notificacion";
 
 @Injectable({
   providedIn: 'root',
@@ -110,6 +111,9 @@ export class Generalservice {
 
   registerUser(data: Usuario){
     return this.http.post<Usuario[]>(this.url + "/api/registro", data);
+  }
+  countMensaje(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_mensaje", data);
   }
 
   crearComentario(respuesta: object) {

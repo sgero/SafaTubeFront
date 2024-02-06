@@ -138,7 +138,7 @@ export class Generalservice {
 
       'Content-Type': 'application/json',
 
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
 
     });
     return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));

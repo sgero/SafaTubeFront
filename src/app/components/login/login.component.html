@@ -20,7 +20,7 @@
 <!--</div>-->
 
 <div class="formulario">
-<p>Hola</p>
+<p>¡Bienvenido a Safatube!</p>
   <form [formGroup]="Logear" (ngSubmit)="login()" #loginForm="ngForm">
     <label for="username">Usuario:</label>
     <input type="text" id="username" formControlName="username" name="username" ngModel required>
@@ -31,9 +31,11 @@
     <button type="submit" [routerLink]="['/safaTube/home/1']" [disabled]="!loginForm.valid">Iniciar Sesión</button>
 
 
-    //router link para ir a home
+
     <a class="discrete" target="_blank">¿Aún no tienes una cuenta? Regístrate <a class="registro" [routerLink]="['/safaTube/registro']"> aquí.</a></a>
   </form>
+
+
 
 </div>
 </div>

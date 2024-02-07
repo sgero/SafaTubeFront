@@ -315,7 +315,27 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   darDislikeVideo(){
-
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.valoracion.video = this.video;
+          this.valoracion.usuario = usuario;
+          this.valoracion.comentario = new Comentario();
+          this.valoracion.esLike = false;
+          this.dataservice.crearLike(this.valoracion)
+            .subscribe(
+              data =>{
+                this.valoracionCreada = data;
+                location.reload();
+              },error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
   }
 
   darLikeComentario(comentario:Comentario){
@@ -342,8 +362,28 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       )
   }
 
-  darDislikeComentario(){
-
+  darDislikeComentario(comentario:Comentario){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.valoracion.video = new Video();
+          this.valoracion.usuario = usuario;
+          this.valoracion.comentario = comentario;
+          this.valoracion.esLike = false;
+          this.dataservice.crearLike(this.valoracion)
+            .subscribe(
+              data =>{
+                this.valoracionCreada = data;
+                location.reload();
+              },error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
   }
 
 

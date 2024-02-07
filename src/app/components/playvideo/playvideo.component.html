@@ -116,7 +116,7 @@
                 <small class="interactuar-comentarios">
                   <div class="interdiv">
                     <a class="button is-default" (click)="darLikeComentario(c)"><i class="fa fa-thumbs-up"></i> {{c.contador_likes}}</a>
-                    <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{c.contador_dislikes}}</a>
+                    <a class="button is-default" (click)="darDislikeComentario(c)"><i class="fa fa-thumbs-down"></i> {{c.contador_dislikes}}</a>
                     <a class="button is-default" (click)="verRespuestas(c)">Ver Respuestas</a>
                     <a class="button is-default" (click)="toggleResponder(c)">Responder</a>
                     <div *ngIf="(mostrarContenido && c == idcomentario)" class="media-content">
@@ -153,7 +153,7 @@
                             {{r.texto}}
                             <small class="interactuar-respuestas alineardiv">
                               <a class="button is-default" (click)="darLikeComentario(r)"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
-                              <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
+                              <a class="button is-default" (click)="darDislikeComentario(r)"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
                               <a class="button is-default" (click)="toggleResponder(r)">Responder</a>
                               <div *ngIf="(mostrarContenido && r == idcomentario)" class="media-content">
                                 <p class="control textarea1">

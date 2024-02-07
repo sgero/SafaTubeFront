@@ -151,4 +151,14 @@ export class Generalservice {
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
   }
+
+  getCanalUsuarioLogeado(usuarioId: any) {
+    return this.http.post<Canal>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=19131',usuarioId)
+  }
+  getUsuarioLogeado(username: any) {
+    const datos = {
+      usuario: username,
+    };
+    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get?XDEBUG_SESSION_START=19131',datos)
+  }
 }

@@ -11,6 +11,8 @@ import {HttpEvent} from "@angular/common/http";
 import Swal from 'sweetalert2';
 import {AppComponent} from "../../app.component";
 import {LoginComponent} from "../login/login.component";
+import {Valoracion} from "../../models/Valoracion";
+import {Video} from "../../models/Video";
 
 @Component({
   selector: 'app-playvideo',
@@ -44,6 +46,9 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   estaSuscrito:any;
   usuario = new Usuario();
   username:any;
+  totalVisitasVideo:any;
+  valoracion:Valoracion = new Valoracion();
+  valoracionCreada:any;
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -101,15 +106,42 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       }
     )
-
-    this.dataservice.estaSuscrito(12, 1)
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
-        data => {
-          this.estaSuscrito = data;
-          this.estaSuscrito = this.estaSuscrito[0];
+        usuario => {
+          this.dataservice.estaSuscrito(usuario, this.video.canal)
+            .subscribe(
+              data => {
+                this.estaSuscrito = data;
+                this.estaSuscrito = this.estaSuscrito[0];
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+          error => {
+            console.error("No se pudo obtener el usuario logeado", error);
+          }
+        )
+
+
+
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.sumarVisualizacionVideo(usuario, this.video)
+            .subscribe(
+              data => {
+                this.totalVisitasVideo = data;
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
         },
         error => {
-          console.error("no funciona", error);
+          console.error("No se pudo obtener el usuario logeado", error);
         }
       )
 
@@ -159,20 +191,28 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   responderComentario(video:object, comentario_padre: object, usuario_mencionado:object) {
-    this.crearComentario.video = video;
-    this.crearComentario.texto = this.textoRespuesta;
-    this.crearComentario.comentarioPadre = comentario_padre;
-    this.crearComentario.usuario = new Usuario();
-    this.crearComentario.usuarioMencionado = usuario_mencionado;
-    this.dataservice.crearComentario(this.crearComentario)
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
-        data =>{
-          this.respuestaCreada = data;
-          location.reload();
-        },error => {
-          console.error("no funciona", error);
-        }
-      )
+        usuario => {
+          this.crearComentario.video = video;
+          this.crearComentario.texto = this.textoRespuesta;
+          this.crearComentario.comentarioPadre = comentario_padre;
+          this.crearComentario.usuario = usuario;
+          this.crearComentario.usuarioMencionado = usuario_mencionado;
+          this.dataservice.crearComentario(this.crearComentario)
+            .subscribe(
+              data =>{
+                this.respuestaCreada = data;
+                location.reload();
+              },error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+          }
+        )
   }
 
   mostrarContenido: boolean = false;
@@ -193,14 +233,22 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dataservice.eliminarSuscripcion(12,1)
+        this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
           .subscribe(
-            data =>{
-              this.respuestas = data;
-              location.reload();
-            },error => {
-              Swal.fire('¡error!', '', 'error');
-              console.error("no funciona", error);
+            usuario => {
+              this.dataservice.eliminarSuscripcion(usuario,this.video.canal)
+                .subscribe(
+                  data =>{
+                    this.respuestas = data;
+                    location.reload();
+                  },error => {
+                    Swal.fire('¡error!', '', 'error');
+                    console.error("no funciona", error);
+                  }
+                )
+            },
+            error => {
+              console.error("No se pudo obtener el usuario logeado", error);
             }
           )
       } else if (result.isDenied) {
@@ -218,14 +266,22 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dataservice.suscribirse(12,1)
+        this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
           .subscribe(
-            data =>{
-              this.respuestas = data;
-              location.reload();
-            },error => {
-              Swal.fire('¡error!', '', 'error');
-              console.error("no funciona", error);
+            usuario => {
+            this.dataservice.suscribirse(usuario,this.video.canal)
+              .subscribe(
+                data =>{
+                  this.respuestas = data;
+                  location.reload();
+                },error => {
+                  Swal.fire('¡error!', '', 'error');
+                  console.error("no funciona", error);
+                }
+              )
+            },
+            error => {
+              console.error("No se pudo obtener el usuario logeado", error);
             }
           )
       } else if (result.isDenied) {
@@ -235,10 +291,58 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   darLikeVideo(){
-
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.valoracion.video = this.video;
+          this.valoracion.usuario = usuario;
+          this.valoracion.comentario = new Comentario();
+          this.valoracion.esLike = true;
+          this.dataservice.crearLike(this.valoracion)
+            .subscribe(
+              data =>{
+                this.valoracionCreada = data;
+                location.reload();
+              },error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
   }
 
   darDislikeVideo(){
+
+  }
+
+  darLikeComentario(comentario:Comentario){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.valoracion.video = new Video();
+          this.valoracion.usuario = usuario;
+          this.valoracion.comentario = comentario;
+          this.valoracion.esLike = true;
+          this.dataservice.crearLike(this.valoracion)
+            .subscribe(
+              data =>{
+                this.valoracionCreada = data;
+                location.reload();
+              },error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
+  }
+
+  darDislikeComentario(){
 
   }
 

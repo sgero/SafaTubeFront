@@ -31,7 +31,7 @@
                     <strong>{{video.canal.nombre}}</strong>
                     <br>
                     <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
-                      <a class="button is-dark" (click)="eliminarSuscripcion()">Suscrito</a>
+                      <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
                       <a class="button is-danger">Mensaje</a>
                     </div>
                     <ng-template #noestasuscrito>
@@ -115,7 +115,7 @@
                 <br>
                 <small class="interactuar-comentarios">
                   <div class="interdiv">
-                    <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{c.contador_likes}}</a>
+                    <a class="button is-default" (click)="darLikeComentario(c)"><i class="fa fa-thumbs-up"></i> {{c.contador_likes}}</a>
                     <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{c.contador_dislikes}}</a>
                     <a class="button is-default" (click)="verRespuestas(c)">Ver Respuestas</a>
                     <a class="button is-default" (click)="toggleResponder(c)">Responder</a>
@@ -152,7 +152,7 @@
                             </a>
                             {{r.texto}}
                             <small class="interactuar-respuestas alineardiv">
-                              <a class="button is-default" (click)="darLikeVideo"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
+                              <a class="button is-default" (click)="darLikeComentario(r)"><i class="fa fa-thumbs-up"></i> {{r.contador_likes}}</a>
                               <a class="button is-default" (click)="darDislikeVideo"><i class="fa fa-thumbs-down"></i> {{r.contador_dislikes}}</a>
                               <a class="button is-default" (click)="toggleResponder(r)">Responder</a>
                               <div *ngIf="(mostrarContenido && r == idcomentario)" class="media-content">
@@ -162,7 +162,7 @@
                                 <nav class="level">
                                   <div class="level-left">
                                     <div class="level-item">
-                                      <button type="submit" class="button is-info" (click)="responderComentario(video, c, c.id_usuario)">Publicar</button>
+                                      <button type="submit" class="button is-info" (click)="responderComentario(video, c, r.id_usuario)">Publicar</button>
                                     </div>
                                   </div>
                                 </nav>

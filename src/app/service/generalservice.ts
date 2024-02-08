@@ -43,14 +43,14 @@ export class Generalservice {
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
   }
 
-  getVideosRecomendados(usuarioId: number) {
+  getVideosRecomendados(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
   getVideosRecomendadosAPartirDeVideo(videoId: number) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
   }
 
-  getVideosDeCanalesSuscritosPage(usuarioId: number) {
+  getVideosDeCanalesSuscritosPage(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosCanalesSuscritos', usuarioId)
   }
 
@@ -168,12 +168,12 @@ export class Generalservice {
   }
 
 
-  sumarVisualizacionVideo(usuario: Usuario, video: Video) {
+  sumarVisualizacionVideo(usuario: any, video:any) {
     const datos = {
       usuario: usuario.id,
       video: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita?XDEBUG_SESSION_START=10948',datos)
+    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita?XDEBUG_SESSION_START=14313',datos)
   }
 
   crearLike(valoracion: any) {

@@ -27,22 +27,25 @@ export class HomeComponent implements  OnInit{
   constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params =>
-      {const usuarioId= +params['id'];
-        if (usuarioId) {
-          this.dataservice.getVideosRecomendados(usuarioId)
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getVideosRecomendados(usuario.id)
             .subscribe(
               data => {
                 this.videos = data;
-                this.videos = this.videos.videos;
-              },
+                this.videos = this.videos.videos;              },
               error => {
                 console.error("no funciona", error);
               }
             )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
         }
-      }
-    )
+      )
+
+
     this.dataservice.getTipoCategorias()
       .subscribe((data: any) => {
         this.tipocategorias = data;

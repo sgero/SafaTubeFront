@@ -12,6 +12,7 @@ import {
   VideosCanalesSuscritosComponent
 } from "./components/home/videos-canales-suscritos/videos-canales-suscritos.component";
 import {BuscadorVideoComponent} from "./components/home/buscador-video/buscador-video.component";
+import {CanalComponent} from "./components/canal/canal.component";
 
 export const routes: Routes = [
   {path:'safaTube', component:LandingpageComponent},
@@ -26,6 +27,6 @@ export const routes: Routes = [
   {path:'safaTube/video/buscar', component:HomeComponent},
   {path:'safaTube/home/:id/crear_video', component:CrearVideoComponent},
   {path:'safaTube/buscador-video', component:BuscadorVideoComponent},
-
+  {path:'safaTube/canal', component:CanalComponent},
 
 ];

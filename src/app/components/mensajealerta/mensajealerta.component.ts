@@ -18,7 +18,6 @@ export class MensajealertaComponent implements OnInit{
   ngOnInit(){
     this.service.countMensaje(this.usuario).subscribe(data =>{
       this.number = data;
-      console.log(data)
     });
   }
 }

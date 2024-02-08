@@ -3,6 +3,7 @@ import {Router, RouterLink} from "@angular/router";
 import {LikealertaComponent} from "../likealerta/likealerta.component";
 import {SuscripcionalertaComponent} from "../suscripcionalerta/suscripcionalerta.component";
 import {MensajealertaComponent} from "../mensajealerta/mensajealerta.component";
+import {Generalservice} from "../../service/generalservice";
 
 @Component({
   selector: 'app-campana',
@@ -15,18 +16,27 @@ export class CampanaComponent implements OnInit{
   @ViewChild('activo') campanaActivo: ElementRef | undefined;
   @ViewChild('inactivo') campanaInactivo: ElementRef | undefined;
   @ViewChild('notifi') desplegable: ElementRef | undefined;
-  constructor() {}
+  usuario = {id:1};
+  isfalse=false;
+  constructor(private service: Generalservice) {}
   ngAfterViewInit() {
-    // Puedes acceder a los elementos aquí
-    console.log('Elementos inicializados:');
-    if (this.campanaActivo && this.campanaInactivo && this.desplegable) {
-      this.campanaActivo.nativeElement.style.display = 'block';
-      this.campanaInactivo.nativeElement.style.display = 'none';
-      this.desplegable.nativeElement.style.display = 'none';
+
+    if (this.isfalse) {
+      // Puedes acceder a los elementos aquí
+      console.log('Elementos inicializados:');
+      if (this.campanaActivo && this.campanaInactivo && this.desplegable) {
+        this.campanaActivo.nativeElement.style.display = 'block';
+        this.campanaInactivo.nativeElement.style.display = 'none';
+        this.desplegable.nativeElement.style.display = 'none';
+      }
     }
   }
 
   ngOnInit() {
+    this.service.campana(this.usuario).subscribe(data =>{
+      this.isfalse = data;
+      console.log(data)
+    });
     // if (this.campanaActivo && this.campanaInactivo) {
     //   this.campanaActivo.nativeElement.style.display = 'block';
     //   this.campanaInactivo.nativeElement.style.display = 'none';
@@ -44,6 +54,9 @@ export class CampanaComponent implements OnInit{
         this.desplegable.nativeElement.style.display = 'none';
       }
     }
+    this.service.atender(this.usuario).subscribe(data =>{
+      console.log(data);
+    });
 
   }
 }

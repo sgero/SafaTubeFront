@@ -179,4 +179,24 @@ export class Generalservice {
   crearLike(valoracion: any) {
     return this.http.post<any>('http://localhost:8000/api/valoracion/crear?XDEBUG_SESSION_START=15942',valoracion)
   }
+
+  countlike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_like", data);
+  }
+
+  countDislike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_dislike", data);
+  }
+
+  campana(data: Usuario){
+    return this.http.post<boolean>(this.url + "/api/notificacion/notificacion", data);
+  }
+
+  atender(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/atendidas", data);
+  }
+
+  countSubs(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/contarsubs", data);
+  }
 }

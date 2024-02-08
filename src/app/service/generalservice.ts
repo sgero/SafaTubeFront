@@ -117,7 +117,7 @@ export class Generalservice {
   }
 
   crearComentario(respuesta: object) {
-    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=19195',respuesta)
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear',respuesta)
   }
 
 
@@ -127,5 +127,25 @@ export class Generalservice {
       canal: video
     };
     return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=19195',datos)
+  }
+
+  countlike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_like", data);
+  }
+
+  countDislike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_dislike", data);
+  }
+
+  campana(data: Usuario){
+    return this.http.post<boolean>(this.url + "/api/notificacion/notificacion", data);
+  }
+
+  atender(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/atendidas", data);
+  }
+
+  countSubs(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/contarsubs", data);
   }
 }

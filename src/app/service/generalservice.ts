@@ -75,7 +75,7 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video){
-    return this.http.post<Video>('http://localhost:8000/api/video/crear', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11645', videoNuevo);
   }
   listarMensaje(data: Mensaje){
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
@@ -149,11 +149,11 @@ export class Generalservice {
       usuario: usuario,
       canal: video
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=15109',datos)
   }
 
   getCanalUsuarioLogeado(usuarioId: any) {
-    return this.http.post<Canal>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=19131',usuarioId)
+    return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109',usuarioId)
   }
   getUsuarioLogeado(username: any) {
     const datos = {

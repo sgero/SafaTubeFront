@@ -10,12 +10,16 @@ import {Router} from "@angular/router";
   styleUrl: './suscripcionalerta.component.css'
 })
 export class SuscripcionalertaComponent implements OnInit{
-  usuario ={id:1};
+  usuario ={username: ''};
   number: any;
   constructor(private service:Generalservice, private router: Router) {
 
   }
   ngOnInit(){
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.usuario.username = username;
+    }
     this.service.countSubs(this.usuario).subscribe(data =>{
       this.number = data;
       console.log(data)

@@ -10,13 +10,17 @@ import {Router} from "@angular/router";
   styleUrl: './likealerta.component.css'
 })
 export class LikealertaComponent implements OnInit{
-  usuario ={id:1};
+  usuario ={username:''};
   number: any;
   number2: any;
   constructor(private service:Generalservice, private router: Router) {
 
   }
   ngOnInit(){
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.usuario.username = username;
+    }
     this.service.countlike(this.usuario).subscribe(data =>{
       this.number = data;
 

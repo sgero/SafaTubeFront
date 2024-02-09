@@ -16,7 +16,7 @@ export class CampanaComponent implements OnInit{
   @ViewChild('activo') campanaActivo: ElementRef | undefined;
   @ViewChild('inactivo') campanaInactivo: ElementRef | undefined;
   @ViewChild('notifi') desplegable: ElementRef | undefined;
-  usuario = {id:1};
+  usuario = {username:''};
   isfalse=false;
   constructor(private service: Generalservice) {}
   ngAfterViewInit() {
@@ -33,6 +33,10 @@ export class CampanaComponent implements OnInit{
   }
 
   ngOnInit() {
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.usuario.username = username;
+    }
     this.service.campana(this.usuario).subscribe(data =>{
       this.isfalse = data;
       console.log(data)

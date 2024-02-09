@@ -32,6 +32,8 @@ export class BuscadorVideoComponent {
 
     });
 
+
+
   }
 
 
@@ -45,14 +47,5 @@ export class BuscadorVideoComponent {
           complete:() => console.info(this.videos)
         })
   }
-
-
-
-  ngDoCheck(e: any){
-    console.log()
-  }
-
-
-
 
 }

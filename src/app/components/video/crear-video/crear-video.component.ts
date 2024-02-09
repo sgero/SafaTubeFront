@@ -21,6 +21,8 @@ export class CrearVideoComponent {
 
   videoNuevo: Video = new Video();
   datos: any;
+  usuarioLogeadoId: any;
+  canalLogeadoId: any;
 
 
   constructor(private service:Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
@@ -43,4 +45,28 @@ export class CrearVideoComponent {
     })
   }
 
+  crearVideo2(){
+    this.service.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.service.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(
+              canal => {
+                this.videoNuevo.canal = canal;
+                    this.service.CrearVideo(this.videoNuevo)
+                      .subscribe(data=> {
+                          this.datos=data;
+                          console.log(data);
+                        },
+                        error => {
+                          console.error("no funciona", error);
+                        })
+
+              }
+            )
+      }
+    )
+  }
+
 }
+

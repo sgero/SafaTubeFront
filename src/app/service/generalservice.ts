@@ -55,15 +55,15 @@ export class Generalservice {
   }
 
   getTipoCategorias() {
-    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
+    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar?XDEBUG_SESSION_START=12012')
   }
   getVideosSegunCategoria(categoria: object) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=19622', categoria)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=12012', categoria)
   }
 
   BuscarVideo(palabraClave: string){
     let json=  {busqueda: palabraClave}
-    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=12578', palabraClave);
+    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number){
@@ -75,7 +75,8 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video){
-    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11645', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11996' +
+      '', videoNuevo);
   }
   listarMensaje(data: Mensaje){
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
@@ -154,12 +155,6 @@ export class Generalservice {
 
   getCanalUsuarioLogeado(usuarioId: any) {
     return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109',usuarioId)
-  }
-  getUsuarioLogeado(username: any) {
-    const datos = {
-      usuario: username,
-    };
-    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get?XDEBUG_SESSION_START=19131',datos)
   }
 
   suscribirse(usuario: any, canal: any) {

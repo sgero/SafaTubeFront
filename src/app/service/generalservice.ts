@@ -120,7 +120,7 @@ export class Generalservice {
   }
 
   crearComentario(respuesta: object) {
-    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=18830',respuesta)
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear',respuesta)
   }
 
 
@@ -129,7 +129,7 @@ export class Generalservice {
       usuario: usuario.id,
       canal: canal.id
     };
-    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=18830',datos)
+    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar',datos)
   }
 
 
@@ -149,7 +149,7 @@ export class Generalservice {
       usuario: usuario.id,
       canal: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar',datos)
   }
 
   suscribirse(usuario: any, canal: any) {
@@ -157,14 +157,14 @@ export class Generalservice {
       usuario: usuario.id,
       canal: canal.id
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/crear?XDEBUG_SESSION_START=18830',datos)
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/crear',datos)
   }
 
   getUsuarioLogeado(username: any) {
     const datos = {
       usuario: username,
     };
-    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get?XDEBUG_SESSION_START=15994',datos)
+    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get',datos)
   }
 
 
@@ -173,11 +173,11 @@ export class Generalservice {
       usuario: usuario.id,
       video: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita?XDEBUG_SESSION_START=14313',datos)
+    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita',datos)
   }
 
   crearLike(valoracion: any) {
-    return this.http.post<any>('http://localhost:8000/api/valoracion/crear?XDEBUG_SESSION_START=15942',valoracion)
+    return this.http.post<any>('http://localhost:8000/api/valoracion/crear',valoracion)
   }
 
   countlike(data: Usuario){

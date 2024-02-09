@@ -153,13 +153,7 @@ export class Generalservice {
   }
 
   getCanalUsuarioLogeado(usuarioId: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109',usuarioId)
-  }
-  getUsuarioLogeado(username: any) {
-    const datos = {
-      usuario: username,
-    };
-    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get?XDEBUG_SESSION_START=19131',datos)
+    return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109', usuarioId)
   }
 
   suscribirse(usuario: any, canal: any) {

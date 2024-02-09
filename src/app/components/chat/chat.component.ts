@@ -18,9 +18,9 @@ import {NgForOf, NgIf} from "@angular/common";
   styleUrl: './chat.component.css'
 })
 export class ChatComponent implements OnInit{
-  mensaje = {texto: '', usuario_emisor:1,usuario_receptor:+''};
+  mensaje = {texto: '', username:'',usuario_receptor:+''};
   textob: any;
-  emisor ={usuario_emisor: 1, usuario_receptor: +''};
+  emisor ={username:'', usuario_receptor: +''};
   mensajes: any;
   comparador?: number;
   canales: any;
@@ -31,6 +31,11 @@ export class ChatComponent implements OnInit{
 
   }
   ngOnInit() {
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.mensaje.username = username;
+      this.emisor.username = username;
+    }
     this.div2 = document.getElementById('div2');
     this.service.buscarMensaje(this.emisor).subscribe(data =>{
       this.canales = data;

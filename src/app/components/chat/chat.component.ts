@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
@@ -12,7 +12,8 @@ import {NgForOf, NgIf} from "@angular/common";
     HeaderComponent,
     FormsModule,
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'

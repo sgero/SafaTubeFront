@@ -25,22 +25,23 @@ export class VideosCanalesSuscritosComponent implements OnInit{
   constructor(private route:ActivatedRoute, private dataservice: Generalservice) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params =>
-      {const usuarioId= +params['id'];
-        if (usuarioId) {
-          this.dataservice.getVideosDeCanalesSuscritosPage(usuarioId)
-        .subscribe(
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getVideosDeCanalesSuscritosPage(usuario.id)
+            .subscribe(
               data => {
                 this.videos = data;
-                this.videos = this.videos.videos;
-              },
+                this.videos = this.videos.videos;              },
               error => {
                 console.error("no funciona", error);
               }
             )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
         }
-      }
-    )
+      )
 
 
   }

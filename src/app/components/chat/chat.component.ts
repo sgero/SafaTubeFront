@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
@@ -12,15 +12,16 @@ import {NgForOf, NgIf} from "@angular/common";
     HeaderComponent,
     FormsModule,
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
 export class ChatComponent implements OnInit{
-  mensaje = {texto: '', usuario_emisor:1,usuario_receptor:+''};
+  mensaje = {texto: '', username:'',usuario_receptor:+''};
   textob: any;
-  emisor ={usuario_emisor: 1, usuario_receptor: +''};
+  emisor ={username:'', usuario_receptor: +''};
   mensajes: any;
   comparador?: number;
   canales: any;
@@ -31,6 +32,11 @@ export class ChatComponent implements OnInit{
 
   }
   ngOnInit() {
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.mensaje.username = username;
+      this.emisor.username = username;
+    }
     this.div2 = document.getElementById('div2');
     this.service.buscarMensaje(this.emisor).subscribe(data =>{
       this.canales = data;

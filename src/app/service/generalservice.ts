@@ -43,14 +43,14 @@ export class Generalservice {
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
   }
 
-  getVideosRecomendados(usuarioId: number) {
+  getVideosRecomendados(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
   getVideosRecomendadosAPartirDeVideo(videoId: number) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
   }
 
-  getVideosDeCanalesSuscritosPage(usuarioId: number) {
+  getVideosDeCanalesSuscritosPage(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosCanalesSuscritos', usuarioId)
   }
 
@@ -75,7 +75,7 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video){
-    return this.http.post<Video>('http://localhost:8000/api/video/crear', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11645', videoNuevo);
   }
   listarMensaje(data: Mensaje){
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
@@ -120,16 +120,16 @@ export class Generalservice {
   }
 
   crearComentario(respuesta: object) {
-    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear?XDEBUG_SESSION_START=19195',respuesta)
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear',respuesta)
   }
 
 
-  estaSuscrito(usuario: any, video: any) {
+  estaSuscrito(usuario: any, canal: any) {
     const datos = {
-      usuario: usuario,
-      canal: video
+      usuario: usuario.id,
+      canal: canal.id
     };
-    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar?XDEBUG_SESSION_START=19195',datos)
+    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar',datos)
   }
 
 
@@ -141,14 +141,66 @@ export class Generalservice {
       // 'Access-Control-Allow-Origin': '*',
 
     });
-    return firstValueFrom(this.http.post<any>(this.url + "/api/login_check", data, {headers}));
+    return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
   }
 
   eliminarSuscripcion(usuario: any, video: any) {
     const datos = {
-      usuario: usuario,
-      canal: video
+      usuario: usuario.id,
+      canal: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar?XDEBUG_SESSION_START=14544',datos)
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar',datos)
+  }
+
+  getCanalUsuarioLogeado(usuarioId: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109', usuarioId)
+  }
+
+  suscribirse(usuario: any, canal: any) {
+    const datos = {
+      usuario: usuario.id,
+      canal: canal.id
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/crear',datos)
+  }
+
+  getUsuarioLogeado(username: any) {
+    const datos = {
+      usuario: username,
+    };
+    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get',datos)
+  }
+
+
+  sumarVisualizacionVideo(usuario: any, video:any) {
+    const datos = {
+      usuario: usuario.id,
+      video: video.id
+    };
+    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita',datos)
+  }
+
+  crearLike(valoracion: any) {
+    return this.http.post<any>('http://localhost:8000/api/valoracion/crear',valoracion)
+  }
+
+  countlike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_like", data);
+  }
+
+  countDislike(data: Usuario){
+    return this.http.post<number>(this.url + "/api/notificacion/contar_dislike", data);
+  }
+
+  campana(data: Usuario){
+    return this.http.post<boolean>(this.url + "/api/notificacion/notificacion", data);
+  }
+
+  atender(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/atendidas", data);
+  }
+
+  countSubs(data: Usuario){
+    return this.http.post<object>(this.url + "/api/notificacion/contarsubs", data);
   }
 }

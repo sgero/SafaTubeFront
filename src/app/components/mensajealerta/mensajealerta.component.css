@@ -4,4 +4,7 @@ div{background: #e8e2e2;
   z-index: 1;
   border-radius: 20px;}
 a{z-index: 1;
+  text-decoration: none;
+  color: #414141;
 }
+

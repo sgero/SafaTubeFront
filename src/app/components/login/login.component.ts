@@ -99,13 +99,18 @@
 // }
 
 
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Generalservice} from "../../service/generalservice";
 import {Login} from "../../models/Login";
 import {RouterLink} from "@angular/router";
+import { Injectable } from '@angular/core';
+import {Usuario} from "../../models/Usuario";
 
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-login',
@@ -125,98 +130,25 @@ export class LoginComponent implements AfterViewInit{
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
-  // constructor(private http: HttpClient, generalservice: Generalservice, private formBuilder: FormBuilder) {
 
-    //   // this.Logear = generalservice.loginUser();
-    //   this.Logear = this.formBuilder.group({
-    //     // username: ['', Validators.required],
-    //     // password: ['', Validators.required]
-    //
-    //     username: new FormControl(),
-    //     password: new FormControl()
-    //   });
-    // }
-  // }
+  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder) {
 
-
-
-
-  // async login() {
-  //   const credentials = new Login(this.Logear.value.username, this.Logear.value.password);
-  //
-  //   console.log(credentials);
-  //
-  //   const response = await this.generalservice.loginUser(credentials);
-  //
-  //   //metodo para traer el token de usuario
-  //
-  //   if (response.token != null) {
-  //
-  //     this.generalservice.setToken(response.token);
-  //     console.log('Inicio de sesión exitoso', response);
-  //     // Maneja la respuesta del backend, por ejemplo, guarda el token de sesión.
-  //   }
-  //
-  //
-// }
-
-  // constructor(private http: HttpClient, private generalservice: Generalservice, private formBuilder: FormBuilder) { }
-  //
-  // async login() {
-  //   const credentials = new Login(this.logear.value.username, this.logear.value.password);
-  //   console.log(credentials);
-  //
-  //   const response = await this.generalservice.loginUser(credentials);
-  //
-  //   if (response.token != null) {
-  //     this.generalservice.setToken(response.token);
-  //     console.log('Inicio de sesión exitoso', response);
-  //   }
-  // }
-
-
-//   ngAfterViewInit(): void {
-//   }
-// }
-
-
-  //   this.http.post('https://127.0.0.1:8000/api/login_check', credentials)
-  //     .subscribe(response => {
-  //       console.log('Inicio de sesión exitoso', response);
-  //       // Maneja la respuesta del backend, por ejemplo, guarda el token de sesión.
-  //     }, error => {
-  //       console.error('Error en el inicio de sesión', error);
-  //       // Maneja los errores, por ejemplo, muestra un mensaje al usuario.
-  //     });
-  // }
-// }
-
-
-
-  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder) {}
+  }
 
 
   async login() {
-    const credentials = new Login(this.Logear.value.username, this.Logear.value.password);
-
+    const credentials= new Login(this.Logear.value.username, this.Logear.value.password);
     try {
       const response = await this.generalservice.loginUser(credentials);
-
-      // Verifica si 'response' es un objeto con una propiedad 'token'
       if (response && response.token) {
-        // this.generalservice.setToken(response.token);
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', <string>credentials.username);
         console.log('Inicio de sesión exitoso', response);
-
-        // Maneja la respuesta del backend, por ejemplo, redirige a la página principal.
       } else {
         console.error('Error en el inicio de sesión', 'Token no válido');
-        // Maneja el escenario donde el token no es válido o no existe.
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
-      // Maneja otros errores, por ejemplo, muestra un mensaje al usuario.
     }
   }
 

@@ -81,6 +81,42 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                       console.error("no funciona", error);
                     }
                   )
+                this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+                  .subscribe(
+                    usuario => {
+                      this.dataservice.estaSuscrito(usuario, this.video.canal)
+                        .subscribe(
+                          data => {
+                            this.estaSuscrito = data;
+                            this.estaSuscrito = this.estaSuscrito[0];
+                          },
+                          error => {
+                            console.error("no funciona", error);
+                          }
+                        )
+                    },
+                    error => {
+                      console.error("No se pudo obtener el usuario logeado", error);
+                    }
+                  )
+
+                this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+                  .subscribe(
+                    usuario => {
+                      this.dataservice.sumarVisualizacionVideo(usuario, this.video)
+                        .subscribe(
+                          data => {
+                            this.totalVisitasVideo = data;
+                          },
+                          error => {
+                            console.error("no funciona", error);
+                          }
+                        )
+                    },
+                    error => {
+                      console.error("No se pudo obtener el usuario logeado", error);
+                    }
+                  )
               },
               error => {
                 console.error("no funciona", error);
@@ -106,44 +142,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       }
     )
-    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
-      .subscribe(
-        usuario => {
-          this.dataservice.estaSuscrito(usuario, this.video.canal)
-            .subscribe(
-              data => {
-                this.estaSuscrito = data;
-                this.estaSuscrito = this.estaSuscrito[0];
-              },
-              error => {
-                console.error("no funciona", error);
-              }
-            )
-        },
-          error => {
-            console.error("No se pudo obtener el usuario logeado", error);
-          }
-        )
 
 
-
-    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
-      .subscribe(
-        usuario => {
-          this.dataservice.sumarVisualizacionVideo(usuario, this.video)
-            .subscribe(
-              data => {
-                this.totalVisitasVideo = data;
-              },
-              error => {
-                console.error("no funciona", error);
-              }
-            )
-        },
-        error => {
-          console.error("No se pudo obtener el usuario logeado", error);
-        }
-      )
 
 
 

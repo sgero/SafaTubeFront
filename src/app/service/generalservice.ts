@@ -28,9 +28,9 @@ export class Generalservice {
   private token: string | null = null;
   private tokenKey = 'token';
   private url = 'http://localhost:8000';
-  constructor(private http: HttpClient) { }
-  enviarIdVideoPlayingBaseDatos(id:number){
-    return this.http.get<Video>('http://localhost:8000/api/video/get/'+id)
+  constructor(private http: HttpClient) {}
+    enviarIdVideoPlayingBaseDatos(id:number){
+    return this.http.post<Video>('http://localhost:8000/api/video/get?XDEBUG_SESSION_START=16807', id)
   }
   enviarIdVideoRecibirComentarios(id:number){
     return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista',id)
@@ -46,8 +46,8 @@ export class Generalservice {
   getVideosRecomendados(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
-  getVideosRecomendadosAPartirDeVideo(videoId: number) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo', videoId)
+  getVideosRecomendadosAPartirDeVideo(videoId: any) {
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?XDEBUG_SESSION_START=16807', videoId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: any) {
@@ -101,7 +101,7 @@ export class Generalservice {
   }
 
   editarCanal(data: Canal){
-    return this.http.post<Canal[]>(this.url + "/api/canal/editar", data);
+    return this.http.put<Canal[]>(this.url + "/api/canal/editar/"+ data.id+ '?XDEBUG_SESSION_START=10151', data);
   }
 
   editarUsuario(data: Usuario){
@@ -155,6 +155,9 @@ export class Generalservice {
   getCanalUsuarioLogeado(usuarioId: any) {
     return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109', usuarioId)
   }
+  getCanalSegunUsername(canalNombre: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/getCanalSegunUsername', canalNombre)
+  }
 
   suscribirse(usuario: any, canal: any) {
     const datos = {
@@ -177,7 +180,7 @@ export class Generalservice {
       usuario: usuario.id,
       video: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/video/añadirVisita',datos)
+    return this.http.post<any>('http://localhost:8000/api/video/anyadirVisita?XDEBUG_SESSION_START=16807',datos)
   }
 
   crearLike(valoracion: any) {
@@ -203,4 +206,20 @@ export class Generalservice {
   countSubs(data: Usuario){
     return this.http.post<object>(this.url + "/api/notificacion/contarsubs", data);
   }
+
+  getVideosSegunCanal(data: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/getVideosSegunCanal',data)
+  }
+
+  getVideosPopularesSegunCanal(canal: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/getVideosPopularesSegunCanal',canal)
+  }
+
+  getInfoCanal(data: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/getInfoCanal',data)
+  }
+  getTipoContenido() {
+    return this.http.get<any>('http://localhost:8000/api/canal/listartTipoContenido')
+  }
+
 }

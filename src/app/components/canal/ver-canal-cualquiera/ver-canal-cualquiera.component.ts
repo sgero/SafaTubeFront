@@ -1,24 +1,25 @@
-import {Component, inject, OnInit, TemplateRef} from '@angular/core';
-import {HeaderComponent} from "../header/header.component";
+import {Component, OnInit} from '@angular/core';
+import {HeaderComponent} from "../../header/header.component";
 import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {Generalservice} from "../../service/generalservice";
-import {FormsModule} from "@angular/forms";
+import {Generalservice} from "../../../service/generalservice";
 
 @Component({
-  selector: 'app-canal',
+  selector: 'app-ver-canal-cualquiera',
   standalone: true,
   imports: [
     HeaderComponent,
     NgForOf,
-    RouterLink,
     NgIf,
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterLink
   ],
-  templateUrl: './canal.component.html',
-  styleUrl: './canal.component.css'
+  templateUrl: './ver-canal-cualquiera.component.html',
+  styleUrl: './ver-canal-cualquiera.component.css'
 })
-export class CanalComponent implements  OnInit{
+export class VerCanalCualquieraComponent implements OnInit{
   videos: any;
   canal:any;
   usuarioLog:any;
@@ -32,26 +33,25 @@ export class CanalComponent implements  OnInit{
   }
 
   ngOnInit() {
-    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
-      .subscribe(
-        usuario => {
-          this.usuarioLog = usuario;
-          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+    this.route.params.subscribe(params =>
+    {const canal= +params['nombre'];
+      if (canal) {
+          this.dataservice.getCanalSegunUsername(canal)
             .subscribe(
               data => {
-                  this.canal = data;
-                  console.log(this.canal)
+                this.canal = data;
+                console.log(this.canal)
 
                 this.dataservice.getVideosSegunCanal(data)
-                    .subscribe(
-                      data => {
-                            this.videos = data;
-                            this.recientes = true;
-                          },
-                      error => {
-                        console.error("no funciona", error);
-                      }
-                    )
+                  .subscribe(
+                    data => {
+                      this.videos = data;
+                      this.recientes = true;
+                    },
+                    error => {
+                      console.error("no funciona", error);
+                    }
+                  )
                 this.dataservice.getInfoCanal(data)
                   .subscribe(
                     data => {
@@ -63,16 +63,14 @@ export class CanalComponent implements  OnInit{
                       console.error("no funciona", error);
                     }
                   )
-                },
+              },
               error => {
                 console.error("no funciona", error);
               }
             )
-        },
-        error => {
-          console.error("No se pudo obtener el usuario logeado", error);
         }
-      )
+      }
+    )
 
     this.dataservice.getTipoContenido()
       .subscribe(
@@ -149,10 +147,10 @@ export class CanalComponent implements  OnInit{
   editarCanal(){
     this.dataservice.editarCanal(this.canal)
       .subscribe(data=> {
-        this.canal=data;
-        this.CloseModel1()
-        location.reload()
-        console.log(data);
+          this.canal=data;
+          this.CloseModel1()
+          location.reload()
+          console.log(data);
         },
         error => {
           console.error("no funciona", error);

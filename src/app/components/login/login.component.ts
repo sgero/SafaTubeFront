@@ -104,7 +104,7 @@ import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Generalservice} from "../../service/generalservice";
 import {Login} from "../../models/Login";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import { Injectable } from '@angular/core';
 import {Usuario} from "../../models/Usuario";
 
@@ -131,7 +131,7 @@ export class LoginComponent implements AfterViewInit{
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder) {
+  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router:Router) {
 
   }
 
@@ -149,6 +149,9 @@ export class LoginComponent implements AfterViewInit{
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
+    }
+    finally {
+      this.router.navigate(['/safaTube/home']);
     }
   }
 

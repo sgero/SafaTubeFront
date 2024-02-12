@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Generalservice} from "../../service/generalservice";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -10,7 +11,9 @@ import {Generalservice} from "../../service/generalservice";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterLink
   ],
   standalone: true
 })
@@ -30,7 +33,7 @@ export class RegisterComponent {
         telefono: [''],
         foto: [''],
         tipo_contenido: this.fb.group({
-          id: [1],
+          id: [+''],
         }),
         banner: [''],
       }),

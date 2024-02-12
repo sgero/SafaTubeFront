@@ -52,17 +52,17 @@
 <div class="testbox">
   <h1>Registro</h1>
 
-  <form action="/">
+  <form  (ngSubmit)="enviarRegistro()" )>
 
     <hr>
     <strong>USUARIO:</strong><br>
 
-    <label id="icon" for="name"><i class="icon-envelope "></i></label>
-    <input type="text" name="name" id="name" placeholder="Email" required/>
-    <label id="icon" for="name"><i class="icon-user"></i></label>
-    <input type="text" name="name" id="name" placeholder="Name" required/>
-    <label id="icon" for="name"><i class="icon-shield"></i></label>
-    <input type="password" name="name" id="name" placeholder="Password" required/>
+    <label id="icon" for="email"><i class="icon-envelope "></i></label>
+    <input type="text" name="email" id="email" placeholder="Email" formControlName="email" required/>
+    <label id="icon" for="username"><i class="icon-user"></i></label>
+    <input type="text" name="username" id="username" placeholder="Username" formControlName="username" required/>
+    <label id="icon" for="password"><i class="icon-shield"></i></label>
+    <input type="password" name="password" id="password" placeholder="Password" formControlName="password" required/>
 
     <hr>
 <!--    <div class="accounttype" >-->
@@ -124,7 +124,7 @@
     <br><br>
     <div class="fin">
     <p>Registrándote, accedes a aceptar nuestros <a href="#">términos y condiciones</a>.</p>
-    <a href="#" class="button">Registrar</a>
+    <a [routerLink]="['/home']" type="submit" class="button">Registrar</a>
     </div>
   </form>
 </div>

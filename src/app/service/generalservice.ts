@@ -18,6 +18,7 @@ import {Suscripcion} from "../models/Suscripcion";
 export class Generalservice {
 
 
+  private static debugQuery = '';
   private busqueda = new BehaviorSubject<any>(null);
   currentVariable = this.busqueda.asObservable();
 
@@ -112,9 +113,14 @@ export class Generalservice {
   //   return this.http.post(`${this.apiUrl}/register`, user);
   // }
 
-  registerUser(data: Usuario){
-    return this.http.post<Usuario[]>(this.url + "/api/registro", data);
+  // registerUser(data: Usuario){
+  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
+  // }
+
+  registerUser(data: Usuario) {
+    return this.http.post<Usuario[]>(`${this.url}/api/registro`, data);
   }
+
   countMensaje(data: Usuario){
     return this.http.post<number>(this.url + "/api/notificacion/contar_mensaje", data);
   }

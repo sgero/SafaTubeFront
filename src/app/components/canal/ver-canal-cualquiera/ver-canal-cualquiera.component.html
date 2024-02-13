@@ -5,64 +5,6 @@
     <div class="main-container">
       <div class="profile banner">
         <img src="{{canal.banner}}" alt="" class="profile-cover">
-        <div class="profile-contact-info">
-
-          <div class="profile-contact" (click)="openModel1()">
-            <svg viewBox="0 0 515.6 515.6" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M496.7 212.2a64.4 64.4 0 11-91.2 91.1 64.4 64.4 0 0191.2-91M303.3 212.2a64.4 64.4 0 11-91 91.1 64.4 64.4 0 0191-91M110 212.2A64.4 64.4 0 1119 303.3a64.4 64.4 0 0191.1-91" /></svg>
-          </div>
-
-          <div class="modal" id="editarCanal">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content login-box">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="editarCanal2">Edita tu canal </h1>
-                  <button type="button" class="btn-close" (click)="CloseModel1()" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body user-box">
-                  <label>Nombre: </label>
-                  <input [value]="canal.nombre" [(ngModel)]="canal.nombre">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Apellidos: </label>
-                  <input [value]="canal.apellidos" [(ngModel)]="canal.apellidos">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Descripcion: </label>
-                  <input [value]="canal.descripcion" [(ngModel)]="canal.descripcion">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Teléfono de contacto: </label>
-                  <input [value]="canal.telefono" [(ngModel)]="canal.telefono">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Fecha de nacimiento: (DD/MM/YYYY) </label>
-                  <input [value]="canal.fechaNacimiento" [(ngModel)]="canal.fechaNacimiento">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Banner: </label>
-                  <input [value]="canal.banner" [(ngModel)]="canal.banner">
-                </div>
-                <div class="modal-body user-box">
-                  <label>Foto de perfil: </label>
-                  <input [value]="canal.foto" [(ngModel)]="canal.foto">
-                </div>
-                <div class="modal-body user-box"  >
-                  <label >Tipo de contenido: </label>
-                  <select [value]="canal.tiposContenido" [(ngModel)]="canal.tipoContenido">
-                    <option *ngFor="let t of tiposContenidoCanal" >{{t.nombre}}</option>
-                    <input [value]="canal.tiposContenido">
-                  </select>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel1()">Cerrar</button>
-                  <button type="button" class="btn btn-danger" (click)="editarCanal()">Editar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
 
         <div class="profile-info">
           <div class="profile-item">
@@ -130,26 +72,26 @@
           </ng-template>
         </div>
       </div>
-        <div class="container py-5">
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-3 my-3" *ngFor="let v of videos" [routerLink]="['/safaTube/video', v.id]">
-              <div class="video-card w-100 rounded shadow position-relative" [style.background-image]="'url(' + v.miniatura + ')'"
-                   style="background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
-                <div class="video-title position-absolute text-white p-3 p-xl-4">
-                  <div class="font-weight-bold pb-2">
-                    {{v.titulo}}
-                  </div>
-                  <div class="small">
-                    <img src="{{v.foto_canal}}">{{v.nombre_canal}}
-                  </div>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-3 my-3" *ngFor="let v of videos" [routerLink]="['/safaTube/video', v.id]">
+            <div class="video-card w-100 rounded shadow position-relative" [style.background-image]="'url(' + v.miniatura + ')'"
+                 style="background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
+              <div class="video-title position-absolute text-white p-3 p-xl-4">
+                <div class="font-weight-bold pb-2">
+                  {{v.titulo}}
                 </div>
-                <div class="hover text-white">
+                <div class="small">
+                  <img src="{{v.foto_canal}}">{{v.nombre_canal}}
                 </div>
               </div>
+              <div class="hover text-white">
+              </div>
             </div>
-
           </div>
+
         </div>
+      </div>
 
     </div>
   </div>

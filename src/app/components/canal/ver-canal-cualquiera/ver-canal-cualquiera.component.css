@@ -1056,4 +1056,8 @@ body {
   transition: .5s;
 }
 
-
+.centrardiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

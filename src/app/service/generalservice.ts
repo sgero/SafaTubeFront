@@ -113,9 +113,14 @@ export class Generalservice {
   //   return this.http.post(`${this.apiUrl}/register`, user);
   // }
 
-  registerUser(data: Usuario){
-    return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
+  // registerUser(data: Usuario){
+  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
+  // }
+
+  registerUser(data: Usuario) {
+    return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/`, data);
   }
+
   countMensaje(data: Usuario){
     return this.http.post<number>(this.url + "/api/notificacion/contar_mensaje", data);
   }

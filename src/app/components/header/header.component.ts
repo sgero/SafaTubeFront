@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {Video} from "../../models/Video";
 import {Busqueda} from "../../models/Busqueda";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {SidenavComponent} from "../../sidenav/sidenav.component";
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
     RouterLink,
     CampanaComponent,
     FormsModule,
+    SidenavComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

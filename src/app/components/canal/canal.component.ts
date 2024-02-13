@@ -101,6 +101,7 @@ export class CanalComponent implements  OnInit{
     }
   }
 
+
   CloseModel() {
     const modelDiv = document.getElementById('myModal');
     const modelDiv2 = document.getElementById('editarCanal');

@@ -152,7 +152,7 @@ export class Generalservice {
 
   loginUser(data: any){
 
-    return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data));
+    return firstValueFrom(this.http.post<any>(`/api/login_check`, data));
   }
 
 
@@ -161,11 +161,11 @@ export class Generalservice {
       usuario: usuario.id,
       canal: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/eliminar',datos)
+    return this.http.post<any>('/api/suscripcion/eliminar',datos)
   }
 
   getCanalUsuarioLogeado(usuarioId: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109', usuarioId)
+    return this.http.post<any>('/api/canal/get', usuarioId)
   }
 
   suscribirse(usuario: any, canal: any) {
@@ -173,14 +173,14 @@ export class Generalservice {
       usuario: usuario.id,
       canal: canal.id
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/crear',datos)
+    return this.http.post<any>('/api/suscripcion/crear',datos)
   }
 
   getUsuarioLogeado(username: any) {
     const datos = {
       usuario: username,
     };
-    return this.http.post<Usuario>('http://localhost:8000/api/usuario/get',datos)
+    return this.http.post<Usuario>('/api/usuario/get',datos)
   }
 
 

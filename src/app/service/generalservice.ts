@@ -161,8 +161,11 @@ export class Generalservice {
   getCanalUsuarioLogeado(usuarioId: any) {
     return this.http.post<any>('http://localhost:8000/api/canal/get?XDEBUG_SESSION_START=15109', usuarioId)
   }
-  getCanalSegunUsername(canalNombre: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/getCanalSegunUsername', canalNombre)
+  getCanalSegunUsername(username: any) {
+    const datos = {
+      usuario: username,
+    };
+    return this.http.post<any>('http://localhost:8000/api/canal/getCanalSegunUsername', datos)
   }
 
   suscribirse(usuario: any, canal: any) {

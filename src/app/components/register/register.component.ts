@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Generalservice} from "../../service/generalservice";
-import {RouterLink} from "@angular/router";
-
-
+import {Router, RouterLink} from "@angular/router";
 
 
 @Component({
@@ -20,14 +18,14 @@ import {RouterLink} from "@angular/router";
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private generalService: Generalservice) {
+  constructor(private fb: FormBuilder, private generalService: Generalservice, private router:Router) {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      username: [''],
+      password: [''],
+      email: [''],
       canal: this.fb.group({
-        nombre: ['', Validators.required],
-        apellidos: ['', Validators.required],
+        nombre: [''],
+        apellidos: [''],
         descripcion: [''],
         fecha_nacimiento: [''],
         telefono: [''],
@@ -40,41 +38,11 @@ export class RegisterComponent {
     });
   }
 
-// usuario= {
-//   username: '',
-//   password: '',
-//   email: '',
-//   canal: {
-//     nombre: '',
-//     apellidos: '',
-//     descripcion: '',
-//     fecha_nacimiento:'' ,
-//     telefono: '',
-//     foto: '',
-//     tipo_contenido: {
-//       id: 1,
-//     },
-//     banner: ''
-//   }
-// };
-// }
-
-  // canal = {
-  //   nombre: '',
-  //   apellidos: '',
-  //   descripcion: '',
-  //   fecha_nacimiento: '',
-  //   telefono: '',
-  //   foto: '',
-  //   tipo_contenido: {
-  //     id: 1
-  //   },
-  //   banner: ''
-  // };
-  // }
 
   enviarRegistro() {
+
     if (this.registerForm.valid) {
+      console.log('hola')
       const userData = this.registerForm.value;
       this.generalService.registerUser(userData).subscribe(
         (response) => {
@@ -83,8 +51,12 @@ export class RegisterComponent {
         },
         (error) => {
           console.error('Error al registrar usuario', error);
+        },
+        () => {  // Este es el lugar correcto para el código que se ejecutará después de la operación.
+          this.router.navigate(['/safaTube/home']);
         }
       );
     }
   }
+
 }

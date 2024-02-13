@@ -113,7 +113,7 @@ export class Generalservice {
   // }
 
   registerUser(data: Usuario){
-    return this.http.post<Usuario[]>(this.url + "/api/registro", data);
+    return this.http.post<Usuario[]>(this.url + "/api/registro/reg_user?XDEBUG_SESSION_START=14386", data);
   }
   countMensaje(data: Usuario){
     return this.http.post<number>(this.url + "/api/notificacion/contar_mensaje", data);

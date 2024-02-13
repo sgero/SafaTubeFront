@@ -237,4 +237,8 @@ export class Generalservice {
     return this.http.get<any>('http://localhost:8000/api/canal/listartTipoContenido')
   }
 
+  // getImagenPerfil(usuario: { username: string }) {
+  //   return this.http.post<any>('http://localhost:8000/api/usuario/getImagenPerfil',usuario)
+  //
+  // }
 }

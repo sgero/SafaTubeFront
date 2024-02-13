@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
@@ -21,21 +21,40 @@ import {SidenavComponent} from "../../sidenav/sidenav.component";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   palabraClave: any;
+  private usuario = {username: ''};
+  imagenPerfil:any;
 
   constructor(private service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
 
-  ngOnInit(): void {
-    // Llama a buscarVideo() cuando el componente se inicia
+  ngOnInit() {
+    this.service.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.service.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(
+              canal => {
+                this.imagenPerfil = canal.foto;
+              }
+            )
+        }
+      )
+
+
+
   }
+
+
 
   mandarCosulta():void{
     this.service.sendVariable(this.palabraClave)
   }
 
+
+//metodo para recoger la imagen de base de datos
 
 
 

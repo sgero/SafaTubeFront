@@ -1001,9 +1001,7 @@ body {
 .c {
   color: black;
 }
-.ab{
-  color: white;
-}
+
 .login-box {
   position: absolute;
   top: 50%;
@@ -1058,4 +1056,8 @@ body {
   transition: .5s;
 }
 
-
+.centrardiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

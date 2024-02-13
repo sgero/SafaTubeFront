@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-header></app-header>
+<div class="video-app">
+  <div class="wrapper">
+    <div class="main-container">
+      <div class="profile banner">
+        <img src="{{canal.banner}}" alt="" class="profile-cover">
+
+        <div class="profile-info" *ngIf="estaSuscrito == true; else noestasuscrito">
+          <div class="profile-item">
+            <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
+            <a class="button is-danger">Mensaje</a>
+          </div>
+        </div>
+        <ng-template #noestasuscrito>
+          <div class="profile-item centrardiv">
+            <a class="button is-danger" (click)="suscribirse()">Suscribirse</a>
+          </div>
+        </ng-template>
+        <div class="profile-menu">
+          <div class="profile-avatar">
+            <img class="profile-img" src="{{canal.foto}}" alt="">
+            <div class="profile-name">{{canal.nombre}}</div>
+          </div>
+          <div class="menu-items">
+            <a class="profile-menu-link blanco">Vídeos</a>
+            <a class="profile-menu-link">Listas</a>
+            <a class="profile-menu-link" (click)="openModel()">Información</a>
+
+            <div class="modal c" id="myModal" >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Canal de {{canal.nombre}} {{canal.apellidos}}</h1>
+                    <button type="button" class="btn-close" (click)="CloseModel()" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {{canal.descripcion}}
+                  </div>
+                  <div class="modal-body">
+                    Tipo de contenido: {{canal.tipoContenido.nombre}}
+                  </div>
+                  <div class="modal-body">
+                    Fecha de nacimiento: {{canal.fechaNacimiento}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="follow-buttons">
+            <button class="follow suscriptores">Estadísticas</button>
+          </div>
+        </div>
+      </div>
+      <div class="trends filtrocanal">
+        <div class="follow-buttons">
+          <div class="opciones" *ngIf="recientes == true; else populares">
+            <button class="follow blanco">Más Recientes</button>
+            <button class="follow follow-option active" (click)="verPopulares()">Populares</button>
+          </div>
+          <ng-template #populares>
+            <button class="follow" (click)="verRecientes()">Recientes</button>
+            <button class="follow follow-option active blanco">Populares</button>
+          </ng-template>
+        </div>
+      </div>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-3 my-3" *ngFor="let v of videos" [routerLink]="['/safaTube/video', v.id]">
+            <div class="video-card w-100 rounded shadow position-relative" [style.background-image]="'url(' + v.miniatura + ')'"
+                 style="background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
+              <div class="video-title position-absolute text-white p-3 p-xl-4">
+                <div class="font-weight-bold pb-2">
+                  {{v.titulo}}
+                </div>
+                <div class="small">
+                  <img src="{{v.foto_canal}}">{{v.nombre_canal}}
+                </div>
+              </div>
+              <div class="hover text-white">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

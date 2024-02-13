@@ -19,7 +19,7 @@
         <div class="video-title">{{video.titulo}}</div>
         <br>
         <article class="media">
-          <div class="media-left">
+          <div class="media-left" [routerLink]="['/safaTube/canal/',video.canal.usuario.username]">
             <figure class="image is-64x64">
               <img src="{{video.canal.foto}}" alt="Image">
             </figure>
@@ -28,7 +28,7 @@
             <div class="content">
               <div class="columns">
                 <div class="column is-6">
-                    <strong>{{video.canal.nombre}}</strong>
+                    <strong [routerLink]="['/safaTube/canal/',video.canal.usuario.username]">{{video.canal.nombre}}</strong>
                     <br>
                     <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
                       <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>

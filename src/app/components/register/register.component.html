@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro</title>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
+        type='text/css'>
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
@@ -24,38 +25,39 @@
     <hr>
     <div class="accounttype">
       <div formGroupName="canal">
-      <strong>CANAL:</strong><br>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre" required/>
-      <br>
-      <label for="apellidos">Apellidos:</label>
-      <input type="text" id="apellidos" formControlName="apellidos" placeholder="Apellidos" required/>
-      <br>
-      <label for="descripcion">Descripción del Canal:</label>
-      <textarea id="descripcion" formControlName="descripcion" placeholder="Descripción"></textarea>
-      <br>
-      <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-      <input class='form-style' type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
-      <br>
-      <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono" formControlName="telefono" placeholder="Teléfono"/>
-      <br>
-      <label for="foto">Foto:</label>
-      <input type="text" id="foto" formControlName="foto" placeholder="Foto (url)"/>
-      <br>
+        <strong>CANAL:</strong><br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre" required/>
+        <br>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" formControlName="apellidos" placeholder="Apellidos" required/>
+        <br>
+        <label for="descripcion">Descripción del Canal:</label>
+        <textarea id="descripcion" formControlName="descripcion" placeholder="Descripción"></textarea>
+        <br>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input class='form-style' type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento"
+               placeholder="Fecha de Nacimiento"/>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" formControlName="telefono" placeholder="Teléfono"/>
+        <br>
+        <label for="foto">Foto:</label>
+        <input type="text" id="foto" formControlName="foto" placeholder="Foto (url)"/>
+        <br>
         <div formGroupName="tipo_contenido">
-      <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
-      <select id="tipo_contenido" formControlName="id" required>
-        <option value="" disabled selected>-- Seleccione --</option>
-        <option value="1">Personal</option>
-        <option value="2">Profesional</option>
-        <option value="3">Divulgativo</option>
-      </select>
-          </div>
-      <br>
-      <label for="banner">Banner del Canal:</label>
-      <input type="text" id="banner" formControlName="banner" placeholder="Banner (url)"/>
-    </div>
+          <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
+          <select id="tipo_contenido" formControlName="id" required>
+            <option value="" disabled selected>-- Seleccione --</option>
+            <option value="1">Personal</option>
+            <option value="2">Profesional</option>
+            <option value="3">Divulgativo</option>
+          </select>
+        </div>
+        <br>
+        <label for="banner">Banner del Canal:</label>
+        <input type="text" id="banner" formControlName="banner" placeholder="Banner (url)"/>
+      </div>
     </div>
     <br><br>
     <div class="fin">

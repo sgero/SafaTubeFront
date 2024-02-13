@@ -19,7 +19,6 @@
 // _________________________________
 
 
-
 // import { Component } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import {FormsModule} from "@angular/forms";
@@ -100,12 +99,12 @@
 
 
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Generalservice} from "../../service/generalservice";
 import {Login} from "../../models/Login";
 import {Router, RouterLink} from "@angular/router";
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Usuario} from "../../models/Usuario";
 
 @Injectable({
@@ -123,7 +122,7 @@ import {Usuario} from "../../models/Usuario";
   ],
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements AfterViewInit{
+export class LoginComponent implements AfterViewInit {
   // Logear: any = FormGroup;
   // generalservice: any = Generalservice;
   Logear: any = this.formBuilder.group({
@@ -131,13 +130,13 @@ export class LoginComponent implements AfterViewInit{
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router:Router) {
+  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
 
   async login() {
-    const credentials= new Login(this.Logear.value.username, this.Logear.value.password);
+    const credentials = new Login(this.Logear.value.username, this.Logear.value.password);
     try {
       const response = await this.generalservice.loginUser(credentials);
       if (response && response.token) {
@@ -149,13 +148,13 @@ export class LoginComponent implements AfterViewInit{
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
-    }
-    finally {
+    } finally {
       this.router.navigate(['/safaTube/home']);
     }
   }
 
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+  }
 
 }

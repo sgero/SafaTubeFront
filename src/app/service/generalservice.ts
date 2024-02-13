@@ -118,7 +118,7 @@ export class Generalservice {
   // }
 
   registerUser(data: Usuario) {
-    return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/`, data);
+    return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user`, data);
   }
 
   countMensaje(data: Usuario){

@@ -30,10 +30,11 @@
         <path d="M245.03 253.66l-64 64 22.56 22.56 36.8-36.64v153.44h32V303.58l36.64 36.64 22.56-22.56-64-64a16 16 0 00-22.55 0z" /></svg>
       <a [routerLink]="['/safaTube/home/:id/crear_video']">Upload</a>
     </button>
-    <app-campana></app-campana>
-    <div class="user-profile" [routerLink]="['/safaTube/home/:id']">
-      <img src="{{imagenPerfil}}" class="imagenPerfil">
 
-  </div>
+    <div class="user-profile" style="max-width: 10% ! important;" [routerLink]="['/safaTube/home/:id']">
+      <img src="{{imagenPerfil}}"  alt="logoPerfil">
+    </div>
+    <app-campana></app-campana>
+
 </div>
 </div>

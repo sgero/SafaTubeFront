@@ -121,9 +121,14 @@
   }
 
 
-  imagenPerfil{
-    width: 10px;
+/*.img {*/
+/*  max-width: 10%;*/
+/*}*/
+
+ .user-profile img{
+    max-width: 10px !important;
     height: 10px;
     border-radius: 50%;
   }
 }
+

@@ -30,7 +30,10 @@
 
     <button type="submit"  [disabled]="!loginForm.valid" >Iniciar Sesión</button>
 
+<div>
+  ¿Olvidaste tu contraseña? <a class="registro" [routerLink]="['/safaTube/recuperar']">Recupérala aquí.</a>
 
+</div>
 
     <a class="discrete" target="_blank">¿Aún no tienes una cuenta? Regístrate <a class="registro" [routerLink]="['/safaTube/registro']"> aquí.</a></a>
   </form>

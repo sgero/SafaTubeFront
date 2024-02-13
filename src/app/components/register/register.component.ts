@@ -42,7 +42,7 @@ export class RegisterComponent {
   enviarRegistro() {
 
     if (this.registerForm.valid) {
-      console.log('hola')
+      // console.log('hola')
       const userData = this.registerForm.value;
       this.generalService.registerUser(userData).subscribe(
         (response) => {

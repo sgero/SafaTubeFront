@@ -270,3 +270,15 @@ a.button:hover {
   font-size: 20px;
   font-weight: 600;
 }
+
+
+.p {
+  min-width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 20px;
+}

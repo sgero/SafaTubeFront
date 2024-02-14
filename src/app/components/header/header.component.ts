@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {Video} from "../../models/Video";
 import {Busqueda} from "../../models/Busqueda";
 import {error} from "@angular/compiler-cli/src/transformers/util";
-import {SidenavComponent} from "../../sidenav/sidenav.component";
+import {SidenavComponent} from "../sidenav/sidenav.component";
 
 @Component({
   selector: 'app-header',

@@ -55,7 +55,7 @@ html{
 .testbox {
   margin: 20px auto;
   width: 543px;
-  height: 1264px;
+  height: 1364px;
   -webkit-border-radius: 8px/7px;
   -moz-border-radius: 8px/7px;
   border-radius: 8px/7px;
@@ -247,4 +247,26 @@ a.button:hover {
   width: calc(100% - 50px);
   padding: 10px;
   margin-bottom: 2px;
+}
+
+.fin {
+  margin-bottom: 30px;
+
+  text-align: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+
+.button:hover {
+  background-color: #2e458b;
+  color: white ! important;
+}
+
+.titulin {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  font-weight: 600;
 }

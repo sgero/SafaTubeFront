@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {CrearVideoComponent} from "./components/video/crear-video/crear-video.component";
 import {LandingpageComponent} from "./components/landingpage/landingpage.component";
 import {RegisterComponent} from "./components/register/register.component";
@@ -16,19 +16,19 @@ import {CanalComponent} from "./components/canal/canal.component";
 import {VerCanalCualquieraComponent,} from "./components/canal/ver-canal-cualquiera/ver-canal-cualquiera.component";
 
 export const routes: Routes = [
-  {path:'safaTube', component:LandingpageComponent},
-  {path:'', redirectTo:'/safaTube', pathMatch:"full"},
-  {path:'safaTube/registro', component:RegisterComponent},
-  {path:'safaTube/login', component:LoginComponent},
-  {path:'safaTube/subir_video', component:CrearVideoComponent},
-  {path:'safaTube/home', component:HomeComponent},
-  {path:'safaTube/home/suscritos', component:VideosCanalesSuscritosComponent},
-  {path:'safaTube/video/:id', component:PlayvideoComponent},
-  {path:'safaTube/chat', component:ChatComponent},
-  {path:'safaTube/video/buscar', component:HomeComponent},
-  {path:'safaTube/home/:id/crear_video', component:CrearVideoComponent},
-  {path:'safaTube/buscador-video', component:BuscadorVideoComponent},
-  {path:'safaTube/micanal', component:CanalComponent},
-  {path:'safaTube/canal/:nombre', component:VerCanalCualquieraComponent},
+  {path: 'safaTube', component: LandingpageComponent},
+  {path: '', redirectTo: '/safaTube', pathMatch: "full"},
+  {path: 'safaTube/registro', component: RegisterComponent},
+  {path: 'safaTube/login', component: LoginComponent},
+  {path: 'safaTube/subir_video', component: CrearVideoComponent},
+  {path: 'safaTube/home', component: HomeComponent},
+  {path: 'safaTube/home/suscritos', component: VideosCanalesSuscritosComponent},
+  {path: 'safaTube/video/:id', component: PlayvideoComponent},
+  {path: 'safaTube/chat', component: ChatComponent},
+  {path: 'safaTube/video/buscar', component: HomeComponent},
+  {path: 'safaTube/home/:id/crear_video', component: CrearVideoComponent},
+  {path: 'safaTube/buscador-video', component: BuscadorVideoComponent},
+  {path: 'safaTube/micanal', component: CanalComponent},
+  {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
 
 ];

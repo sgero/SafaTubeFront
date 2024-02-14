@@ -29,24 +29,30 @@ export class Generalservice {
   private token: string | null = null;
   private tokenKey = 'token';
   private url = 'http://localhost:8000';
-  constructor(private http: HttpClient) {}
-    enviarIdVideoPlayingBaseDatos(id:number){
+
+  constructor(private http: HttpClient) {
+  }
+
+  enviarIdVideoPlayingBaseDatos(id: number) {
     return this.http.post<Video>('http://localhost:8000/api/video/get?XDEBUG_SESSION_START=16807', id)
   }
-  enviarIdVideoRecibirComentarios(id:number){
-    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista',id)
+
+  enviarIdVideoRecibirComentarios(id: number) {
+    return this.http.post<Comentario[]>('http://localhost:8000/api/video/getComentariosLista', id)
   }
+
   enviarComentarioPadreRecibirRespuestasLista(comentarios: any) {
     return this.http.post<Comentario[]>('http://localhost:8000/api/video/getRespuestaComentariosLista', comentarios);
   }
 
-  crearMensaje(data: Mensaje){
+  crearMensaje(data: Mensaje) {
     return this.http.post<object>(this.url + "/api/mensaje/crear", data);
   }
 
   getVideosRecomendados(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendados', usuarioId)
   }
+
   getVideosRecomendadosAPartirDeVideo(videoId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?XDEBUG_SESSION_START=16807', videoId)
   }
@@ -58,16 +64,17 @@ export class Generalservice {
   getTipoCategorias() {
     return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
   }
+
   getVideosSegunCategoria(categoria: object) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=19622', categoria)
   }
 
-  BuscarVideo(palabraClave: string){
-    let json=  {busqueda: palabraClave}
+  BuscarVideo(palabraClave: string) {
+    let json = {busqueda: palabraClave}
     return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=12578', palabraClave);
   }
 
-  BuscarVideoPorCanal(canalId: number){
+  BuscarVideoPorCanal(canalId: number) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/por_canal', canalId);
   }
 
@@ -75,37 +82,39 @@ export class Generalservice {
     return this.http.post<Canal[]>('http://localhost:8000/api/canal/buscar', palabraClave);
   }
 
-  CrearVideo(videoNuevo: Video){
+  CrearVideo(videoNuevo: Video) {
     return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11645', videoNuevo);
   }
-  listarMensaje(data: Mensaje){
+
+  listarMensaje(data: Mensaje) {
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
   }
-  buscarMensaje(data: Mensaje){
+
+  buscarMensaje(data: Mensaje) {
     return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
   }
 
-  listarCanal(data: Canal){
+  listarCanal(data: Canal) {
     return this.http.post<Canal[]>(this.url + "/api/canal/listar", data);
   }
 
-  buscarCanal(data: Canal){
+  buscarCanal(data: Canal) {
     return this.http.post<Canal[]>(this.url + "/api/canal/buscar", data);
   }
 
-  listarUsuario(data: Usuario){
+  listarUsuario(data: Usuario) {
     return this.http.post<Usuario[]>(this.url + "/api/usuario/listar", data);
   }
 
-  buscarUsuario(data: Usuario){
+  buscarUsuario(data: Usuario) {
     return this.http.post<Usuario[]>(this.url + "/api/usuario/buscar", data);
   }
 
-  editarCanal(data: Canal){
-    return this.http.put<Canal[]>(this.url + "/api/canal/editar/"+ data.id+ '?XDEBUG_SESSION_START=10151', data);
+  editarCanal(data: Canal) {
+    return this.http.put<Canal[]>(this.url + "/api/canal/editar/" + data.id + '?XDEBUG_SESSION_START=10151', data);
   }
 
-  editarUsuario(data: Usuario){
+  editarUsuario(data: Usuario) {
     return this.http.post<Usuario[]>(this.url + "/api/usuario/editar", data);
   }
 
@@ -118,15 +127,15 @@ export class Generalservice {
   // }
 
   registerUser(data: Usuario) {
-    return this.http.post<Usuario[]>(`${this.url}/api/registro`, data);
+    return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
   }
 
-  countMensaje(data: Usuario){
+  countMensaje(data: Usuario) {
     return this.http.post<number>(this.url + "/api/notificacion/contar_mensaje", data);
   }
 
   crearComentario(respuesta: object) {
-    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear',respuesta)
+    return this.http.post<Comentario>('http://localhost:8000/api/comentario/crear', respuesta)
   }
 
 
@@ -135,7 +144,7 @@ export class Generalservice {
       usuario: usuario.id,
       canal: canal.id
     };
-    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar',datos)
+    return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar', datos)
   }
 
 
@@ -150,7 +159,7 @@ export class Generalservice {
   //   return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
   // }
 
-  loginUser(data: any){
+  loginUser(data: any) {
 
     return firstValueFrom(this.http.post<any>(`/api/login_check`, data));
   }
@@ -161,12 +170,13 @@ export class Generalservice {
       usuario: usuario.id,
       canal: video.id
     };
-    return this.http.post<any>('/api/suscripcion/eliminar',datos)
+    return this.http.post<any>('/api/suscripcion/eliminar', datos)
   }
 
   getCanalUsuarioLogeado(usuarioId: any) {
     return this.http.post<any>('/api/canal/get', usuarioId)
   }
+
   getCanalSegunUsername(username: any) {
     const datos = {
       usuario: username,
@@ -179,60 +189,61 @@ export class Generalservice {
       usuario: usuario.id,
       canal: canal.id
     };
-    return this.http.post<any>('/api/suscripcion/crear',datos)
+    return this.http.post<any>('/api/suscripcion/crear', datos)
   }
 
   getUsuarioLogeado(username: any) {
     const datos = {
       usuario: username,
     };
-    return this.http.post<Usuario>('/api/usuario/get',datos)
+    return this.http.post<Usuario>('/api/usuario/get', datos)
   }
 
 
-  sumarVisualizacionVideo(usuario: any, video:any) {
+  sumarVisualizacionVideo(usuario: any, video: any) {
     const datos = {
       usuario: usuario.id,
       video: video.id
     };
-    return this.http.post<any>('http://localhost:8000/api/video/anyadirVisita?XDEBUG_SESSION_START=16807',datos)
+    return this.http.post<any>('http://localhost:8000/api/video/anyadirVisita?XDEBUG_SESSION_START=16807', datos)
   }
 
   crearLike(valoracion: any) {
-    return this.http.post<any>('http://localhost:8000/api/valoracion/crear',valoracion)
+    return this.http.post<any>('http://localhost:8000/api/valoracion/crear', valoracion)
   }
 
-  countlike(data: Usuario){
+  countlike(data: Usuario) {
     return this.http.post<number>(this.url + "/api/notificacion/contar_like", data);
   }
 
-  countDislike(data: Usuario){
+  countDislike(data: Usuario) {
     return this.http.post<number>(this.url + "/api/notificacion/contar_dislike", data);
   }
 
-  campana(data: Usuario){
+  campana(data: Usuario) {
     return this.http.post<boolean>(this.url + "/api/notificacion/notificacion", data);
   }
 
-  atender(data: Usuario){
+  atender(data: Usuario) {
     return this.http.post<object>(this.url + "/api/notificacion/atendidas", data);
   }
 
-  countSubs(data: Usuario){
+  countSubs(data: Usuario) {
     return this.http.post<object>(this.url + "/api/notificacion/contarsubs", data);
   }
 
   getVideosSegunCanal(data: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/getVideosSegunCanal',data)
+    return this.http.post<any>('http://localhost:8000/api/canal/getVideosSegunCanal', data)
   }
 
   getVideosPopularesSegunCanal(canal: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/getVideosPopularesSegunCanal',canal)
+    return this.http.post<any>('http://localhost:8000/api/canal/getVideosPopularesSegunCanal', canal)
   }
 
   getInfoCanal(data: any) {
-    return this.http.post<any>('http://localhost:8000/api/canal/getInfoCanal',data)
+    return this.http.post<any>('http://localhost:8000/api/canal/getInfoCanal', data)
   }
+
   getTipoContenido() {
     return this.http.get<any>('http://localhost:8000/api/canal/listartTipoContenido')
   }

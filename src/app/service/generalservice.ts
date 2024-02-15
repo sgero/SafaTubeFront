@@ -232,5 +232,12 @@ export class Generalservice {
   }
 
 
-
+  verSuscriptoresEntreDosFechas(data: any, primerdia:any, ultimodia:any) {
+    const datos = {
+      idCanal:data,
+      inicio:primerdia,
+      fin:ultimodia
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
+  }
 }

@@ -142,11 +142,7 @@ export class Generalservice {
 
   loginUser(data: any){
     const headers = new HttpHeaders({
-
       'Content-Type': 'application/json',
-
-      // 'Access-Control-Allow-Origin': '*',
-
     });
     return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
   }
@@ -232,4 +228,17 @@ export class Generalservice {
     return this.http.get<any>('http://localhost:8000/api/canal/listartTipoContenido')
   }
 
+  eliminarComentario(idComentario:any) {
+    return this.http.delete <any>('http://localhost:8000/api/comentario/eliminar/'+idComentario)
+  }
+
+
+  verSuscriptoresEntreDosFechas(data: any, primerdia:any, ultimodia:any) {
+    const datos = {
+      idCanal:data,
+      inicio:primerdia,
+      fin:ultimodia
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
+  }
 }

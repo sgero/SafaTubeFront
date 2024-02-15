@@ -44,11 +44,12 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   crearComentario:Comentario = new Comentario();
   texto:any;
   estaSuscrito:any;
-  usuario = new Usuario();
+  usuario :any;
   username:any;
   totalVisitasVideo:any;
   valoracion:Valoracion = new Valoracion();
   valoracionCreada:any;
+  comentarioEliminadoCorrectamente:any;
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -84,6 +85,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                 this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
                   .subscribe(
                     usuario => {
+                      this.usuario = usuario;
                       this.dataservice.estaSuscrito(usuario, this.video.canal)
                         .subscribe(
                           data => {
@@ -385,6 +387,31 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       )
   }
+
+  eliminarComentario(idComentario:any){
+    Swal.fire({
+      title: '¿Quieres eliminar el comentario?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: '¡Sí!',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.eliminarComentario(idComentario)
+          .subscribe(
+            data => {
+              this.comentarioEliminadoCorrectamente = data;
+              location.reload();
+            },
+            error => {
+              console.error("No se pudo borrar", error);
+            }
+          )
+        }
+      }
+    )
+  }
+
 
 
 

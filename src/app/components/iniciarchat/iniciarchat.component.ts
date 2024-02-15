@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Generalservice} from "../service/generalservice";
+import {Generalservice} from "../../service/generalservice";
 import {Router} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 

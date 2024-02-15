@@ -11,6 +11,7 @@ import {Busqueda} from "../models/Busqueda";
 import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
 import {Suscripcion} from "../models/Suscripcion";
+import {CanalContado} from "../models/CanalContado";
 
 @Injectable({
   providedIn: 'root',
@@ -82,7 +83,7 @@ export class Generalservice {
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
   }
   buscarMensaje(data: Mensaje){
-    return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
+    return this.http.post<CanalContado[]>(this.url + "/api/mensaje/buscar", data);
   }
 
   listarCanal(data: Canal){

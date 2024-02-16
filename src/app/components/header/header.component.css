@@ -63,6 +63,7 @@
   & > * + * {
     margin-left: 18px;
   }
+  width: 25%;
 }
 
 .user-settings svg {
@@ -77,11 +78,11 @@
   border: 2px solid var(--border-color);
   border-radius: 25px;
   color: var(--body-color);
-  padding: 8px 16px;
   font-family: var(--body-font);
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
+  padding-left: 16vh;
   svg {
     margin-right: 8px;
     width: 20px;
@@ -119,16 +120,10 @@
     background-size: 16px;
     background-position: 50% 50%;
   }
-
-
-/*.img {*/
-/*  max-width: 10%;*/
-/*}*/
-
- .user-profile img{
-    max-width: 10px !important;
-    height: 10px;
-    border-radius: 50%;
+  .user-profile img{
+    display: flex;
+    height: auto;
+    width: 200px;
   }
-}
 
+}

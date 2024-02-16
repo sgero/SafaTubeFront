@@ -1,0 +1,315 @@
+Subject: [PATCH] Changes
+---
+Index: src/app/components/home/home.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/components/home/home.component.html b/src/app/components/home/home.component.html
+--- a/src/app/components/home/home.component.html	
++++ b/src/app/components/home/home.component.html	
+@@ -1,6 +1,7 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" />
+ 
++
+ <div class="video-app">
+ <app-header></app-header>
+   <div class="wrapper">
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	
++++ b/package.json	
+@@ -33,6 +33,7 @@
+     "ng-apexcharts": "^1.8.0",
+     "ng-gallery": "^11.0.0",
+     "ngx-bootstrap": "^12.0.0",
++    "ngx-toastr": "^18.0.0",
+     "rxjs": "~7.8.0",
+     "sweetalert2": "^11.10.5",
+     "swiper": "^11.0.5",
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	
++++ b/package-lock.json	
+@@ -30,6 +30,7 @@
+         "ng-apexcharts": "^1.8.0",
+         "ng-gallery": "^11.0.0",
+         "ngx-bootstrap": "^12.0.0",
++        "ngx-toastr": "^18.0.0",
+         "rxjs": "~7.8.0",
+         "sweetalert2": "^11.10.5",
+         "swiper": "^11.0.5",
+@@ -4280,13 +4281,6 @@
+       "integrity": "sha512-FQXkOta0XBSUPHndIKON2Y9JeQz5ZeMqLYZVVK93FliNBFm7LNMIZmY6FrMEB9XPcDbE2bekMbZD6kzDkxwYjA==",
+       "peer": true
+     },
+-    "node_modules/abab": {
+-      "version": "2.0.6",
+-      "resolved": "https://registry.npmjs.org/abab/-/abab-2.0.6.tgz",
+-      "integrity": "sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==",
+-      "deprecated": "Use your platform's native atob() and btoa() methods instead",
+-      "dev": true
+-    },
+     "node_modules/abbrev": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz",
+@@ -8925,6 +8919,19 @@
+         "rxjs": "^6.5.3 || ^7.4.0"
+       }
+     },
++    "node_modules/ngx-toastr": {
++      "version": "18.0.0",
++      "resolved": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-18.0.0.tgz",
++      "integrity": "sha512-jZ3rOG6kygl8ittY8OltIMSo47P1VStuS01igm3MZXK6InJwHVvxU7wDHI/HGMlXSyNvWncyOuFHnnMEAifsew==",
++      "dependencies": {
++        "tslib": "^2.3.0"
++      },
++      "peerDependencies": {
++        "@angular/common": ">=16.0.0-0",
++        "@angular/core": ">=16.0.0-0",
++        "@angular/platform-browser": ">=16.0.0-0"
++      }
++    },
+     "node_modules/nice-napi": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/nice-napi/-/nice-napi-1.0.2.tgz",
+@@ -15886,6 +15893,12 @@
+       "integrity": "sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==",
+       "dev": true
+     },
++    "@yr/monotone-cubic-spline": {
++      "version": "1.0.3",
++      "resolved": "https://registry.npmjs.org/@yr/monotone-cubic-spline/-/monotone-cubic-spline-1.0.3.tgz",
++      "integrity": "sha512-FQXkOta0XBSUPHndIKON2Y9JeQz5ZeMqLYZVVK93FliNBFm7LNMIZmY6FrMEB9XPcDbE2bekMbZD6kzDkxwYjA==",
++      "peer": true
++    },
+     "abbrev": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-2.0.0.tgz",
+@@ -16056,6 +16069,21 @@
+         }
+       }
+     },
++    "apexcharts": {
++      "version": "3.45.2",
++      "resolved": "https://registry.npmjs.org/apexcharts/-/apexcharts-3.45.2.tgz",
++      "integrity": "sha512-PpuM4sJWy70sUh5U1IFn1m1p45MdHSChLUNnqEoUUUHSU2IHZugFrsVNhov1S8Q0cvfdrCRCvdBtHGSs6PSAWQ==",
++      "peer": true,
++      "requires": {
++        "@yr/monotone-cubic-spline": "^1.0.3",
++        "svg.draggable.js": "^2.2.2",
++        "svg.easing.js": "^2.0.0",
++        "svg.filter.js": "^2.0.2",
++        "svg.pathmorphing.js": "^0.1.3",
++        "svg.resize.js": "^1.4.3",
++        "svg.select.js": "^3.0.1"
++      }
++    },
+     "argparse": {
+       "version": "1.0.10",
+       "resolved": "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz",
+@@ -19273,6 +19301,14 @@
+       "integrity": "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==",
+       "dev": true
+     },
++    "ng-apexcharts": {
++      "version": "1.8.0",
++      "resolved": "https://registry.npmjs.org/ng-apexcharts/-/ng-apexcharts-1.8.0.tgz",
++      "integrity": "sha512-NwJuMLHoLm52LSzM08RXV6oOOTyUYREAV53WHVGs+L2qi8UWbxCz19hX0kk+F/xFLEhhuiLegO3T1v30jLbKSQ==",
++      "requires": {
++        "tslib": "^2.0.0"
++      }
++    },
+     "ng-gallery": {
+       "version": "11.0.0",
+       "resolved": "https://registry.npmjs.org/ng-gallery/-/ng-gallery-11.0.0.tgz",
+@@ -19289,6 +19325,14 @@
+         "tslib": "^2.3.0"
+       }
+     },
++    "ngx-toastr": {
++      "version": "18.0.0",
++      "resolved": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-18.0.0.tgz",
++      "integrity": "sha512-jZ3rOG6kygl8ittY8OltIMSo47P1VStuS01igm3MZXK6InJwHVvxU7wDHI/HGMlXSyNvWncyOuFHnnMEAifsew==",
++      "requires": {
++        "tslib": "^2.3.0"
++      }
++    },
+     "nice-napi": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/nice-napi/-/nice-napi-1.0.2.tgz",
+@@ -21053,6 +21097,78 @@
+       "integrity": "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==",
+       "dev": true
+     },
++    "svg.draggable.js": {
++      "version": "2.2.2",
++      "resolved": "https://registry.npmjs.org/svg.draggable.js/-/svg.draggable.js-2.2.2.tgz",
++      "integrity": "sha512-JzNHBc2fLQMzYCZ90KZHN2ohXL0BQJGQimK1kGk6AvSeibuKcIdDX9Kr0dT9+UJ5O8nYA0RB839Lhvk4CY4MZw==",
++      "peer": true,
++      "requires": {
++        "svg.js": "^2.0.1"
++      }
++    },
++    "svg.easing.js": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/svg.easing.js/-/svg.easing.js-2.0.0.tgz",
++      "integrity": "sha512-//ctPdJMGy22YoYGV+3HEfHbm6/69LJUTAqI2/5qBvaNHZ9uUFVC82B0Pl299HzgH13rKrBgi4+XyXXyVWWthA==",
++      "peer": true,
++      "requires": {
++        "svg.js": ">=2.3.x"
++      }
++    },
++    "svg.filter.js": {
++      "version": "2.0.2",
++      "resolved": "https://registry.npmjs.org/svg.filter.js/-/svg.filter.js-2.0.2.tgz",
++      "integrity": "sha512-xkGBwU+dKBzqg5PtilaTb0EYPqPfJ9Q6saVldX+5vCRy31P6TlRCP3U9NxH3HEufkKkpNgdTLBJnmhDHeTqAkw==",
++      "peer": true,
++      "requires": {
++        "svg.js": "^2.2.5"
++      }
++    },
++    "svg.js": {
++      "version": "2.7.1",
++      "resolved": "https://registry.npmjs.org/svg.js/-/svg.js-2.7.1.tgz",
++      "integrity": "sha512-ycbxpizEQktk3FYvn/8BH+6/EuWXg7ZpQREJvgacqn46gIddG24tNNe4Son6omdXCnSOaApnpZw6MPCBA1dODA==",
++      "peer": true
++    },
++    "svg.pathmorphing.js": {
++      "version": "0.1.3",
++      "resolved": "https://registry.npmjs.org/svg.pathmorphing.js/-/svg.pathmorphing.js-0.1.3.tgz",
++      "integrity": "sha512-49HWI9X4XQR/JG1qXkSDV8xViuTLIWm/B/7YuQELV5KMOPtXjiwH4XPJvr/ghEDibmLQ9Oc22dpWpG0vUDDNww==",
++      "peer": true,
++      "requires": {
++        "svg.js": "^2.4.0"
++      }
++    },
++    "svg.resize.js": {
++      "version": "1.4.3",
++      "resolved": "https://registry.npmjs.org/svg.resize.js/-/svg.resize.js-1.4.3.tgz",
++      "integrity": "sha512-9k5sXJuPKp+mVzXNvxz7U0uC9oVMQrrf7cFsETznzUDDm0x8+77dtZkWdMfRlmbkEEYvUn9btKuZ3n41oNA+uw==",
++      "peer": true,
++      "requires": {
++        "svg.js": "^2.6.5",
++        "svg.select.js": "^2.1.2"
++      },
++      "dependencies": {
++        "svg.select.js": {
++          "version": "2.1.2",
++          "resolved": "https://registry.npmjs.org/svg.select.js/-/svg.select.js-2.1.2.tgz",
++          "integrity": "sha512-tH6ABEyJsAOVAhwcCjF8mw4crjXSI1aa7j2VQR8ZuJ37H2MBUbyeqYr5nEO7sSN3cy9AR9DUwNg0t/962HlDbQ==",
++          "peer": true,
++          "requires": {
++            "svg.js": "^2.2.5"
++          }
++        }
++      }
++    },
++    "svg.select.js": {
++      "version": "3.0.1",
++      "resolved": "https://registry.npmjs.org/svg.select.js/-/svg.select.js-3.0.1.tgz",
++      "integrity": "sha512-h5IS/hKkuVCbKSieR9uQCj9w+zLHoPh+ce19bBYyqF53g6mnPB8sAtIbe1s9dh2S2fCmYX2xel1Ln3PJBbK4kw==",
++      "peer": true,
++      "requires": {
++        "svg.js": "^2.6.5"
++      }
++    },
+     "sweetalert2": {
+       "version": "11.10.5",
+       "resolved": "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.10.5.tgz",
+Index: src/app/components/index/index.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/components/index/index.component.html b/src/app/components/index/index.component.html
+--- a/src/app/components/index/index.component.html	
++++ b/src/app/components/index/index.component.html	
+@@ -1,5 +1,7 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" />
++
++
+ <!-- Ejemplo en un componente Angular -->
+ <div class="container">
+   <h1 class="title">Mi Aplicación Angular con Bulma</h1>
+Index: src/main.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main.ts b/src/main.ts
+--- a/src/main.ts	
++++ b/src/main.ts	
+@@ -3,6 +3,7 @@
+ import { AppComponent } from './app/app.component';
+ import {provideHttpClient, withFetch} from "@angular/common/http";
+ 
++
+ bootstrapApplication(AppComponent, appConfig)
+   .catch((err) => console.error(err))
+ {
+@@ -10,3 +11,4 @@
+     [provideHttpClient(withFetch())]
+   }
+ }
++
+Index: src/app/components/login/login.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/components/login/login.component.ts b/src/app/components/login/login.component.ts
+--- a/src/app/components/login/login.component.ts	
++++ b/src/app/components/login/login.component.ts	
+@@ -107,6 +107,8 @@
+ import {Injectable} from '@angular/core';
+ import {Usuario} from "../../models/Usuario";
+ import {NgClass} from "@angular/common";
++import { ToastrService } from 'ngx-toastr';
++
+ 
+ @Injectable({
+   providedIn: 'root',
+@@ -133,7 +135,7 @@
+   });
+ 
+   passwordFieldType: string = 'password';
+-  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router: Router) {
++  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService) {
+ 
+   }
+ 
+@@ -146,6 +148,7 @@
+         localStorage.setItem('token', response.token);
+         localStorage.setItem('username', <string>credentials.username);
+         console.log('Inicio de sesión exitoso', response);
++        this.toastr.success('Inicio de sesión exitoso', 'Éxito');
+       } else {
+         console.error('Error en el inicio de sesión', 'Token no válido');
+       }
+Index: src/app/components/login/login.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/components/login/login.component.html b/src/app/components/login/login.component.html
+--- a/src/app/components/login/login.component.html	
++++ b/src/app/components/login/login.component.html	
+@@ -49,6 +49,7 @@
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+ 
++
+ <div class="container">
+   <div class="screen">
+     <img src="assets/images/logo.png" class="logosafatube">

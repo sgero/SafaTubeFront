@@ -51,6 +51,11 @@
 
 <div class="container">
   <div class="screen">
+          <img src="assets/images/logo.png" class="logosafatube">
+    <div class="safatube">
+<!--      <img src="assets/images/logo.png" class="logosafatube">-->
+    <h1>SAFATUBE</h1>
+    </div>
     <div class="screen__content">
       <form class="login" [formGroup]="Logear" (ngSubmit)="login()" #loginForm="ngForm">
         <div class="login__field">
@@ -72,7 +77,7 @@
 
       </form>
       <div class="social-login">
-        <h3>SAFATUBE</h3>
+<!--        <h3>SAFATUBE</h3>-->
         <div class="social-icons">
 <!--          <a href="#" class="social-login__icon fab fa-instagram"></a>-->
 <!--          <a href="#" class="social-login__icon fab fa-facebook"></a>-->
@@ -95,19 +100,30 @@
 
 
       </div>
-<br>
-      <br>
-      <br>
+
+
+      <div class="tit-safatube">
+        SAFATUBE
+      </div>
+
       <div class="frases">
 
-        <a class="registro" [routerLink]="['/safaTube/recuperar']">¿Olvidaste tu contraseña?
-          </a>
+<!--        <a class="registro" [routerLink]="['/safaTube/recuperar']">¿Olvidaste tu contraseña?-->
+<!--          </a>-->
+
+        <p class="preg" target="_blank">¿Olvidaste tu  </p><a class="registro"
+                                                                       [routerLink]="['/safaTube/recuperar']">
+        <strong>Contraseña?</strong></a>
         <br>
+<br>
+
+<!--        <a class="registro"-->
+<!--                                               [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta?</a>-->
 
 
-        <a class="registro"
-                                               [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta?</a>
-
+        <p class="preg" target="_blank">¿Aún no tienes cuenta?  </p><a class="registro"
+                                                                        [routerLink]="['/safaTube/registro']">
+          <strong>Regístrate</strong></a>
       </div>
 
     </div>

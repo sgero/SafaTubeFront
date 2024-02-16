@@ -811,9 +811,84 @@ body {
 .frases {
   /*padding-left: 50px;*/
   color: #fff;
-  font-size: 24px;
+  font-size: 14px;
   /*display: flex;*/
   align-items: center;
   justify-content: center;
+
   text-align: center;
+}
+
+
+
+.p {
+  min-width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.preg {
+  display: inline-block;
+  text-align: center;
+  min-width: 100%;
+
+}
+
+/*.h3 {*/
+/*  font-size: 24px;*/
+/*  font-weight: 600;*/
+/*  color: #3a57af;*/
+/*  text-align: center;*/
+/*  padding-top: 10px;*/
+/*  margin-bottom: 10px;*/
+/*}*/
+
+.screen__content h1 {
+  color: #3a57af;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+
+}
+
+/*.screen__content .safatube .img {*/
+/*  width: 20%;*/
+/*  !*height: 100%;*!*/
+/*  object-fit: cover;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  z-index: 0;*/
+/*}*/
+
+
+.container .screen .safatube {
+
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  color: #2e458b;
+}
+
+
+.logosafatube {
+  max-width: 20px; /* ajusta el tamaño máximo */
+  max-height: 20px; /* ajusta el tamaño máximo */
+  position: absolute;
+}
+
+.tit-safatube {
+  color: #c9c6fa;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 30px;
+  margin-bottom: 10px;
 }

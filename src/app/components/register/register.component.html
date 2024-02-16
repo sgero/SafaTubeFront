@@ -14,7 +14,7 @@
   <h1 class="titulin">REGISTRO</h1>
   <form [formGroup]="registerForm" (ngSubmit)="enviarRegistro()">
     <hr>
-    <div  class="titulin2"><u><strong class="titulin">Datos de Usuario:</strong></u><br></div>
+    <div  class="titulin2"><strong class="titulin">Datos de Usuario</strong><br></div>
     <label id="icon" for="email"><i class="icon-envelope "></i></label>
     <input type="text" title="Introduzca su correo electrónico" name="email" id="email" placeholder="Email" formControlName="email" required/>
     <label id="icon" for="username"><i class="icon-user"></i></label>
@@ -24,7 +24,7 @@
     <hr>
     <div class="accounttype">
       <div formGroupName="canal">
-     <div  class="titulin2"><u><strong class="titulin">Datos personales y de tu canal:</strong></u><br></div>
+     <div  class="titulin2"><strong class="titulin">Datos personales y del canal</strong><br></div>
       <label for="nombre">Nombre:</label>
       <input type="text" title="Introduzca su nombre" id="nombre" formControlName="nombre" placeholder="Nombre" required/>
       <br>

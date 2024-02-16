@@ -1,4 +1,12 @@
 .body {
-  margin-top: 20vh;
+  margin: auto;
+  padding-top: 150px !important;
 
 }
+
+
+.row mt-3 {
+  margin-top: 3rem;
+}
+
+

@@ -14,38 +14,38 @@
   <h1 class="titulin">REGISTRO</h1>
   <form [formGroup]="registerForm" (ngSubmit)="enviarRegistro()">
     <hr>
-    <strong class="titulin">Datos de usuario:</strong><br>
+    <div  class="titulin2"><u><strong class="titulin">Datos de Usuario:</strong></u><br></div>
     <label id="icon" for="email"><i class="icon-envelope "></i></label>
-    <input type="text" name="email" id="email" placeholder="Email" formControlName="email" required/>
+    <input type="text" title="Introduzca su correo electrónico" name="email" id="email" placeholder="Email" formControlName="email" required/>
     <label id="icon" for="username"><i class="icon-user"></i></label>
-    <input type="text" name="username" id="username" placeholder="Username" formControlName="username" required/>
+    <input type="text" title="Introduzca su nombre de usuario" name="username" id="username" placeholder="Username" formControlName="username" required/>
     <label id="icon" for="password"><i class="icon-shield"></i></label>
-    <input type="password" name="password" id="password" placeholder="Password" formControlName="password" required/>
+    <input type="password" title="Introduzca su contraseña" name="password" id="password" placeholder="Password" formControlName="password" required/>
     <hr>
     <div class="accounttype">
       <div formGroupName="canal">
-      <strong class="titulin">Datos personales y de tu canal:</strong><br>
+     <div  class="titulin2"><u><strong class="titulin">Datos personales y de tu canal:</strong></u><br></div>
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre" required/>
+      <input type="text" title="Introduzca su nombre" id="nombre" formControlName="nombre" placeholder="Nombre" required/>
       <br>
       <label for="apellidos">Apellidos:</label>
-      <input type="text" id="apellidos" formControlName="apellidos" placeholder="Apellidos" required/>
+      <input type="text" title="Introduzca sus apellidos" id="apellidos" formControlName="apellidos" placeholder="Apellidos" required/>
       <br>
       <label for="descripcion">Descripción del Canal:</label>
-      <textarea id="descripcion" formControlName="descripcion" placeholder="Descripción"></textarea>
+      <textarea id="descripcion" title="Detalle una breve descripción de su canal" formControlName="descripcion" placeholder="Descripción"></textarea>
       <br>
       <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-      <input class='form-style' type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
+      <input class='form-style' title="Seleccione su fecha de nacimiento" type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
       <br>
       <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono" formControlName="telefono" placeholder="Teléfono"/>
+      <input type="text" title="Introduzca un teléfono de contacto" id="telefono" formControlName="telefono" placeholder="Teléfono"/>
       <br>
       <label for="foto">Foto:</label>
-      <input type="text" id="foto" formControlName="foto" placeholder="Foto (url)"/>
+      <input type="text" title="Introduzca aquí su foto de perfil" id="foto" formControlName="foto" placeholder="Foto (url)"/>
       <br>
         <div formGroupName="tipo_contenido">
       <label for="tipo_contenido">Tipo de Contenido del Canal:</label>
-      <select id="tipo_contenido" formControlName="id" required>
+      <select title="Seleccione el tipo de contenido de su canal" id="tipo_contenido" formControlName="id" required>
         <option value="" disabled selected>-- Seleccione --</option>
         <option value="1">Personal</option>
         <option value="2">Profesional</option>
@@ -54,7 +54,7 @@
           </div>
       <br>
       <label for="banner">Banner del Canal:</label>
-      <input type="text" id="banner" formControlName="banner" placeholder="Banner (url)"/>
+      <input type="text" title="Introduzca una imagen para su canal" id="banner" formControlName="banner" placeholder="Banner (url)"/>
     </div>
     </div>
     <br><br>
@@ -63,11 +63,12 @@
       <button type="submit" class="button">Registrar</button>
       <br>
       <br>
-      <p>Registrándote, accedes a aceptar nuestros <a href="#">términos y condiciones</a>.</p>
+      <p class="preg">Registrándote, accedes a aceptar nuestros <a href="#"><strong>términos y condiciones</strong></a>.</p>
       <br>
-      <p class="discrete" target="_blank">¿Ya tienes una cuenta? entra <a class="registro"
+
+      <p class="preg" target="_blank">¿Ya tienes una cuenta? entra <a class="registro"
                                                                           [routerLink]="['/safaTube/login']">
-        aquí.</a></p>
+        <strong>aquí.</strong></a></p>
     </div>
 
 

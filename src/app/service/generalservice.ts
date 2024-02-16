@@ -11,6 +11,7 @@ import {Busqueda} from "../models/Busqueda";
 import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
 import {Suscripcion} from "../models/Suscripcion";
+import {CanalContado} from "../models/CanalContado";
 
 @Injectable({
   providedIn: 'root',
@@ -62,16 +63,16 @@ export class Generalservice {
   }
 
   getTipoCategorias() {
-    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
+    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar?XDEBUG_SESSION_START=12012')
   }
 
   getVideosSegunCategoria(categoria: object) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=19622', categoria)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=12012', categoria)
   }
 
   BuscarVideo(palabraClave: string) {
     let json = {busqueda: palabraClave}
-    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar?XDEBUG_SESSION_START=12578', palabraClave);
+    return this.http.post<Busqueda>('http://localhost:8000/api/video/buscar', palabraClave);
   }
 
   BuscarVideoPorCanal(canalId: number) {
@@ -83,7 +84,8 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video) {
-    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11645', videoNuevo);
+    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11996' +
+      '', videoNuevo);
   }
 
   listarMensaje(data: Mensaje) {
@@ -91,7 +93,7 @@ export class Generalservice {
   }
 
   buscarMensaje(data: Mensaje) {
-    return this.http.post<Canal[]>(this.url + "/api/mensaje/buscar", data);
+    return this.http.post<CanalContado[]>(this.url + "/api/mensaje/buscar", data);
   }
 
   listarCanal(data: Canal) {
@@ -252,4 +254,17 @@ export class Generalservice {
   //   return this.http.post<any>('http://localhost:8000/api/usuario/getImagenPerfil',usuario)
   //
   // }
+  eliminarComentario(idComentario:any) {
+    return this.http.delete <any>('http://localhost:8000/api/comentario/eliminar/'+idComentario)
+  }
+
+
+  verSuscriptoresEntreDosFechas(data: any, primerdia:any, ultimodia:any) {
+    const datos = {
+      idCanal:data,
+      inicio:primerdia,
+      fin:ultimodia
+    };
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
+  }
 }

@@ -131,7 +131,7 @@
                         </div>
                       </nav>
                     </div>
-
+                    <a *ngIf="c.id_usuario == usuario.id" class="button is-default" (click)="eliminarComentario(c.id)">Eliminar</a>
 
                   </div>
 
@@ -167,6 +167,7 @@
                                   </div>
                                 </nav>
                               </div>
+                              <a *ngIf="r.id_usuario == usuario.id" class="button is-default btn-outline-danger" (click)="eliminarComentario(r.id)">Eliminar</a>
                             </small>
                           </p>
                         </div>

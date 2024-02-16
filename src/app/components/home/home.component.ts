@@ -3,7 +3,7 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {HeaderComponent} from "../header/header.component";
 import {HttpClient} from "@angular/common/http";
 import {Generalservice} from "../../service/generalservice";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {TipoCategoria} from "../../models/TipoCategoria";
 import {Video} from "../../models/Video";
 
@@ -13,7 +13,8 @@ import {Video} from "../../models/Video";
   imports: [
     RouterLink,
     HeaderComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -22,8 +23,7 @@ export class HomeComponent implements  OnInit{
   videos: any;
   tipocategorias: any;
   enviado:Video[] = [];
-  // categoria: TipoCategoria= new TipoCategoria();
-
+  categoriaSeleccionada: any | null;
   constructor(private http: HttpClient, private route:ActivatedRoute, private dataservice: Generalservice, private router:Router) {}
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class HomeComponent implements  OnInit{
             .subscribe(
               data => {
                 this.videos = data;
+                console.log(data);
                 this.videos = this.videos.videos;              },
               error => {
                 console.error("no funciona", error);
@@ -57,22 +58,20 @@ export class HomeComponent implements  OnInit{
   }
 
   getVideos(categoria: object) {
-    this.route.params.subscribe(params =>
-    {
-      this.tipocategorias = categoria;
-      if (this.tipocategorias) {
-        this.dataservice.getVideosSegunCategoria(this.tipocategorias)
-          .subscribe(
-            (data:any) => {
-              this.enviado.push(data);
-            },
-            error => {
-              console.error("no funciona", error);
-            }
-          )
-      }
-    }
-    )
-  }
+    this.categoriaSeleccionada = categoria;
+          this.dataservice.getVideosSegunCategoria(categoria)
+            .subscribe(
+              (data: any) => {
+                this.enviado = data; // Asignar directamente los videos
+
+                console.log(data);
+              },
+              error => {
+                console.error("No funciona", error);
+              }
+            )
+        }
+
+
 }
 

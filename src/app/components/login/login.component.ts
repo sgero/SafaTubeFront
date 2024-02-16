@@ -106,6 +106,7 @@ import {Login} from "../../models/Login";
 import {Router, RouterLink} from "@angular/router";
 import {Injectable} from '@angular/core';
 import {Usuario} from "../../models/Usuario";
+import {NgClass} from "@angular/common";
 
 @Injectable({
   providedIn: 'root',
@@ -118,7 +119,8 @@ import {Usuario} from "../../models/Usuario";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   styleUrls: ['./login.component.css']
 })
@@ -130,6 +132,7 @@ export class LoginComponent implements AfterViewInit {
     password: new FormControl('', Validators.required)
   });
 
+  passwordFieldType: string = 'password';
   constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router: Router) {
 
   }
@@ -153,6 +156,9 @@ export class LoginComponent implements AfterViewInit {
     }
   }
 
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = (this.passwordFieldType === 'password') ? 'text' : 'password';
+  }
 
   ngAfterViewInit(): void {
   }

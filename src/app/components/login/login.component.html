@@ -47,30 +47,33 @@
 <!--</div>-->
 <!--</body>-->
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 <div class="container">
   <div class="screen">
-          <img src="assets/images/logo.png" class="logosafatube">
+    <img src="assets/images/logo.png" class="logosafatube">
     <div class="safatube">
-<!--      <img src="assets/images/logo.png" class="logosafatube">-->
-    <h1>SAFATUBE</h1>
+      <!--      <img src="assets/images/logo.png" class="logosafatube">-->
+      <h1>SAFATUBE</h1>
     </div>
     <div class="screen__content">
       <form class="login" [formGroup]="Logear" (ngSubmit)="login()" #loginForm="ngForm">
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
           <label for="username"></label>
-          <input type="text" class="login__input" id="username" formControlName="username" name="username" ngModel placeholder="Nombre de usuario" required>
+          <input type="text" class="login__input" id="username" formControlName="username" name="username" ngModel
+                 placeholder="Nombre de usuario" required>
 
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-lock"></i>
           <label for="password"></label>
-<!--          <input type="password" class="login__input" id="password" formControlName="password" name="password" ngModel placeholder="Password" required>-->
-          <input type="{{ passwordFieldType }}" class="login__input" id="password" formControlName="password" name="password" ngModel placeholder="Password" required>
+          <!--          <input type="password" class="login__input" id="password" formControlName="password" name="password" ngModel placeholder="Password" required>-->
+          <input type="{{ passwordFieldType }}" class="login__input" id="password" formControlName="password"
+                 name="password" ngModel placeholder="Password" required>
           <button type="button" class="toggle-password-button" (click)="togglePasswordVisibility()">
-            <i class="far" [ngClass]="{'fa-eye': passwordFieldType === 'password', 'fa-eye-slash': passwordFieldType === 'text'}"></i>
+            <i class="far"
+               [ngClass]="{'fa-eye': passwordFieldType === 'password', 'fa-eye-slash': passwordFieldType === 'text'}"></i>
           </button>
 
 
@@ -82,26 +85,24 @@
 
       </form>
       <div class="social-login">
-<!--        <h3>SAFATUBE</h3>-->
+        <!--        <h3>SAFATUBE</h3>-->
         <div class="social-icons">
-<!--          <a href="#" class="social-login__icon fab fa-instagram"></a>-->
-<!--          <a href="#" class="social-login__icon fab fa-facebook"></a>-->
-<!--          <a href="#" class="social-login__icon fab fa-twitter"></a>-->
-<!--                <a class="discrete" target="_blank"> <a class="registro" [routerLink]="['/safaTube/recuperar']">-->
-<!--                ¿Olvidaste tu contraseña? Recupérala aquí.</a></a>-->
+          <!--          <a href="#" class="social-login__icon fab fa-instagram"></a>-->
+          <!--          <a href="#" class="social-login__icon fab fa-facebook"></a>-->
+          <!--          <a href="#" class="social-login__icon fab fa-twitter"></a>-->
+          <!--                <a class="discrete" target="_blank"> <a class="registro" [routerLink]="['/safaTube/recuperar']">-->
+          <!--                ¿Olvidaste tu contraseña? Recupérala aquí.</a></a>-->
 
-<!--                <a class="discrete" target="_blank"><a class="registro"-->
-<!--                                                       [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta? Regístrate aquí.</a></a>-->
+          <!--                <a class="discrete" target="_blank"><a class="registro"-->
+          <!--                                                       [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta? Regístrate aquí.</a></a>-->
 
 
-<!--                <p class="preg" target="_blank">¿Aún no tienes una cuenta? Regístrate <a class="registro"-->
-<!--                                                                                         [routerLink]="['/safaTube/registro']">-->
-<!--                  <strong>aquí.</strong></a></p>-->
+          <!--                <p class="preg" target="_blank">¿Aún no tienes una cuenta? Regístrate <a class="registro"-->
+          <!--                                                                                         [routerLink]="['/safaTube/registro']">-->
+          <!--                  <strong>aquí.</strong></a></p>-->
 
 
         </div>
-
-
 
 
       </div>
@@ -113,22 +114,22 @@
 
       <div class="frases">
 
-<!--        <a class="registro" [routerLink]="['/safaTube/recuperar']">¿Olvidaste tu contraseña?-->
-<!--          </a>-->
+        <!--        <a class="registro" [routerLink]="['/safaTube/recuperar']">¿Olvidaste tu contraseña?-->
+        <!--          </a>-->
 
-        <p class="preg" target="_blank">¿Olvidaste tu  </p><a class="registro"
-                                                                       [routerLink]="['/safaTube/recuperar']">
+        <p class="preg" target="_blank">¿Olvidaste tu </p><a class="registro"
+                                                             [routerLink]="['/safaTube/recuperar']">
         <strong>Contraseña?</strong></a>
         <br>
-<br>
+        <br>
 
-<!--        <a class="registro"-->
-<!--                                               [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta?</a>-->
+        <!--        <a class="registro"-->
+        <!--                                               [routerLink]="['/safaTube/registro']">¿Aún no tienes una cuenta?</a>-->
 
 
-        <p class="preg" target="_blank">¿Aún no tienes cuenta?  </p><a class="registro"
-                                                                        [routerLink]="['/safaTube/registro']">
-          <strong>Regístrate</strong></a>
+        <p class="preg" target="_blank">¿Aún no tienes cuenta? </p><a class="registro"
+                                                                      [routerLink]="['/safaTube/registro']">
+        <strong>Regístrate</strong></a>
       </div>
 
     </div>

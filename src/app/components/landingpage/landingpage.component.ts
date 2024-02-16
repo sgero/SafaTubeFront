@@ -8,6 +8,7 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgClass, NgStyle} from "@angular/common";
 import {provideHttpClient, withFetch} from "@angular/common/http";
+
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(withFetch()),
@@ -20,6 +21,8 @@ bootstrapApplication(AppComponent, {
     }
   ]
 })
+
+
 @Component({
   selector: 'app-landingpage',
   standalone: true,

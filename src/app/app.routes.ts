@@ -21,7 +21,7 @@ import {
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
   {path: '', redirectTo: '/safaTube', pathMatch: "full"},
-  {path: 'safaTube/registro', component: RegisterComponent},
+  {path: 'safaTube/registro/registrar', component: RegisterComponent},
   {path: 'safaTube/login', component: LoginComponent},
   {path: 'safaTube/subir_video', component: CrearVideoComponent},
   {path: 'safaTube/home', component: HomeComponent},

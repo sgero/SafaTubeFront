@@ -315,6 +315,7 @@ a.button:hover {
   display: inline-block;
   text-align: center;
   min-width: 100%;
+  font-size: 15px;
 
 }
 

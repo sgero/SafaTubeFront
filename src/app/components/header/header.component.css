@@ -124,6 +124,7 @@
     display: flex;
     height: auto;
     width: 200px;
+    border-radius: 100%;
   }
 
 }

@@ -270,4 +270,8 @@ export class Generalservice {
   crearloMensaje(data: Mensaje){
     return this.http.post<object>(this.url + "/api/mensaje/crearlo", data);
   }
+
+  cargarValoracionesVideo(video: Video) {
+    return this.http.post<any>(this.url + "/api/valoracion/cargarValoracionesVideo?XDEBUG_SESSION_START=16272", video);
+  }
 }

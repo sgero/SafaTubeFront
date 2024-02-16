@@ -152,7 +152,7 @@ export class CanalComponent implements  OnInit{
       .subscribe(data=> {
         this.canal=data;
         this.CloseModel1()
-        location.reload()
+        this.ngOnInit();
         console.log(data);
         },
         error => {

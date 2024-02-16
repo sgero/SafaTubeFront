@@ -68,24 +68,7 @@ export class VerCanalCualquieraComponent implements OnInit{
                     console.error("no funciona", error);
                   }
                 )
-              this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
-                .subscribe(
-                  usuario => {
-                    this.dataservice.estaSuscrito(usuario, this.canal)
-                      .subscribe(
-                        data => {
-                          this.estaSuscrito = data;
-                          this.estaSuscrito = this.estaSuscrito[0];
-                        },
-                        error => {
-                          console.error("no funciona", error);
-                        }
-                      )
-                  },
-                  error => {
-                    console.error("No se pudo obtener el usuario logeado", error);
-                  }
-                )
+
             },
             error => {
               console.error("no funciona", error);
@@ -106,6 +89,10 @@ export class VerCanalCualquieraComponent implements OnInit{
         }
       )
 
+
+
+
+      this.estaSuscritoCanal();
 
 
   }
@@ -140,7 +127,26 @@ export class VerCanalCualquieraComponent implements OnInit{
     }
   }
 
-
+  estaSuscritoCanal(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.estaSuscrito(usuario, this.canal)
+            .subscribe(
+              data => {
+                this.estaSuscrito = data;
+                this.estaSuscrito = this.estaSuscrito[0];
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
+  }
 
   verRecientes(){
     this.dataservice.getVideosSegunCanal(this.canal)
@@ -184,7 +190,7 @@ export class VerCanalCualquieraComponent implements OnInit{
                 .subscribe(
                   data =>{
                     this.respuestas = data;
-                    location.reload();
+                    this.estaSuscritoCanal();
                   },error => {
                     Swal.fire('¡error!', '', 'error');
                     console.error("no funciona", error);
@@ -217,7 +223,7 @@ export class VerCanalCualquieraComponent implements OnInit{
                 .subscribe(
                   data =>{
                     this.respuestas = data;
-                    location.reload();
+                    this.estaSuscritoCanal();
                   },error => {
                     Swal.fire('¡error!', '', 'error');
                     console.error("no funciona", error);

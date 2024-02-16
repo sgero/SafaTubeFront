@@ -50,6 +50,9 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   valoracion:Valoracion = new Valoracion();
   valoracionCreada:any;
   comentarioEliminadoCorrectamente:any;
+  totalLikesVideo:any;
+  totalDisikesVideo:any;
+
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -72,6 +75,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data => {
                 this.video = data;
+                this.cargarLikesDislikesVideo();
+
                 this.dataservice.getVideosRecomendadosAPartirDeVideo(this.video)
                   .subscribe(
                     data => {
@@ -82,25 +87,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                       console.error("no funciona", error);
                     }
                   )
-                this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
-                  .subscribe(
-                    usuario => {
-                      this.usuario = usuario;
-                      this.dataservice.estaSuscrito(usuario, this.video.canal)
-                        .subscribe(
-                          data => {
-                            this.estaSuscrito = data;
-                            this.estaSuscrito = this.estaSuscrito[0];
-                          },
-                          error => {
-                            console.error("no funciona", error);
-                          }
-                        )
-                    },
-                    error => {
-                      console.error("No se pudo obtener el usuario logeado", error);
-                    }
-                  )
+
 
                 this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
                   .subscribe(
@@ -128,6 +115,16 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       }
     )
 
+
+
+
+    this.estaSuscritoCanal();
+    this.cargarComentarios();
+
+
+
+  }
+  cargarComentarios(){
     this.route.params.subscribe(params =>
       {const videoId= +params['id'];
         if (videoId) {
@@ -144,14 +141,27 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       }
     )
-
-
-
-
-
-
-
-
+  }
+  estaSuscritoCanal(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.usuario = usuario;
+          this.dataservice.estaSuscrito(usuario, this.video.canal)
+            .subscribe(
+              data => {
+                this.estaSuscrito = data;
+                this.estaSuscrito = this.estaSuscrito[0];
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+            )
+        },
+        error => {
+          console.error("No se pudo obtener el usuario logeado", error);
+        }
+      )
   }
 
   verRespuestas(comentario:object){
@@ -178,8 +188,9 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         this.dataservice.crearComentario(this.crearComentario)
           .subscribe(
             data =>{
+              this.texto = "";
               this.respuestaCreada = data;
-              location.reload();
+              this.cargarComentarios();
             },error => {
               console.error("no funciona", error);
             }
@@ -205,7 +216,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.respuestaCreada = data;
-                location.reload();
+                this.cargarComentarios();
+                this.verRespuestas(comentario_padre);
               },error => {
                 console.error("no funciona", error);
               }
@@ -242,7 +254,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                 .subscribe(
                   data =>{
                     this.respuestas = data;
-                    location.reload();
+                    this.estaSuscritoCanal();
                   },error => {
                     Swal.fire('¡error!', '', 'error');
                     console.error("no funciona", error);
@@ -275,7 +287,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
               .subscribe(
                 data =>{
                   this.respuestas = data;
-                  location.reload();
+                  this.estaSuscritoCanal();
                 },error => {
                   Swal.fire('¡error!', '', 'error');
                   console.error("no funciona", error);
@@ -292,6 +304,30 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     });
   }
 
+  cargarLikesDislikesVideo(){
+    this.dataservice.cargarValoracionesVideo(this.video)
+      .subscribe(
+        data => {
+          this.totalLikesVideo = data.likes;
+          this.totalDisikesVideo = data.dislikes;
+        }, error =>{
+        console.error("No se pudo obtener el usuario logeado", error);
+      }
+    )
+  }
+
+  // cargarLikesDislikesComentariosPadre(comentario:any){
+  //   this.dataservice.cargarValoracionesComentarioPadre(this.video)
+  //     .subscribe(
+  //       data => {
+  //         this.totalLikesVideo = data.likes;
+  //         this.totalDisikesVideo = data.dislikes;
+  //       }, error =>{
+  //         console.error("No se pudo obtener el usuario logeado", error);
+  //       }
+  //     )
+  // }
+
   darLikeVideo(){
     this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
@@ -304,7 +340,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
-                location.reload();
+                this.cargarLikesDislikesVideo();
               },error => {
                 console.error("no funciona", error);
               }
@@ -328,8 +364,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
-                location.reload();
-              },error => {
+                this.cargarLikesDislikesVideo();
+                },error => {
                 console.error("no funciona", error);
               }
             )
@@ -352,8 +388,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
-                location.reload();
-              },error => {
+                },error => {
                 console.error("no funciona", error);
               }
             )
@@ -376,7 +411,6 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
-                location.reload();
               },error => {
                 console.error("no funciona", error);
               }
@@ -401,7 +435,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
           .subscribe(
             data => {
               this.comentarioEliminadoCorrectamente = data;
-              location.reload();
+              this.cargarComentarios();
             },
             error => {
               console.error("No se pudo borrar", error);

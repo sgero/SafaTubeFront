@@ -107,6 +107,10 @@ import {Router, RouterLink} from "@angular/router";
 import {Injectable} from '@angular/core';
 import {Usuario} from "../../models/Usuario";
 import {NgClass} from "@angular/common";
+import {ToastrModule, ToastrService} from "ngx-toastr";
+import Swal from "sweetalert2";
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -121,6 +125,7 @@ import {NgClass} from "@angular/common";
     ReactiveFormsModule,
     RouterLink,
     NgClass
+
   ],
   styleUrls: ['./login.component.css']
 })
@@ -133,7 +138,7 @@ export class LoginComponent implements AfterViewInit {
   });
 
   passwordFieldType: string = 'password';
-  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private generalservice: Generalservice, private formBuilder: FormBuilder,  private router: Router) {
 
   }
 
@@ -145,15 +150,25 @@ export class LoginComponent implements AfterViewInit {
       if (response && response.token) {
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', <string>credentials.username);
+
         console.log('Inicio de sesión exitoso', response);
+        Swal.fire('Usuario Logueado con éxito', '', 'success');
+        this.router.navigate(['/safaTube/home']);
+
+
       } else {
         console.error('Error en el inicio de sesión', 'Token no válido');
+        Swal.fire('¡error! Token no válido', '', 'error');
+
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
-    } finally {
-      this.router.navigate(['/safaTube/home']);
+      Swal.fire('¡error!', '', 'error');
+
     }
+    // finally {
+    //   this.router.navigate(['/safaTube/home']);
+    // }
   }
 
   togglePasswordVisibility(): void {

@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FooterComponent} from "./components/footer/footer.component";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,3 +17,4 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
 export class AppComponent{
   title = 'SafaTubeFront';
 }
+

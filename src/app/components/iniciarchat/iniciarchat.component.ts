@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Generalservice} from "../../service/generalservice";
 import {Router} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -14,7 +14,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './iniciarchat.component.css'
 })
 export class IniciarchatComponent implements OnInit{
-  mensaje = {texto: '', username:'',usuario_receptor:+''};
+  @Input() parametro?: string;
+  mensaje = {texto: '', username:'',usernamesecundario: ''};
   constructor(private service:Generalservice, private router: Router) {
 
   }
@@ -26,9 +27,12 @@ export class IniciarchatComponent implements OnInit{
     }
   }
   crearMensaje(){
-    this.service.crearMensaje(this.mensaje).subscribe(data =>{
+    if (this.parametro) {
+      this.mensaje.usernamesecundario = this.parametro;
+    }
+    this.service.crearloMensaje(this.mensaje).subscribe(data =>{
       console.log(data)
     })
-    this.router.navigate(['/safatube/chat']);
+    this.router.navigate(['safaTube/chat']);
   }
 }

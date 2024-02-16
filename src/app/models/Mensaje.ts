@@ -6,4 +6,5 @@ export class Mensaje{
   username?: string;
   usuario_emisor?: number;
   usuario_receptor?: number;
+  usernamesecundario?:string;
 }

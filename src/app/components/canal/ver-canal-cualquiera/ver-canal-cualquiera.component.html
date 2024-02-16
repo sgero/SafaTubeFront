@@ -9,7 +9,11 @@
         <div class="profile-info" *ngIf="estaSuscrito == true; else noestasuscrito">
           <div class="profile-item">
             <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
-            <a class="button is-danger">Mensaje</a>
+            <a class="button is-danger" (click)="aparecediv()">Iniciar chat</a>
+          </div>
+          <div id="iniciarchat" class="iniciarchat">
+            <div class="app-chat"><app-iniciarchat [parametro]="nombreUsuario"></app-iniciarchat></div>
+            <button (click) = "ocultardiv()">Cancelar</button>
           </div>
         </div>
         <ng-template #noestasuscrito>

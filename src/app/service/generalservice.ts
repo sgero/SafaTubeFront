@@ -267,4 +267,7 @@ export class Generalservice {
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
   }
+  crearloMensaje(data: Mensaje){
+    return this.http.post<object>(this.url + "/api/mensaje/crearlo", data);
+  }
 }

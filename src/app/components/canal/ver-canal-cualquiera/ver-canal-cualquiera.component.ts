@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {Generalservice} from "../../../service/generalservice";
 import Swal from "sweetalert2";
+import {IniciarchatComponent} from "../../iniciarchat/iniciarchat.component";
 
 @Component({
   selector: 'app-ver-canal-cualquiera',
@@ -15,7 +16,8 @@ import Swal from "sweetalert2";
     NgIf,
     ReactiveFormsModule,
     FormsModule,
-    RouterLink
+    RouterLink,
+    IniciarchatComponent
   ],
   templateUrl: './ver-canal-cualquiera.component.html',
   styleUrl: './ver-canal-cualquiera.component.css'
@@ -32,6 +34,7 @@ export class VerCanalCualquieraComponent implements OnInit{
   nombreUsuario:any;
   estaSuscrito:any;
   respuestas:any;
+  divmensjae: any;
   constructor(private route:ActivatedRoute, private dataservice: Generalservice) {
   }
 
@@ -231,5 +234,13 @@ export class VerCanalCualquieraComponent implements OnInit{
     });
   }
 
+  aparecediv(){
+    this.divmensjae  = document.getElementById('iniciarchat');
+    this.divmensjae.style.display = 'flex';
+  }
+  ocultardiv(){
+    this.divmensjae = document.getElementById('iniciarchat');
+    this.divmensjae.style.display = 'none';
+  }
 
 }

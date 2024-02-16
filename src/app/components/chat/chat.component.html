@@ -11,7 +11,7 @@
 <!--      <input type="text" id="{{c.id}}" name="{{c.id}}" [(ngModel)]="emisor.usuario_receptor" required>-->
       <button type="submit" (click)="boleanochange()"><img src="{{c.canal.foto}}"><span>{{c.canal.usuario.username}}</span><span id="number" style="width: 25px; height:25px; padding: 0; margin: 0;">
         <span *ngIf="c.numero != 0" style="text-align:center; width: 25px; height:25px; background-color: indianred; border-radius: 100%; padding: 3px 5px 3px 5px;"><b>{{c.numero}}</b></span></span></button>
-
+        <hr>
     </form>
 
   </div>

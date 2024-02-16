@@ -25,16 +25,15 @@ body {
   background-size: cover;
   padding-bottom: 80px;
 }
-/*hr{*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  color: black;*/
-/*  background-color: black;*/
-/*  border-color: black;*/
-/*  width: 80%;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
+hr{
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: black;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+}
 .div1-content{
   display: flex;
   flex-direction: row;
@@ -53,14 +52,14 @@ button{
   height: 80px;
   background-color: white;
   display: flex;
-  /*justify-items: center;*/
-  /*flex-direction: row;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px;
   border: none;
-  /*border-bottom: solid black 1px;*/
-
+}
+button:hover{
+  background-color: rgba(149, 152, 147, 0.2);
 }
 button>img{
   width: 60px;

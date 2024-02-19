@@ -18,6 +18,8 @@ import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
 import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
+import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
+import {VerificarcuentaemailComponent} from "./verificarcuentaemail/verificarcuentaemail.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
@@ -36,5 +38,7 @@ export const routes: Routes = [
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
   {path: 'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
   {path: 'safaTube/registro/verificar_cuenta/:token', component: VerificarCuentaComponent},
+  {path: 'safaTube/verificar_cuenta_wb', component: VerificarcuentaemailComponent},
+  {path: 'safaTube/recuperarpw', component: RecuperarpwComponent},
 
 ];

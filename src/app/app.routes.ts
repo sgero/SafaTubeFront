@@ -17,6 +17,7 @@ import {VerCanalCualquieraComponent,} from "./components/canal/ver-canal-cualqui
 import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
+import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
@@ -33,6 +34,7 @@ export const routes: Routes = [
   {path: 'safaTube/buscador-video', component: BuscadorVideoComponent},
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
-  {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  {path: 'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  {path: 'safaTube/registro/verificar_cuenta/:token', component: VerificarCuentaComponent},
 
 ];

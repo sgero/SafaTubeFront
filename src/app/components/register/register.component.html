@@ -21,6 +21,8 @@
     <input type="text" title="Introduzca su nombre de usuario" name="username" id="username" placeholder="Username" formControlName="username" required/>
     <label id="icon" for="password"><i class="icon-shield"></i></label>
     <input type="password" title="Introduzca su contraseña" name="password" id="password" placeholder="Password" formControlName="password" required/>
+    <label id="icon" for="webhook"><i class="icon-hand-right"></i> </label>
+    <input type="text" title="Introduzca aquí su webhook de Discord para validación de cuenta" id="webhook" placeholder="Webhook" formControlName="webhook" required/>
     <hr>
     <div class="accounttype">
       <div formGroupName="canal">
@@ -52,6 +54,8 @@
         <option value="3">Divulgativo</option>
       </select>
           </div>
+        <br>
+
       <br>
       <label for="banner">Banner del Canal:</label>
       <input type="text" title="Introduzca una imagen para su canal" id="banner" formControlName="banner" placeholder="Banner (url)"/>

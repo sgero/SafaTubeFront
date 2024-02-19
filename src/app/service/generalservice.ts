@@ -132,7 +132,18 @@ export class Generalservice {
   //   return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
   // }
   registerUser(data: Usuario) {
-    return this.http.post<Usuario[]>(this.url + "/api/registro/registrar", data);
+      // const headers = new HttpHeaders({
+      //
+      //   'Content-Type': 'application/json',
+      //
+      //   'Access-Control-Allow-Origin': '*',
+      //
+      // });
+    return this.http.post<Usuario[]>( "/api/registro/registrar", data);
+  }
+
+  verificarCuenta(token: string) {
+    return this.http.get<any>(`/api/registro/verificar_cuenta/${token}`);
   }
 
   countMensaje(data: Usuario) {
@@ -271,3 +282,5 @@ export class Generalservice {
     return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
   }
 }
+
+

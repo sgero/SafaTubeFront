@@ -23,6 +23,7 @@ export class RegisterComponent {
       username: [''],
       password: [''],
       email: [''],
+      webhook: [''],
       canal: this.fb.group({
         nombre: [''],
         apellidos: [''],
@@ -53,7 +54,7 @@ export class RegisterComponent {
           console.error('Error al registrar usuario', error);
         },
         () => {  // Este es el lugar correcto para el código que se ejecutará después de la operación.
-          this.router.navigate(['/safaTube/home']);
+          this.router.navigate(['/safaTube/verificar_cuenta/:token']);
         }
       );
     }

@@ -3,8 +3,7 @@
 
 <div class="div1" id="div1">
   <div class="div1-content">
-    <a [routerLink]="['/safaTube/home']">Home</a>
-    <a [routerLink]="['/safaTube/canal']">Canal</a>
+    <a>Conversaciones</a>
   </div>
   <div class="personas">
     <form class="persona" *ngFor="let c of canales" (ngSubmit)="listarMensaje(c.canal.usuario.id)">

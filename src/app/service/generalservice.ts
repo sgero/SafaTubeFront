@@ -274,4 +274,9 @@ export class Generalservice {
   cargarValoracionesVideo(video: Video) {
     return this.http.post<any>(this.url + "/api/valoracion/cargarValoracionesVideo?XDEBUG_SESSION_START=16272", video);
   }
+
+  cargarSubs(data: Usuario){
+    return this.http.post<object>(this.url + "/api/canal/listarsubs", data);
+  }
+
 }

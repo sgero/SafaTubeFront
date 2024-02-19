@@ -17,6 +17,7 @@ import {VerCanalCualquieraComponent,} from "./components/canal/ver-canal-cualqui
 import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
+import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
@@ -34,5 +35,6 @@ export const routes: Routes = [
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
   {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
 
 ];

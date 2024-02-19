@@ -1,0 +1,19 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.info>img{
+  width: 60px;
+  border-radius: 100%;
+}
+.ticket{
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 100px;
+}

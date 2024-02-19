@@ -33,6 +33,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   videoWidth: number | undefined;
   videoHeight: number | undefined;
   respuestaCreada: any;
+  indice: any;
   constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
               private login:LoginComponent) {
     this.demoYouTubePlayer = this.video;
@@ -52,7 +53,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   comentarioEliminadoCorrectamente:any;
   totalLikesVideo:any;
   totalDisikesVideo:any;
-
+  x:any;
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -316,18 +317,6 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     )
   }
 
-  // cargarLikesDislikesComentariosPadre(comentario:any){
-  //   this.dataservice.cargarValoracionesComentarioPadre(this.video)
-  //     .subscribe(
-  //       data => {
-  //         this.totalLikesVideo = data.likes;
-  //         this.totalDisikesVideo = data.dislikes;
-  //       }, error =>{
-  //         console.error("No se pudo obtener el usuario logeado", error);
-  //       }
-  //     )
-  // }
-
   darLikeVideo(){
     this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
@@ -388,6 +377,23 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
+                this.dataservice.cargarValoracionesComentario(comentario)
+                  .subscribe(
+                    datos=>{
+                      for (this.x in this.comentarios){
+                        if (comentario.id == this.comentarios[this.x]["id"]){
+                          this.comentarios[this.x]["contador_likes"] = datos.likes;
+                          this.comentarios[this.x]["contador_dislikes"] = datos.dislikes;
+                        }
+                      }
+                      for (this.x in this.respuestas){
+                        if (comentario.id == this.respuestas[this.x]["id"]){
+                          this.respuestas[this.x]["contador_likes"] = datos.likes;
+                          this.respuestas[this.x]["contador_dislikes"] = datos.dislikes;
+                        }
+                      }
+                    }
+                  )
                 },error => {
                 console.error("no funciona", error);
               }
@@ -411,6 +417,23 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
             .subscribe(
               data =>{
                 this.valoracionCreada = data;
+                this.dataservice.cargarValoracionesComentario(comentario)
+                  .subscribe(
+                    datos=>{
+                      for (this.x in this.comentarios){
+                        if (comentario.id == this.comentarios[this.x]["id"]){
+                          this.comentarios[this.x]["contador_likes"] = datos.likes;
+                          this.comentarios[this.x]["contador_dislikes"] = datos.dislikes;
+                        }
+                      }
+                      for (this.x in this.respuestas){
+                        if (comentario.id == this.respuestas[this.x]["id"]){
+                          this.respuestas[this.x]["contador_likes"] = datos.likes;
+                          this.respuestas[this.x]["contador_dislikes"] = datos.dislikes;
+                        }
+                      }
+                    }
+                  )
               },error => {
                 console.error("no funciona", error);
               }

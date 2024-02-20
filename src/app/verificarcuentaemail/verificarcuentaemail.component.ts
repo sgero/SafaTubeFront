@@ -33,10 +33,9 @@ export class VerificarcuentaemailComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => { // 3. Obtén los parámetros de la URL
-      if (params['username'] && params['email'] && params['token']) {
+      if ( params['token']) {
         this.verificarEmailForm.patchValue({
-          username: params['username'],
-          email: params['email'],
+
           token: params['token']
         });
         // Realiza la verificación automáticamente

@@ -37,9 +37,9 @@ export const routes: Routes = [
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
   {path: 'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
-  {path: 'safaTube/registro/verificar_cuenta/:token', component: VerificarCuentaComponent},
+  // {path: 'safaTube/registro/verificar_cuenta/:token', component: VerificarCuentaComponent},
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
-  {path: 'safaTube/verificar_cuenta_email?token', component: VerificarcuentaemailComponent},
+  {path: 'safaTube/verificar_cuenta_email?token=:token', component: VerificarcuentaemailComponent},
   {path: 'safaTube/recuperarpw', component: RecuperarpwComponent},
 
 ];

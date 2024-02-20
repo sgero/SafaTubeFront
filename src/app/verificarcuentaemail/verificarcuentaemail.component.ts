@@ -12,14 +12,16 @@ import {FormsModule} from "@angular/forms";
 })
 export class VerificarcuentaemailComponent {
 
-  usuario: { email: string, nombreUsuario: string } = { email: '', nombreUsuario: '' };
-  token: string = '';
+  // usuario: { email: string, nombreUsuario: string } = { email: '', nombreUsuario: '' };
+  // token: string = '';
+  //
+  // validarUsuario() {
+  //   // Aquí implementarías la lógica para validar el usuario con los valores ingresados
+  //   console.log('Validando usuario...');
+  //   console.log('Email:', this.usuario.email);
+  //   console.log('Usuario:', this.usuario.nombreUsuario);
+  //   console.log('Token:', this.token);
+  // }
 
-  validarUsuario() {
-    // Aquí implementarías la lógica para validar el usuario con los valores ingresados
-    console.log('Validando usuario...');
-    console.log('Email:', this.usuario.email);
-    console.log('Usuario:', this.usuario.nombreUsuario);
-    console.log('Token:', this.token);
-  }
+
 }

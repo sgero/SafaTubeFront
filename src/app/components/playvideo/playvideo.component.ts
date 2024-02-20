@@ -45,6 +45,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   crearComentario:Comentario = new Comentario();
   texto:any;
   estaSuscrito:any;
+  perteneceACanalLogueado:any;
   usuario :any;
   username:any;
   totalVisitasVideo:any;
@@ -53,6 +54,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   comentarioEliminadoCorrectamente:any;
   totalLikesVideo:any;
   totalDisikesVideo:any;
+  canal:any;
   x:any;
   ngAfterViewInit(): void {
     this.onResize();
@@ -69,6 +71,13 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     window.removeEventListener('resize', this.onResize);
   }
   ngOnInit() {
+    this.cargarVideo();
+    this.estaSuscritoCanal();
+    this.cargarComentarios();
+    this.videoPerteneceACanalLogueado();
+  }
+
+  cargarVideo(){
     this.route.params.subscribe(params =>
       {const videoId= +params['id'];
         if (videoId) {
@@ -77,7 +86,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
               data => {
                 this.video = data;
                 this.cargarLikesDislikesVideo();
-
+                this.videoPerteneceACanalLogueado();
+                this.estaSuscritoCanal();
                 this.dataservice.getVideosRecomendadosAPartirDeVideo(this.video)
                   .subscribe(
                     data => {
@@ -115,15 +125,24 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
         }
       }
     )
+  }
 
-
-
-
-    this.estaSuscritoCanal();
-    this.cargarComentarios();
-
-
-
+  videoPerteneceACanalLogueado(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(
+              data => {
+                this.canal = data
+                if (this.canal.id == this.video.canal.id){
+                  this.perteneceACanalLogueado = true;
+                }else {
+                  this.perteneceACanalLogueado = false;
+                }
+              })
+        }
+      )
   }
   cargarComentarios(){
     this.route.params.subscribe(params =>

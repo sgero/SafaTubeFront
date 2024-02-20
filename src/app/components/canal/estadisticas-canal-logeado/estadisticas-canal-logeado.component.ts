@@ -35,61 +35,25 @@ export type ChartOptions = {
 
 export class EstadisticasCanalLogeadoComponent implements OnInit{
   @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions!: Partial<ChartOptions>;
   canal: any;
   suscriptores: any;
+  numeroSubs: number[] = [];
+  index:any;
+  x: any;
 
   constructor(private dataservice: Generalservice) {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Suscriptores",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
-        text: "Suscriptores en el último año",
-        align: "center"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"],
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
-        ]
-      }
-    };
   }
   i:any;
+  z:any;
+  y:any;
   ngOnInit() {
-    var date = new Date();
-    var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
-    var ultimoDia = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    var dateActual = new Date()
+    var primerDia = new Date();
+    primerDia.setDate(dateActual.getDate() + 1);
+    var ultimoDia = new Date();
+    ultimoDia.setDate(ultimoDia.getDate() - 30);
+    var fechasElegidas: string | any[] ;
     this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
         usuario => {
@@ -101,15 +65,56 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
                   .subscribe(
                     data => {
                       this.suscriptores = data;
-                      for (this.i = 1; this.i <= 31; this.i++){
-                        const fechaString = this.suscriptores.fecha;
-                        const fecha = new Date(fechaString);
-                        const diaDeLaSemana = fecha.getDay();
-                        if (diaDeLaSemana == this.i){
-                          this.chartOptions.series?.at(this.i)
+                      fechasElegidas = obtenerFechasIntermedias(ultimoDia, dateActual);
+                      for (this.i = 1; this.i <= fechasElegidas.length; this.i++){
+                        this.numeroSubs.push(this.i);
+                      }
+                      for (this.x in this.numeroSubs){
+                        this.numeroSubs[this.x] = 0;
+                      }
+                      for (this.y in data){
+                        const fechaString = data[this.y].fecha;
+                        for (let f in fechasElegidas){
+                          if (fechaString.split(" ")[0] == fechasElegidas[f]){
+                            this.numeroSubs[f] += 1;
+                          }
                         }
                       }
-                    },
+                      this.chartOptions = {
+                        series: [
+                          {
+                            name: "Suscriptores",
+                            data: this.numeroSubs
+                          }
+                        ],
+                        chart: {
+                          height: 425,
+                          type: "line",
+                          zoom: {
+                            enabled: false
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: "smooth"
+                        },
+                        title: {
+                          text: "Suscriptores en los últimos 31 días -> Total: "+ this.suscriptores.length,
+                          align: "center"
+                        },
+                        grid: {
+                          row: {
+                            colors: ["#f3f3f3", "transparent"],
+                            opacity: 0.5
+                          }
+                        },
+                        xaxis: {
+                          categories: fechasElegidas
+                        }
+                      };
+                        },
                     error => {
                       console.error("no funciona", error);
                     }
@@ -126,4 +131,18 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
       )
 
   }
+}
+function obtenerFechasIntermedias(fechaInicio: Date, fechaFin: Date): string[] {
+  const fechasIntermedias: Date[] = [];
+  const fechasAMandar: string[] = [];
+  let fechaActual = new Date(fechaInicio);
+  while (fechaActual <= fechaFin) {
+    fechasIntermedias.push(new Date(fechaActual));
+    fechaActual.setDate(fechaActual.getDate() + 1);
+  }
+  for (let i in fechasIntermedias){
+    fechasAMandar.push(fechasIntermedias[i].toISOString().slice(0, 10));
+  }
+
+  return fechasAMandar;
 }

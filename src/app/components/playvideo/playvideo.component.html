@@ -30,13 +30,18 @@
                 <div class="column is-6">
                     <strong [routerLink]="['/safaTube/canal/',video.canal.usuario.username]">{{video.canal.nombre}}</strong>
                     <br>
-                    <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
-                      <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
-                      <a class="button is-danger">Mensaje</a>
-                    </div>
-                    <ng-template #noestasuscrito>
-                      <a class="button is-danger" (click)="suscribirse()">Suscribirse</a>
-                    </ng-template>
+                  <div  class="opciones" *ngIf="perteneceACanalLogueado == true; else noPertenece">
+                    <a class="button is-danger">Editar Vídeo</a>
+                  </div>
+                  <ng-template #noPertenece>
+                      <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
+                        <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
+                        <a class="button is-danger">Mensaje</a>
+                      </div>
+                      <ng-template #noestasuscrito>
+                        <a class="button is-danger" (click)="suscribirse()">Suscribirse</a>
+                      </ng-template>
+                  </ng-template>
                 </div>
                 <div class="column is-6">
                   <nav class="nav">

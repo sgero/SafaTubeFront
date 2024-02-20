@@ -285,7 +285,12 @@ export class Generalservice {
 
   verifyUser(data: Usuario) {
 
-    return this.http.post<Usuario[]>( "/api/registro/verificar/{token}", data);
+    return this.http.post<Usuario[]>( "/api/registro/verificar", data);
+  }
+
+  verifyEmailUser(data: Usuario) {
+
+    return this.http.post<Usuario[]>( "/api/registro/verificar?{token}", data);
   }
 }
 

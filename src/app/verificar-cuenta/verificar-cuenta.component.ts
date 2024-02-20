@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Generalservice} from "../service/generalservice";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-verificar-cuenta',
@@ -37,9 +38,12 @@ export class VerificarCuentaComponent {
         (response) => {
           console.log('Usuario verificado con éxito', response);
           // Puedes redirigir al usuario o realizar otras acciones después del registro.
+          Swal.fire('Usuario Verificado con éxito', '', 'success');
+          this.router.navigate(['/safaTube/login']);
         },
         (error) => {
           console.error('Error al verificar usuario', error);
+          Swal.fire('¡Error al verificar usuario!', '', 'error');
         },
         () => {  // Este es el lugar correcto para el código que se ejecutará después de la operación.
           this.router.navigate(['/safaTube/login']);

@@ -281,6 +281,12 @@ export class Generalservice {
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
   }
+
+
+  verifyUser(data: Usuario) {
+
+    return this.http.post<Usuario[]>( "/api/registro/verificar/{token}", data);
+  }
 }
 
 

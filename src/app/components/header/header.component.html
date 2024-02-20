@@ -29,15 +29,76 @@
   </div>
 
   <div class="user-settings">
-    <button class="button">
+    <button class="button" (click)="openModal()">
       <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewBox="0 0 512.06 512.06">
         <path
           d="M426.63 188.22C402.97 93.95 307.37 36.7 213.08 60.37A176 176 0 0080.39 218.3a96 96 0 0016 190.72h80v-32h-80a64 64 0 010-128 16 16 0 0016-16c-.08-79.53 64.33-144.06 143.86-144.14a144 144 0 01141.42 116.14 16 16 0 0013.6 12.8 80 80 0 01-10.88 159.2h-64v32h64c61.86-.18 111.85-50.48 111.66-112.34a112 112 0 00-85.41-108.46z"/>
         <path
           d="M245.03 253.66l-64 64 22.56 22.56 36.8-36.64v153.44h32V303.58l36.64 36.64 22.56-22.56-64-64a16 16 0 00-22.55 0z"/>
       </svg>
-      <a [routerLink]="['/safaTube/home/:id/crear_video']">Upload</a>
+      <a>Upload</a>
+<!--      <a [routerLink]="['/safaTube/home/:id/crear_video']">Upload</a>-->
+<!--      <app-crear-video></app-crear-video>-->
     </button>
+<!--    <app-modal *ngIf="service.modalOpen$ | async"></app-modal>-->
+    <div class="modal" id="crearVideo">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content login-box">
+          <div class="modal-header">
+            <h3>Comparte tu Material</h3>
+            <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body user-box">
+            <label>Título: </label>
+            <input [value]="videoNuevo.titulo" [(ngModel)]="videoNuevo.titulo">
+          </div>
+          <div class="modal-body user-box">
+            <label>Descripción: </label>
+            <input [value]="videoNuevo.descripcion" [(ngModel)]="videoNuevo.descripcion">
+          </div>
+          <div class="modal-body user-box">
+            <label>Enlace: </label>
+            <input [value]="videoNuevo.enlace" [(ngModel)]="videoNuevo.enlace">
+          </div>
+          <div class="modal-body user-box">
+            <label>Miniatura: </label>
+            <input [value]="videoNuevo.miniatura" [(ngModel)]="videoNuevo.miniatura">
+          </div>
+          <div class="modal-body user-box"  >
+            <label >Privacidad: </label>
+            <select class="ab" [value]="videoNuevo.tipoPrivacidad" [(ngModel)]="videoNuevo.tipoPrivacidad">
+              <option value="Público">Público</option>
+              <option value="Privado">Privado</option>
+              <option value="Por URL">Por enlace</option>
+            </select>
+          </div>
+          <div class="modal-body user-box"  >
+            <label >Categoría: </label>
+            <select class="ab" [value]="videoNuevo.tipoCategoria" [(ngModel)]="videoNuevo.tipoCategoria">
+              <option value="Infantil">Infantil</option>
+              <option value="Gameplays">Gameplays</option>
+              <option value="Vlogs">Vlogs</option>
+              <option value="Tutoriales">Tutoriales</option>
+              <option value="Product Reviews">Product Reviews</option>
+              <option value="Unboxing">Unboxing</option>
+              <option value="Videos Formativos">Videos Formativos</option>
+              <option value="Podcasts">Podcasts</option>
+              <option value="Música">Música</option>
+              <option value="Cocina">Cocina</option>
+              <option value="Deporte">Deporte</option>
+            </select>
+          </div>
+          <div class="modal-body user-box">
+            <label>Duración en minutos: </label>
+            <input [value]="videoNuevo.duracion" [(ngModel)]="videoNuevo.duracion">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
+            <button type="button" class="btn btn-danger" (click)="crearVideo()" [routerLink]="['safaTube']">Subir Vídeo</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <app-campana></app-campana>
 
 
@@ -46,4 +107,6 @@
     </div>
 
   </div>
+
+
 </div>

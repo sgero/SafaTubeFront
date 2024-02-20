@@ -25,6 +25,7 @@ export class BuscadorVideoComponent {
   }
 
   videos: any;
+  canales: any;
 
   ngOnInit() {
       this.service.currentVariable.subscribe({
@@ -42,7 +43,7 @@ export class BuscadorVideoComponent {
     console.log('Valor recibido:', busqueda);
       this.service.BuscarVideo(busqueda)
         .subscribe({
-          next: (content) => this.videos = content.videos,
+          next: (content) => this.videos = content.videos ,
           error: (e) => console.error("no funciona", e),
           complete:() => console.info(this.videos)
         })

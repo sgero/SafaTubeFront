@@ -29,7 +29,6 @@ export const routes: Routes = [
   {path: 'safaTube/video/:id', component: PlayvideoComponent},
   {path: 'safaTube/chat', component: ChatComponent},
   {path: 'safaTube/video/buscar', component: HomeComponent},
-  {path: 'safaTube/home/:id/crear_video', component: CrearVideoComponent},
   {path: 'safaTube/buscador-video', component: BuscadorVideoComponent},
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},

@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Type} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams, HttpClientModule} from "@angular/common/http";
 import {BehaviorSubject, firstValueFrom, Observable} from "rxjs";
 import {Video} from "../models/Video";
@@ -18,7 +18,6 @@ import {CanalContado} from "../models/CanalContado";
 })
 export class Generalservice {
 
-
   private static debugQuery = '';
   private busqueda = new BehaviorSubject<any>(null);
   currentVariable = this.busqueda.asObservable();
@@ -35,7 +34,7 @@ export class Generalservice {
   }
 
   enviarIdVideoPlayingBaseDatos(id: number) {
-    return this.http.post<Video>('http://localhost:8000/api/video/get?XDEBUG_SESSION_START=16807', id)
+    return this.http.post<Video>('http://localhost:8000/api/video/get', id)
   }
 
   enviarIdVideoRecibirComentarios(id: number) {
@@ -55,7 +54,7 @@ export class Generalservice {
   }
 
   getVideosRecomendadosAPartirDeVideo(videoId: any) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?XDEBUG_SESSION_START=16807', videoId)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?', videoId)
   }
 
   getVideosDeCanalesSuscritosPage(usuarioId: any) {
@@ -63,11 +62,11 @@ export class Generalservice {
   }
 
   getTipoCategorias() {
-    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar?XDEBUG_SESSION_START=12012')
+    return this.http.get<TipoCategoria>('http://localhost:8000/api/categoria/listar')
   }
 
   getVideosSegunCategoria(categoria: object) {
-    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria?XDEBUG_SESSION_START=12012', categoria)
+    return this.http.post<Video[]>('http://localhost:8000/api/video/por_categoria', categoria)
   }
 
   BuscarVideo(palabraClave: string) {
@@ -84,7 +83,7 @@ export class Generalservice {
   }
 
   CrearVideo(videoNuevo: Video) {
-    return this.http.post<Video>('http://localhost:8000/api/video/crear?XDEBUG_SESSION_START=11996' +
+    return this.http.post<Video>('http://localhost:8000/api/video/crear' +
       '', videoNuevo);
   }
 

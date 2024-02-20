@@ -54,7 +54,7 @@ export class RegisterComponent {
           console.error('Error al registrar usuario', error);
         },
         () => {  // Este es el lugar correcto para el código que se ejecutará después de la operación.
-          this.router.navigate(['/safaTube/verificar_cuenta_wb']);
+          this.router.navigate(['/safaTube/verificar_cuenta']);
         }
       );
     }

@@ -8,7 +8,9 @@ import {Video} from "../../models/Video";
 import {Busqueda} from "../../models/Busqueda";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {SidenavComponent} from "../sidenav/sidenav.component";
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-header',
@@ -20,6 +22,8 @@ import {AsyncPipe, NgForOf} from "@angular/common";
     SidenavComponent,
     NgForOf,
     AsyncPipe,
+    MatProgressBarModule,
+    NgIf,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -32,6 +36,7 @@ export class HeaderComponent implements OnInit {
 
   videoNuevo: Video = new Video();
   datos: any;
+  showProgressBar = false;
 
   constructor(public service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
@@ -48,9 +53,6 @@ export class HeaderComponent implements OnInit {
             )
         }
       )
-
-
-
   }
 
   mandarCosulta():void{
@@ -83,6 +85,8 @@ export class HeaderComponent implements OnInit {
                 this.service.CrearVideo(this.videoNuevo)
                   .subscribe(data=> {
                       this.datos=data;
+                      Swal.fire('¡video creado correctamente!', '', 'success');
+
                       console.log(data);
                     },
                     error => {
@@ -93,6 +97,16 @@ export class HeaderComponent implements OnInit {
             )
         }
       )
+    setTimeout(() => {
+        // Lógica después de completar la operación, como redirigir o mostrar un mensaje.
+      this.closeModal()
+      }, 1000);
+    // this.showProgressBar = true;
+    // setTimeout(() => {
+    //
+    //   // Lógica después de completar la operación, como redirigir o mostrar un mensaje.
+    //   this.showProgressBar = false;
+    // }, 5000);
   }
 
 

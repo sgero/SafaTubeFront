@@ -67,7 +67,7 @@ html{
 /*}*/
 
 .testbox {
-  width: 543px;
+  width: 500px;
   min-height: calc(40vh - 40px); /* Ajusta la altura del div */
   -webkit-border-radius: 8px/7px;
   -moz-border-radius: 8px/7px;
@@ -316,6 +316,7 @@ a.button:hover {
   text-align: center;
   min-width: 100%;
   font-size: 15px;
+  margin-right: 20%;
 
 }
 
@@ -330,6 +331,7 @@ button {
 button:hover {
   background-color: #ff0000;
   color: white ! important;
+  cursor: pointer;
 }
 
 .wbhook {
@@ -365,3 +367,16 @@ button:hover {
 }
 
 
+.pregdiv  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+}

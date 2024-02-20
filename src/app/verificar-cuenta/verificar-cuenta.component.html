@@ -15,6 +15,9 @@
 
 <div class="testbox">
   <h1 class="titulin">VALIDACIÓN DE USUARIO</h1>
+<div class="pregdiv">
+  <p class="preg">Para acceder a nuestra plataforma es necesario validar tu cuenta. Por favor mira tu token de validación en tu email o webhook, e introduce email, usuario y el token en los siguientes campos:</p>
+</div>
 <form [formGroup]="verificarForm" (ngSubmit)="verificarUser()" >
   <div>
     <label id="icon" for="email"><i class="icon-envelope "></i></label>

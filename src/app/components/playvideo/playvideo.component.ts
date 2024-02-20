@@ -488,7 +488,19 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     )
   }
 
+  openModal() {
+    const modelDiv2 = document.getElementById('editarVideo');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+  }
 
+  closeModal() {
+    const modelDiv2 = document.getElementById('editarVideo');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
 
 
 }

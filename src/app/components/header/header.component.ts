@@ -9,7 +9,6 @@ import {Busqueda} from "../../models/Busqueda";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {SidenavComponent} from "../sidenav/sidenav.component";
 import {AsyncPipe, NgForOf} from "@angular/common";
-import {CrearVideoComponent} from "../video/crear-video/crear-video.component";
 
 @Component({
   selector: 'app-header',
@@ -20,7 +19,6 @@ import {CrearVideoComponent} from "../video/crear-video/crear-video.component";
     FormsModule,
     SidenavComponent,
     NgForOf,
-    CrearVideoComponent,
     AsyncPipe,
   ],
   templateUrl: './header.component.html',

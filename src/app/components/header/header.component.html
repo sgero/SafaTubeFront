@@ -94,8 +94,13 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
-            <button type="button" class="btn btn-danger" (click)="crearVideo()" [routerLink]="['safaTube']">Subir Vídeo</button>
+            <button type="button" class="btn btn-danger" (click)="crearVideo()" [routerLink]="['/safaTube/video']">Subir Vídeo</button>
+<!--            <div *ngIf="showProgressBar">-->
+<!--              <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+<!--              &lt;!&ndash; Puedes agregar aquí una barra de progreso real o simplemente un mensaje &ndash;&gt;-->
+<!--            </div>-->
           </div>
+
         </div>
       </div>
     </div>

@@ -261,10 +261,10 @@ export class Generalservice {
   verSuscriptoresEntreDosFechas(data: any, primerdia:any, ultimodia:any) {
     const datos = {
       idCanal:data,
-      inicio:primerdia,
-      fin:ultimodia
+      inicio:ultimodia,
+      fin:primerdia
     };
-    return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas', datos)
+    return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas?XDEBUG_SESSION_START=17036', datos)
   }
   crearloMensaje(data: Mensaje){
     return this.http.post<object>(this.url + "/api/mensaje/crearlo", data);

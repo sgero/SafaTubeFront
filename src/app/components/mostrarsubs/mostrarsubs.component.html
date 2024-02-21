@@ -3,10 +3,10 @@
 
   <div class="ticket" *ngFor="let c of canales">
     <div class="info">
-    <img class="photo" src="{{c.foto}}">
-    <p class="name">{{c.nombre}}</p>
+    <img class="photo" src="{{c.canal.foto}}">
+    <p class="name">{{c.canal.nombre}}</p>
     </div>
-    <div class="punto"></div>
+    <div *ngIf="c.esfera" class="punto"></div>
   </div>
 
 

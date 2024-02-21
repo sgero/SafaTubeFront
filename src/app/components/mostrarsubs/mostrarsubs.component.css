@@ -1,6 +1,7 @@
 body{
-  margin: 0;
+  margin: 100px 250px 100px 200px;
   padding: 0;
+  flex-wrap: wrap;
 }
 .info{
   display: flex;
@@ -16,4 +17,12 @@ body{
   flex-direction: row;
   width: 100px;
   height: 100px;
+  margin: 100px;
 }
+.punto{
+  width: 5px;
+  height: 5px;
+  background-color: lightsalmon;
+  border-radius: 100%;
+}
+

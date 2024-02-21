@@ -31,8 +31,8 @@ export class MostrarsubsComponent implements OnInit{
       this.usuario.username = username;
     }
     this.service.cargarSubs(this.usuario).subscribe(data =>{
-      this.canales = data;
       console.log(data);
+      this.canales = data;
     });
   }
 

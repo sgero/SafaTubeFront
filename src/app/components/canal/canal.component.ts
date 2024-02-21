@@ -27,6 +27,7 @@ export class CanalComponent implements  OnInit{
   numeroSuscriptores:any;
   numeroVisitas:any;
   tiposContenidoCanal:any;
+  suscriptoresCanal:any;
 
   constructor(private route:ActivatedRoute, private dataservice: Generalservice) {
   }
@@ -40,7 +41,9 @@ export class CanalComponent implements  OnInit{
             .subscribe(
               data => {
                   this.canal = data;
-                  console.log(this.canal)
+                this.mostrarSuscriptoresCanal();
+
+                console.log(this.canal)
 
                 this.dataservice.getVideosSegunCanal(data)
                     .subscribe(
@@ -85,13 +88,22 @@ export class CanalComponent implements  OnInit{
       )
 
 
-
   }
 
   openModel() {
     const modelDiv = document.getElementById('myModal');
     if(modelDiv != null) {
       modelDiv.style.display = 'block';
+    }
+  }
+  openModelSuscriptores() {
+    const modelDiv = document.getElementById('modalSuscriptores');
+    const modelDiv2 = document.getElementById('profilemenu');
+    if(modelDiv != null) {
+      modelDiv.style.display = 'block';
+      if(modelDiv2 != null) {
+        modelDiv2.style.zIndex = '0';
+      }
     }
   }
   openModel1() {
@@ -101,15 +113,10 @@ export class CanalComponent implements  OnInit{
     }
   }
 
-
   CloseModel() {
     const modelDiv = document.getElementById('myModal');
-    const modelDiv2 = document.getElementById('editarCanal');
     if(modelDiv!= null) {
       modelDiv.style.display = 'none';
-    }
-    if(modelDiv2!= null) {
-      modelDiv2.style.display = 'none';
     }
   }
   CloseModel1() {
@@ -118,8 +125,16 @@ export class CanalComponent implements  OnInit{
       modelDiv2.style.display = 'none';
     }
   }
-
-
+  Closesuscriptores() {
+    const modelDiv = document.getElementById('modalSuscriptores');
+    const modelDiv2 = document.getElementById('profilemenu');
+    if(modelDiv != null) {
+      modelDiv.style.display = 'none';
+      if(modelDiv2 != null) {
+        modelDiv2.style.zIndex = '1';
+      }
+    }
+  }
 
   verRecientes(){
     this.dataservice.getVideosSegunCanal(this.canal)
@@ -154,6 +169,16 @@ export class CanalComponent implements  OnInit{
         this.CloseModel1()
         this.ngOnInit();
         console.log(data);
+        },
+        error => {
+          console.error("no funciona", error);
+        })
+  }
+
+  mostrarSuscriptoresCanal(){
+    this.dataservice.subsCanal(this.canal)
+      .subscribe(data=> {
+          this.suscriptoresCanal=data;
         },
         error => {
           console.error("no funciona", error);

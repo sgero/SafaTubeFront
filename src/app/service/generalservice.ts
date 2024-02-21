@@ -281,4 +281,8 @@ export class Generalservice {
     return this.http.post<object>(this.url + "/api/canal/listarsubs", data);
   }
 
+  subsCanal(canal: any) {
+    return this.http.post<any>(this.url + "/api/canal/verSuscriptores", canal);
+  }
+
 }

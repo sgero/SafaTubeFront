@@ -192,7 +192,7 @@
   box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 4px 4px;
   padding: 0 25px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .profile-img {
@@ -235,7 +235,7 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
-  z-index: 2;
+  z-index: 1;
 }
 
 .profile-name {
@@ -1058,4 +1058,36 @@ body {
   transition: .5s;
 }
 
-
+.suscriptores{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  z-index: 5 !important;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+.suno{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.sudos{
+  display: flex;
+  align-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+.suscriptores img{
+  width: 30px;
+  height: auto;
+  border-radius: 100%;
+}
+.suscriptores a{
+  margin-left: 10px;
+}
+.fecha{
+  display: flex;
+  text-align: right;
+  color: black;
+}

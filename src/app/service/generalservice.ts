@@ -290,7 +290,8 @@ export class Generalservice {
 
   verifyEmailUser(token: string, data: Usuario) {
     const url = `/api/registro/verificarmail/${token}`;
-    return this.http.post<Usuario[]>( url, data);
+    // return this.http.post<Usuario[]>( url, data);
+    return this.http.post<{ token: string, usuario: Usuario[] }>(url, data);
   }
 }
 

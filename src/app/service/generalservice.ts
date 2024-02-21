@@ -288,9 +288,9 @@ export class Generalservice {
     return this.http.post<Usuario[]>( "/api/registro/verificar", data);
   }
 
-  verifyEmailUser(data: Usuario) {
-
-    return this.http.post<Usuario[]>( "/api/registro/verificar?{token}", data);
+  verifyEmailUser(token: string, data: Usuario) {
+    const url = `/api/registro/verificarmail/${token}`;
+    return this.http.post<Usuario[]>( url, data);
   }
 }
 

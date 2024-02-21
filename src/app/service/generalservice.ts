@@ -12,6 +12,7 @@ import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
 import {Suscripcion} from "../models/Suscripcion";
 import {CanalContado} from "../models/CanalContado";
+import {ListaReproduccion} from "../models/ListaReproduccion";
 
 @Injectable({
   providedIn: 'root',
@@ -87,6 +88,27 @@ export class Generalservice {
       '', videoNuevo);
   }
 
+  EditarVideo(video: Video) {
+    return this.http.put<Video>('http://localhost:8000/api/video/editar/'+ video.id , video);
+  }
+
+  EliminarVideo(video: Video) {
+    return this.http.post<Video>('http://localhost:8000/api/video/eliminar', video);
+  }
+
+  CrearListaReproduccion(listaReproduccionNueva: ListaReproduccion) {
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear' +
+      '', listaReproduccionNueva);
+  }
+
+  EditarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.put<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/editar/'+ listaReproduccion.id , listaReproduccion);
+  }
+
+  EliminarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar');
+  }
+
   listarMensaje(data: Mensaje) {
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
   }
@@ -119,14 +141,6 @@ export class Generalservice {
     return this.http.post<Usuario[]>(this.url + "/api/usuario/editar", data);
   }
 
-  // register(user: any): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/register`, user);
-  // }
-
-  // registerUser(data: Usuario){
-  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
-  // }
-
   registerUser(data: Usuario) {
     return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
   }
@@ -147,18 +161,6 @@ export class Generalservice {
     };
     return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar', datos)
   }
-
-
-  // loginUser(data: any){
-  //   const headers = new HttpHeaders({
-  //
-  //     'Content-Type': 'application/json',
-  //
-  //     'Access-Control-Allow-Origin': '*',
-  //
-  //   });
-  //   return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
-  // }
 
   loginUser(data: any) {
 

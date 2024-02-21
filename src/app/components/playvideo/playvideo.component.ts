@@ -56,6 +56,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   totalDisikesVideo:any;
   canal:any;
   x:any;
+  datos: any;
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -502,5 +503,43 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     }
   }
 
+  editarVideo() {
+    this.dataservice.EditarVideo(this.video)
+      .subscribe(data => {
+          this.datos = data;
+          Swal.fire('¡video modificado correctamente!', '', 'success');
 
+          console.log(data);
+        },
+        error => {
+          console.error("no funciona", error);
+        })
+
+    setTimeout(() => {
+      // Lógica después de completar la operación, como redirigir o mostrar un mensaje.
+      this.closeModal()
+    }, 1000);
+  }
+
+  eliminarVideo() {
+    Swal.fire({
+      title: '¿Quieres eliminar el video?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: '¡Sí!',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.EliminarVideo(this.video)
+          .subscribe(data=> {
+                this.datos=data;
+                Swal.fire('¡video eliminado correctamente!', '', 'success');
+                console.log(data);
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+              )
+      }
+    })}
 }

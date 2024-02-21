@@ -293,6 +293,10 @@ export class Generalservice {
     // return this.http.post<Usuario[]>( url, data);
     return this.http.post<{ token: string, usuario: Usuario[] }>(url, data);
   }
+
+  recuperarPwd(data: Usuario) {
+    return this.http.post<any>('/api/registro/recuperarpwd', data);
+  }
 }
 
 

@@ -84,12 +84,7 @@
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
                           <button type="button" class="btn btn-danger" (click)="editarVideo()" [routerLink]="['/safaTube/video']">Editar Vídeo</button>
-                          <!--            <div *ngIf="showProgressBar">-->
-                          <!--              <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
-                          <!--              &lt;!&ndash; Puedes agregar aquí una barra de progreso real o simplemente un mensaje &ndash;&gt;-->
-                          <!--            </div>-->
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -121,7 +116,7 @@
               </div>
               <nav class="level">
                 <p class="level-item has-text-left">
-                  <a class="button is-default">
+                  <a class="button is-default" (click)="openModalListas()">
                     <span class="icon"><i class="fa fa-plus"></i></span> <span>Añadir a lista</span>
                   </a>
                   <a class="button is-default">
@@ -131,6 +126,47 @@
                     <span class="icon"><i class="fa fa-ellipsis-h"></i></span> <span>Más</span>
                   </a>
                 </p>
+                <div class="modal" id="listaReproduccion">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content login-box">
+                      <div class="modal-header">
+                        <h3>Agrega contenido a tu lista</h3>
+                        <button type="button" class="btn-close" (click)="closeModalListas()" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="modal-body user-box"  >
+                        <label >Selecciona lista: </label>
+                        <select class="ab">
+                          <option *ngFor="let lista of listasReproduccion" >{{lista.nombre}}</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModalListas()">Cerrar</button>
+                        <button type="button" class="btn btn-danger" (click)="openCrearLista()">Crear Lista</button>
+                        <button type="button" class="btn btn-danger" (click)="agregarVideo()">Añadir Vídeo</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal" id="crearLista">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content login-box">
+                      <div class="modal-header">
+                        <h3>Crea tu lista</h3>
+                        <button type="button" class="btn-close" (click)="closeCrearLista()" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="modal-body user-box"  >
+                        <label > Nombre:  </label>
+                        <input [(ngModel)]="nombre">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeCrearLista()">Cerrar</button>
+                        <button type="button" class="btn btn-danger" (click)="crearLista()">Crear Lista</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </nav>
             </div>
           </div>

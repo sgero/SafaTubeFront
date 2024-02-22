@@ -96,9 +96,12 @@ export class Generalservice {
     return this.http.post<Video>('http://localhost:8000/api/video/eliminar', video);
   }
 
+  enviarIdCanalRecibirListas(id: number) {
+    return this.http.post<ListaReproduccion[]>('http://localhost:8000/api/listaReproduccion/getListas', id)
+  }
+
   CrearListaReproduccion(listaReproduccionNueva: ListaReproduccion) {
-    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear' +
-      '', listaReproduccionNueva);
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear?XDEBUG_SESSION_START=12729', listaReproduccionNueva);
   }
 
   EditarListaReproduccion(listaReproduccion: ListaReproduccion) {

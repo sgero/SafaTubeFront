@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {ListaReproduccion} from "../../models/ListaReproduccion";
 import {HeaderComponent} from "../header/header.component";
 // import $ from "jquery";
-import 'perfect-scrollbar';
-import 'slick-carousel';
+// import 'perfect-scrollbar';
+// import 'slick-carousel';
 
 @Component({
   selector: 'app-lista-reproduccion',

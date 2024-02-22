@@ -13,6 +13,7 @@ import {AppComponent} from "../../app.component";
 import {LoginComponent} from "../login/login.component";
 import {Valoracion} from "../../models/Valoracion";
 import {Video} from "../../models/Video";
+import {ListaReproduccion} from "../../models/ListaReproduccion";
 
 @Component({
   selector: 'app-playvideo',
@@ -57,6 +58,10 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   canal:any;
   x:any;
   datos: any;
+  listasReproduccion: any;
+  crearListaReproduccion: ListaReproduccion = new ListaReproduccion();
+  nombre: any;
+
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -508,7 +513,6 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
       .subscribe(data => {
           this.datos = data;
           Swal.fire('¡video modificado correctamente!', '', 'success');
-
           console.log(data);
         },
         error => {
@@ -542,4 +546,83 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
               )
       }
     })}
+
+  openModalListas(){
+    const modelDiv2 = document.getElementById('listaReproduccion');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(data => {
+                this.canal = data
+                if (this.canal.id) {
+                  this.dataservice.enviarIdCanalRecibirListas(this.canal.id)
+                    .subscribe(
+                      data => {
+                        this.listasReproduccion = data;
+                        console.log(data);
+                        // this.listasReproduccion = this.comentarios.videos;
+                      },
+                      error => {
+                        console.error("no funciona", error);
+                      }
+                    )
+                }
+      }
+    )
+  })}
+
+  closeModalListas() {
+    const modelDiv2 = document.getElementById('listaReproduccion');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
+
+  agregarVideo(){
+
+  }
+
+  openCrearLista(){
+    const modelDiv2 = document.getElementById('crearLista');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+  }
+  closeCrearLista(){
+    const modelDiv2 = document.getElementById('crearLista');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
+
+  crearLista(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(data => {
+                this.canal = data;
+                this.crearListaReproduccion.canal = this.canal;
+                this.crearListaReproduccion.nombre = this.nombre;
+                this.dataservice.CrearListaReproduccion(this.crearListaReproduccion)
+                    .subscribe(
+                      data => {
+                        this.listasReproduccion = data;
+                        console.log(data);
+                        // this.listasReproduccion = this.comentarios.videos;
+                      },
+                      error => {
+                        console.error("no funciona", error);
+                      }
+                    )
+
+              }
+            )
+        })
+  }
+
 }

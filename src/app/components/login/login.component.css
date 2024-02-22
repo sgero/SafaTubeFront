@@ -902,3 +902,22 @@ body {
   padding-right: 30px;
   margin-bottom: 10px;
 }
+
+.tit-safatube .a {
+  font-size: 20px;
+  color: #fff!important;
+  text-decoration: none;
+  text-align: right;
+  /*font-weight: 600;*/
+}
+
+
+a {
+  color: white;
+}
+
+/* Cambia el color del texto y el subrayado del enlace cuando pasas el cursor sobre él */
+a.discrete:hover {
+  color: rgba(0, 0, 0, 0.8); /* Cambia el color del texto del enlace */
+  border-bottom: solid 1px rgba(0, 0, 0, 0.8); /* Cambia el color del subrayado del enlace */
+}

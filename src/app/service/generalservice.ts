@@ -119,25 +119,8 @@ export class Generalservice {
     return this.http.post<Usuario[]>(this.url + "/api/usuario/editar", data);
   }
 
-  // register(user: any): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/register`, user);
-  // }
-
-  // registerUser(data: Usuario){
-  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
-  // }
-
-  // registerUser(data: Usuario) {
-  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
-  // }
   registerUser(data: Usuario) {
-      // const headers = new HttpHeaders({
-      //
-      //   'Content-Type': 'application/json',
-      //
-      //   'Access-Control-Allow-Origin': '*',
-      //
-      // });
+
     return this.http.post<Usuario[]>( "/api/registro/registrar", data);
   }
 
@@ -162,17 +145,6 @@ export class Generalservice {
     return this.http.post<boolean>('http://localhost:8000/api/suscripcion/verificar', datos)
   }
 
-
-  // loginUser(data: any){
-  //   const headers = new HttpHeaders({
-  //
-  //     'Content-Type': 'application/json',
-  //
-  //     'Access-Control-Allow-Origin': '*',
-  //
-  //   });
-  //   return firstValueFrom(this.http.post<any>("http://localhost:8000/api/login_check", data, {headers}));
-  // }
 
   loginUser(data: any) {
 

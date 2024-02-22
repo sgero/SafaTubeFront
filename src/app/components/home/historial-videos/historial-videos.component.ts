@@ -7,6 +7,8 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../../service/generalservice";
 import { CarouselModule } from 'primeng/carousel';
 import {ButtonModule} from "primeng/button";
+import {PaginatorModule, PaginatorState} from "primeng/paginator";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-historial-videos',
@@ -16,7 +18,8 @@ import {ButtonModule} from "primeng/button";
     NgForOf,
     RouterLink,
     CarouselModule,
-    ButtonModule
+    ButtonModule,
+    PaginatorModule
   ],
   templateUrl: './historial-videos.component.html',
   styleUrl: './historial-videos.component.css'

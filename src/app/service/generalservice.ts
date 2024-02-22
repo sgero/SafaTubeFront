@@ -127,8 +127,22 @@ export class Generalservice {
   //   return this.http.post<Usuario[]>(`${this.url}/api/registro/reg_user/${Generalservice.debugQuery}`, data);
   // }
 
+  // registerUser(data: Usuario) {
+  //   return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
+  // }
   registerUser(data: Usuario) {
-    return this.http.post<Usuario[]>(`${this.url}/api/registro/`, data);
+      // const headers = new HttpHeaders({
+      //
+      //   'Content-Type': 'application/json',
+      //
+      //   'Access-Control-Allow-Origin': '*',
+      //
+      // });
+    return this.http.post<Usuario[]>( "/api/registro/registrar", data);
+  }
+
+  verificarCuenta(token: string) {
+    return this.http.get<any>(`/api/registro/verificar_cuenta/${token}`);
   }
 
   countMensaje(data: Usuario) {
@@ -285,4 +299,21 @@ export class Generalservice {
     return this.http.post<any>(this.url + "/api/canal/verSuscriptores", canal);
   }
 
+
+  verifyUser(data: Usuario) {
+
+    return this.http.post<Usuario[]>( "/api/registro/verificar", data);
+  }
+
+  verifyEmailUser(token: string, data: Usuario) {
+    const url = `/api/registro/verificarmail/${token}`;
+    // return this.http.post<Usuario[]>( url, data);
+    return this.http.post<{ token: string, usuario: Usuario[] }>(url, data);
+  }
+
+  recuperarPwd(data: Usuario) {
+    return this.http.post<any>('/api/registro/recuperarpwd', data);
+  }
 }
+
+

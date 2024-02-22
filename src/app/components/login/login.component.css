@@ -837,7 +837,16 @@ body {
   display: inline-block;
   text-align: center;
   min-width: 100%;
+  font-size: 12px;
 
+}
+
+.preg .a {
+  font-size: 12px;
+  color: #fff !important;
+  text-decoration: none;
+  text-align: center;
+  /*font-weight: 600;*/
 }
 
 /*.h3 {*/

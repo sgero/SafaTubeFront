@@ -17,11 +17,14 @@ import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
 import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.component";
+import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
+import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
+import {VerificarcuentaemailComponent} from "./verificarcuentaemail/verificarcuentaemail.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
   {path: '', redirectTo: '/safaTube', pathMatch: "full"},
-  {path: 'safaTube/registro', component: RegisterComponent},
+  {path: 'safaTube/registro/registrar', component: RegisterComponent},
   {path: 'safaTube/login', component: LoginComponent},
   {path: 'safaTube/home', component: HomeComponent},
   {path: 'safaTube/home/suscritos', component: VideosCanalesSuscritosComponent},
@@ -33,5 +36,11 @@ export const routes: Routes = [
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
   {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
   {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
+  {path: 'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  // {path: 'safaTube/registro/verificar_cuenta/:token', component: VerificarCuentaComponent},
+  {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
+  // {path: 'safaTube/verificar_cuenta_email?token=:token', component: VerificarcuentaemailComponent},
+  { path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent },
+  {path: 'safaTube/recuperarpwd', component: RecuperarpwComponent},
 
 ];

@@ -8,9 +8,13 @@ import {Video} from "../../models/Video";
 import {Busqueda} from "../../models/Busqueda";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {SidenavComponent} from "../sidenav/sidenav.component";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import Swal from "sweetalert2";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+// Otras importaciones de componentes de Material que estés utilizando
+
 
 @Component({
   selector: 'app-header',
@@ -24,6 +28,7 @@ import Swal from "sweetalert2";
     AsyncPipe,
     MatProgressBarModule,
     NgIf,
+    NgClass,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -37,6 +42,8 @@ export class HeaderComponent implements OnInit {
   videoNuevo: Video = new Video();
   datos: any;
   showProgressBar = false;
+  isSidenavOpen: boolean = false;
+
 
   constructor(public service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
   }
@@ -54,6 +61,14 @@ export class HeaderComponent implements OnInit {
         }
       )
   }
+
+
+
+  // toggleSidenav() {
+  //   this.isSidenavOpen = !this.isSidenavOpen;
+  //   console.log(this.isSidenavOpen)
+  // }
+
 
   mandarCosulta():void{
     this.service.sendVariable(this.palabraClave)

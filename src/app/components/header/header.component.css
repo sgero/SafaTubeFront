@@ -193,5 +193,33 @@
 
 
 
+.sidenav {
+  /* Estilos básicos del menú lateral */
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -200px; /* Esto oculta el menú al principio */
+  transition: left 0.3s ease;
+
+  z-index: 1000;
+  color: black;
+
+  margin-top: 90px;
+  border: 1px solid black;
+
+}
+
+.sidenav.open {
+  left: 0; /* Muestra el menú cuando isSidenavOpen es true */
+  margin-top: 90px;
+  border: 1px solid black;
+}
+
+
+.contentsnav {
+  margin-left: 20%;
+  margin-top: 20%;
+}
 
 

@@ -2,10 +2,10 @@
 <body>
 
   <div class="ticket" *ngFor="let c of canales">
-    <div class="info">
+    <a href="/safaTube/canal/{{c.canal.nombre}}" class="info">
     <img class="photo" src="{{c.canal.foto}}">
-    <p class="name">{{c.canal.nombre}}</p>
-    </div>
+    <p class="name"><b>{{c.canal.nombre}}</b></p>
+    </a>
     <div *ngIf="c.esfera" class="punto"></div>
   </div>
 

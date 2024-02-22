@@ -3,7 +3,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HeaderComponent} from "../header/header.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {Generalservice} from "../../service/generalservice";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-mostrarsubs',
@@ -13,7 +13,8 @@ import {Router} from "@angular/router";
     HeaderComponent,
     NgForOf,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './mostrarsubs.component.html',
   styleUrl: './mostrarsubs.component.css'

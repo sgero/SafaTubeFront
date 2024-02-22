@@ -1,28 +1,45 @@
 body{
-  margin: 100px 250px 100px 200px;
+  margin: 5% 10%;
   padding: 0;
   flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
 }
 .info{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: rgba(0, 0, 0, 0.84);
 }
 .info>img{
   width: 60px;
+  height: 60px;
   border-radius: 100%;
+  box-shadow: rgb(113, 113, 113) 0 1px 3px 3px ;
+  margin-bottom: 10px;
 }
+
 .ticket{
   display: flex;
   flex-direction: row;
-  width: 100px;
-  height: 100px;
+  width: 20vh;
+  height: 20vh;
   margin: 100px;
+  justify-content: center;
+  padding: 10px;
 }
 .punto{
   width: 5px;
   height: 5px;
   background-color: lightsalmon;
   border-radius: 100%;
+}
+@media (max-width: 768px) {
+  body {
+    margin: 5% 5%; /* Reducción del margen izquierdo y derecho al 5% en pantallas más pequeñas */
+  }
+  .ticket{
+    margin: 50px 100px 50px 100px;
+  }
 }
 

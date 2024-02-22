@@ -34,11 +34,11 @@ export const routes: Routes = [
   {path: 'safaTube/buscador-video', component: BuscadorVideoComponent},
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
-  {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
-  {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
-  {path: 'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
+  {path: 'safaTube/micanal/suscripciones', component: MostrarsubsComponent},
+  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
-  { path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent },
+  {path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent},
   {path: 'safaTube/recuperarpwd', component: RecuperarpwComponent},
 
 ];

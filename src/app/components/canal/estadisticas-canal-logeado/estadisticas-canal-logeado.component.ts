@@ -1,17 +1,23 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {
-  ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
-  ApexXAxis,
   ApexDataLabels,
-  ApexTitleSubtitle,
+  ApexGrid,
   ApexStroke,
-  ApexGrid, NgApexchartsModule
+  ApexTitleSubtitle,
+  ApexXAxis,
+  ChartComponent,
+  NgApexchartsModule
 } from "ng-apexcharts";
 import {HeaderComponent} from "../../header/header.component";
 import {Generalservice} from "../../../service/generalservice";
+import {KnobModule} from "primeng/knob";
+import {FormsModule} from "@angular/forms";
+import {ChartModule} from "primeng/chart";
+import {BadgeModule} from "primeng/badge";
+import {RouterLink} from "@angular/router";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,7 +33,12 @@ export type ChartOptions = {
   standalone: true,
   imports: [
     NgApexchartsModule,
-    HeaderComponent
+    HeaderComponent,
+    KnobModule,
+    FormsModule,
+    ChartModule,
+    BadgeModule,
+    RouterLink
   ],
   templateUrl: './estadisticas-canal-logeado.component.html',
   styleUrl: './estadisticas-canal-logeado.component.css'
@@ -41,7 +52,15 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
   numeroSubs: number[] = [];
   index:any;
   x: any;
-
+  numeroLikesVideos:any;
+  numeroDislikesVideos:any;
+  porcentajeLikes:any;
+  sumaLikesDislikes:any;
+  videoMejorValorado:any;
+  categoriasMasVisitadasNumero: any;
+  categoriasMasVisitadasNombre: any;
+  datosGrafica:number[] = [];
+  opcionesGrafica:[]= [];
   constructor(private dataservice: Generalservice) {
   }
   i:any;
@@ -61,6 +80,7 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
             .subscribe(
               data => {
                 this.canal = data;
+                this.cargarPorcentajeValoracionesVideo();
                 this.dataservice.verSuscriptoresEntreDosFechas(data.id, primerDia, ultimoDia)
                   .subscribe(
                     data => {
@@ -131,7 +151,48 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
       )
 
   }
+
+  cargarPorcentajeValoracionesVideo(){
+    this.dataservice.cargarPorcentajeValoracionesVideo(this.canal).subscribe({
+      next: (d) => {
+        this.numeroLikesVideos = d.likes.count;
+        this.numeroDislikesVideos = d.dislikes.count;
+        this.videoMejorValorado = d.video;
+        this.graficaCategoriasMasVisitadas(d.categoriasVisitadas);
+        // this.categoriasMasVisitadas = d.categoriasVisitadas.count;
+        this.sumaLikesDislikes = this.numeroLikesVideos + this.numeroDislikesVideos;
+        this.porcentajeLikes = calcularPorcentaje(this.numeroLikesVideos, this.sumaLikesDislikes);
+      }, error: (e) => {
+        console.error(e);
+      },
+      complete: () => {
+        console.info("Éxito")      }
+    });
+  }
+
+  graficaCategoriasMasVisitadas(datos:any){
+    for (let x in datos){
+      this.categoriasMasVisitadasNumero.push(datos[x]["count"])
+      this.categoriasMasVisitadasNombre.push(datos[x]["nombre"])
+    }
+
+    // this.datosGrafica = {
+    //   labels: this.categoriasMasVisitadasNombre,
+    //   datasets: [
+    //     {
+    //       data: this.categoriasMasVisitadasNumero,
+    //    }
+    //   ]
+    // };
+    //
+    // this.opcionesGrafica = {
+    //   cutout: '60%',
+    // };
+
+  }
+
 }
+
 function obtenerFechasIntermedias(fechaInicio: Date, fechaFin: Date): string[] {
   const fechasIntermedias: Date[] = [];
   const fechasAMandar: string[] = [];
@@ -145,4 +206,12 @@ function obtenerFechasIntermedias(fechaInicio: Date, fechaFin: Date): string[] {
   }
 
   return fechasAMandar;
+}
+
+function calcularPorcentaje(valorParcial: number, valorTotal: number): number {
+  if (valorTotal == 0) {
+    return 0;
+  }
+
+  return (valorParcial / valorTotal) * 100;
 }

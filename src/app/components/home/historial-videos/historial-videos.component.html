@@ -7,7 +7,7 @@
   </div>
 
   <div class="main-container">
-    <p-carousel [value]="videos" [numVisible]="4" [numScroll]="2"
+    <p-carousel [value]="videos" [numVisible]="4" [numScroll]="1"
                 [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="7000">
       <ng-template pTemplate="item" let-v>
           <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 " [routerLink]="['/safaTube/video', v.id]">

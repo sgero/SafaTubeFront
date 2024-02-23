@@ -10,3 +10,45 @@
     [title]="chartOptions.title!"
   ></apx-chart>
 </div>
+
+<section class="cards">
+
+  <article class="card card--1">
+    <div class="card__info">
+      <h3 class="card__title">Tus vídeos han obtenido este rendimiento</h3>
+    </div>
+    <a class="card_link">
+      <div>
+        <p-knob [(ngModel)]="porcentajeLikes" [readonly]="true" [strokeWidth]="5" valueTemplate="{value}%" valueColor="#1684e3"></p-knob>
+      </div>
+    </a>
+  </article>
+
+
+  <article class="card card--1">
+    <div class="card__info">
+      <h3 class="card__title">Total de likes de tus vídeos</h3>
+    </div>
+    <a class="card_link">
+      <div>
+        <p-badge [value]="numeroLikesVideos"></p-badge>
+      </div>
+    </a>
+  </article>
+
+  <article class="card card--1">
+    <div class="card__info">
+      <h3 class="card__title">Vídeo con más likes</h3>
+    </div>
+    <a class="card_link">
+      <div [routerLink]="['/safaTube/video', videoMejorValorado.id]">{{videoMejorValorado.titulo}}</div>
+    </a>
+  </article>
+
+
+</section>
+
+
+<div class="card flex justify-content-center">
+  <p-chart type="doughnut" [data]="datosGrafica" [options]="opcionesGrafica"></p-chart>
+</div>

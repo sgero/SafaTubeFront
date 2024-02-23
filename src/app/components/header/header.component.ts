@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output, ElementRef} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CampanaComponent} from "../campana/campana.component";
 import {Generalservice} from "../../service/generalservice";
@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
   datos: any;
   showProgressBar = false;
   isSidenavOpen: boolean = false;
+  private eRef: any;
 
 
   constructor(public service: Generalservice, private router: Router, private route: ActivatedRoute, private http: HttpClient,) {
@@ -129,5 +130,28 @@ export class HeaderComponent implements OnInit {
 
 
   protected readonly Generalservice = Generalservice;
+
+
+
+
+  dropdownOpen: boolean = false;
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+  // @HostListener('document:click', ['$event'])
+  // clickout(event: { target: any; }) {
+  //   if (!this.eRef.nativeElement.contains(event.target)) {
+  //     this.dropdownOpen = false;
+  //   }
+  // }
+
+  logout() {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this.router.navigate(['/safaTube']);
+
 }
+
+  }
 

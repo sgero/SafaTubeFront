@@ -196,9 +196,21 @@
     <div class="sidenav" [ngClass]="{'open': isSidenavOpen}">
       <!-- Contenido del menú lateral -->
       <ul class="contentsnav">
-        <li><a href="#">Opción 1</a></li>
-        <li><a href="#">Opción 2</a></li>
+<!--        <li><a routerLink="/safaTube/home">Home</a></li>-->
+<!--        <li><a routerLink="/safaTube/">Suscripciones</a></li>-->
+<!--        <li><a routerLink="/safaTube/">Listas de reproducción</a></li>-->
+<!--        <li><a routerLink="/safaTube/historial">Historial</a></li>-->
+<!--        <li><a routerLink="/safaTube/micanal/estadisticas">Estadísticas</a></li>-->
+<!--        <li><a routerLink="/safaTube/">Configuración de privacidad</a></li>-->
         <!-- Agrega más opciones según sea necesario -->
+
+        <li><i class="fas fa-home"></i><a routerLink="/safaTube/home">Home</a></li>
+        <li><i class="fas fa-heart"></i><a routerLink="/safaTube/">Suscripciones</a></li>
+        <li><i class="fas fa-list"></i><a routerLink="/safaTube/">Listas de reproducción</a></li>
+        <li><i class="fas fa-history"></i><a routerLink="/safaTube/historial">Historial</a></li>
+        <li><i class="fas fa-chart-bar"></i><a routerLink="/safaTube/micanal/estadisticas">Estadísticas</a></li>
+        <li><i class="fas fa-cog"></i><a routerLink="/safaTube/">Configuración de privacidad</a></li>
+        <li><i class="fa fa-spinner"></i><button (click)="toggleDarkMode()">Dark Mode</button></li>
       </ul>
     </div>
 
@@ -213,3 +225,5 @@
 
 
   </header>
+
+</div>

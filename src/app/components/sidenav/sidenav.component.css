@@ -992,11 +992,11 @@
 
 .sidenav {
   /* Estilos básicos del menú lateral */
-  width: 200px;
+  width: 300px;
   height: 100%;
   position: fixed;
   top: 0;
-  left: -200px; /* Esto oculta el menú al principio */
+  left: -300px; /* Esto oculta el menú al principio */
   transition: left 0.3s ease;
 
   z-index: 1000;
@@ -1020,12 +1020,28 @@
 .contentsnav {
   margin-left: 20%;
   margin-top: 20%;
+  /*padding-top: 20%;*/
 }
+
+.contentsnav li {
+  margin-bottom: 40px; /* Ajusta el valor según sea necesario */
+}
+
+.contentsnav li i {
+  margin-right: 10px; /* Ajusta el valor según sea necesario */
+}
+
+
 
 .headerflex{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   align-items: center;
+}
+
+body.dark-mode {
+  background-color: #121212; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
 }

@@ -3,3 +3,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
+}

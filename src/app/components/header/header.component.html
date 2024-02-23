@@ -31,6 +31,18 @@
     </ul>
   </div>
 
+  <div class="profile-container" (click)="toggleDropdown()">
+    <img src="{{imagenPerfil}}" alt="Foto de perfil">
+    <!-- Menú desplegable -->
+    <div class="dropdown" [ngClass]="{'show': dropdownOpen}">
+      <ul>
+        <li><a routerLink="/mi-perfil">Mi Perfil</a></li>
+        <li><a routerLink="/mi-canal">Mi Canal</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
   <div class="user-settings">
     <button class="button" (click)="openModal()">
       <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" viewBox="0 0 512.06 512.06">
@@ -43,6 +55,8 @@
 <!--      <a [routerLink]="['/safaTube/home/:id/crear_video']">Upload</a>-->
 <!--      <app-crear-video></app-crear-video>-->
     </button>
+
+
 <!--    <app-modal *ngIf="service.modalOpen$ | async"></app-modal>-->
     <div class="modal" id="crearVideo">
       <div class="modal-dialog modal-dialog-centered">
@@ -107,12 +121,15 @@
         </div>
       </div>
     </div>
+
     <app-campana style="z-index: 3"></app-campana>
 
 
-    <div class="user-profile" style="max-width: 40px !important;" [routerLink]="['/safaTube/home/:id']">
-      <img src="{{imagenPerfil}}" alt="logoPerfil">
-    </div>
+<!--    <div class="user-profile" style="max-width: 40px !important;" [routerLink]="['/safaTube/home/:id']">-->
+<!--      <img src="{{imagenPerfil}}" alt="logoPerfil">-->
+<!--    </div>-->
+
+
 
   </div>
 

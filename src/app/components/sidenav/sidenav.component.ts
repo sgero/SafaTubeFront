@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {NgClass} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
@@ -46,5 +48,12 @@ export class SidenavComponent {
     if(modelDiv!= null) {
       modelDiv.style.display = 'none';
     }
+  }
+
+  darkMode: boolean = false;
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle('dark-mode', this.darkMode);
   }
 }

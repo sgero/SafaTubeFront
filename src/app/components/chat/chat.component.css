@@ -92,7 +92,7 @@ p{
   position: absolute;
   display: flex;
   flex-direction: row;
-  bottom: 42px;
+  top: 550px;
   align-items: center;
   padding-left: 5px;
   padding-bottom: 5px;
@@ -113,3 +113,32 @@ p{
 #crear_mensaje>button>img{
   height: 30px;
 }
+
+
+
+@media (max-width: 1040px) {
+  .div1, .div2 {
+    margin-top: 0.01px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .div1, .div2 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  #crear_mensaje{
+    top: 630px;
+  }
+}
+@media (max-width: 679px) {
+
+  #crear_mensaje{
+    top: 1330px;
+    width: 270px;
+  }
+}
+
+
+

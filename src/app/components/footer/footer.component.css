@@ -12,4 +12,8 @@ footer{
   margin-top: 3rem;
 }
 
-
+@media (max-width: 679px) {
+  footer{
+    margin-top: 180vh;
+  }
+}

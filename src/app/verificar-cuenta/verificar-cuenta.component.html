@@ -1,0 +1,40 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="testbox">
+  <h1 class="titulin">VALIDACIÓN DE USUARIO</h1>
+<div class="pregdiv">
+  <p class="preg">Para acceder a nuestra plataforma es necesario validar tu cuenta. Por favor mira tu token de validación en tu email o webhook, e introduce email, usuario y el token en los siguientes campos:</p>
+</div>
+<form [formGroup]="verificarForm" (ngSubmit)="verificarUser()" >
+  <div>
+    <label id="icon" for="email"><i class="icon-envelope "></i></label>
+    <input type="text" title="Introduzca su email de registro" id="email" name="email" formControlName="email" required/>
+  </div>
+  <div>
+    <label id="icon" for="username"><i class="icon-user"></i></label>
+    <input type="text" title="Introduzca su nombre de usuario"  id="username" name="username" formControlName="username" required/>
+  </div>
+  <div>
+    <label id="icon" for="token"><i class="icon-key"></i></label>
+    <input type="text" title="Introduzca su token de validación" id="token" name="token" formControlName="token" required/>
+  </div>
+  <div class="verif">
+  <button type="submit" [disabled]="!verificarForm.valid">
+    <span class="button__text">Verificar</span>
+    <i class="button__icon fas fa-chevron-right"></i> </button>
+  </div>
+</form>
+</div>

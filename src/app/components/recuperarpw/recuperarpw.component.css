@@ -67,8 +67,8 @@ html{
 /*}*/
 
 .testbox {
-  width: 543px;
-  min-height: calc(100vh - 40px); /* Ajusta la altura del div */
+  width: 500px;
+  min-height: calc(40vh - 40px); /* Ajusta la altura del div */
   -webkit-border-radius: 8px/7px;
   -moz-border-radius: 8px/7px;
   border-radius: 8px/7px;
@@ -178,19 +178,19 @@ input[type=password]{
 /*}*/
 
 #icon {display: inline-block;
-width: 35px;
-background-color: #ff6060;
-padding: 8px 8px 8px 8px;
-/* margin-left: 15px; */
--webkit-border-radius: 4px 0px 0px 4px;
--moz-border-radius: 4px 0px 0px 4px;
-border-radius: 4px 0px 0px 4px;
-color: white;
--webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
--moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
-border: solid 2px #cbc9c9;
-margin-right: 5px;
+  width: 35px;
+  background-color: #ff6060;
+  padding: 8px 8px 8px 8px;
+  /* margin-left: 15px; */
+  -webkit-border-radius: 4px 0px 0px 4px;
+  -moz-border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+  -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+  border: solid 2px #cbc9c9;
+  margin-right: 5px;
 }
 
 .testbox input::placeholder,
@@ -316,6 +316,7 @@ a.button:hover {
   text-align: center;
   min-width: 100%;
   font-size: 15px;
+  margin-right: 20%;
 
 }
 
@@ -325,6 +326,12 @@ button {
   padding: 25px 35px;
   border: 1px solid #3a57af;
   background-color: #dde4f8;
+}
+
+button:hover {
+  background-color: #ff0000;
+  color: white ! important;
+  cursor: pointer;
 }
 
 .wbhook {
@@ -347,4 +354,29 @@ button {
   white-space: nowrap;
   margin-left: 30px;
   padding-left: 30px;
+}
+
+.verif {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+.pregdiv  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
 }

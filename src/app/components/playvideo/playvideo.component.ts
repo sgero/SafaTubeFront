@@ -61,6 +61,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   listasReproduccion: any;
   crearListaReproduccion: ListaReproduccion = new ListaReproduccion();
   nombre: any;
+  listaElegida: ListaReproduccion | null = null;
+  listaReproduccion: any;
 
   ngAfterViewInit(): void {
     this.onResize();
@@ -552,6 +554,10 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     if(modelDiv2 != null) {
       modelDiv2.style.display = 'block';
     }
+    this.verListasReproduccion();
+  }
+
+  verListasReproduccion(){
     this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
       .subscribe(
         usuario => {
@@ -571,19 +577,15 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                       }
                     )
                 }
-      }
-    )
-  })}
-
+              }
+            )
+        })
+  }
   closeModalListas() {
     const modelDiv2 = document.getElementById('listaReproduccion');
     if(modelDiv2!= null) {
       modelDiv2.style.display = 'none';
     }
-  }
-
-  agregarVideo(){
-
   }
 
   openCrearLista(){
@@ -612,6 +614,8 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                     .subscribe(
                       data => {
                         this.listasReproduccion = data;
+                        this.verListasReproduccion();
+                        Swal.fire('¡lista creada!', '', 'success');
                         console.log(data);
                         // this.listasReproduccion = this.comentarios.videos;
                       },
@@ -619,10 +623,32 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                         console.error("no funciona", error);
                       }
                     )
-
               }
             )
         })
+    setTimeout(() => {
+      this.closeCrearLista()
+    }, 2000);
+  }
+
+  agregarVideo(){
+    this.route.params.subscribe(params =>
+    // {const videoId= +params['id'];
+    {this.video= +params['id'];
+      if (this.video) {
+        this.listaReproduccion = this.listaElegida
+            this.dataservice.AgregarVideoLista(this.listaReproduccion)
+             .subscribe(
+               data => {
+                 this.listaReproduccion.videos.push(this.video);
+                 console.log(data)
+               },
+               error => {
+                 console.error("no funciona", error);
+               }
+             )
+          }
+      })
   }
 
 }

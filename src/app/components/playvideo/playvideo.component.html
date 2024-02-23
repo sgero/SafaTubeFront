@@ -136,8 +136,8 @@
 
                       <div class="modal-body user-box"  >
                         <label >Selecciona lista: </label>
-                        <select class="ab">
-                          <option *ngFor="let lista of listasReproduccion" >{{lista.nombre}}</option>
+                        <select class="ab"  [(ngModel)]="listaElegida">
+                          <option  *ngFor="let lista of listasReproduccion" [ngValue]="lista">{{lista.nombre}}</option>
                         </select>
                       </div>
                       <div class="modal-footer">

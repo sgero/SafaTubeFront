@@ -31,7 +31,62 @@
                     <strong [routerLink]="['/safaTube/canal/',video.canal.usuario.username]">{{video.canal.nombre}}</strong>
                     <br>
                   <div  class="opciones" *ngIf="perteneceACanalLogueado == true; else noPertenece">
-                    <a class="button is-danger">Editar Vídeo</a>
+                    <a class="button is-danger" (click)="openModal()">Editar Vídeo</a>
+                    <a class="button is-danger" (click)="eliminarVideo()">Eliminar Vídeo</a>
+                  </div>
+                  <div class="modal" id="editarVideo">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content login-box">
+                        <div class="modal-header">
+                          <h3>Edita tu Video</h3>
+                          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body user-box">
+                          <label>Título: </label>
+                          <input [value]="video.titulo" [(ngModel)]="video.titulo">
+                        </div>
+                        <div class="modal-body user-box">
+                          <label>Descripción: </label>
+                          <input [value]="video.descripcion" [(ngModel)]="video.descripcion">
+                        </div>
+                        <div class="modal-body user-box">
+                          <label>Miniatura: </label>
+                          <input [value]="video.miniatura" [(ngModel)]="video.miniatura">
+                        </div>
+                        <div class="modal-body user-box"  >
+                          <label >Privacidad: </label>
+                          <select class="ab" [value]="video.tipoPrivacidad" [(ngModel)]="video.tipoPrivacidad">
+                            <option value="Público">Público</option>
+                            <option value="Privado">Privado</option>
+                            <option value="Por URL">Por enlace</option>
+                          </select>
+                        </div>
+                        <div class="modal-body user-box"  >
+                          <label >Categoría: </label>
+                          <select class="ab" [value]="video.tipoCategoria" [(ngModel)]="video.tipoCategoria">
+                            <option value="Infantil">Infantil</option>
+                            <option value="Gameplays">Gameplays</option>
+                            <option value="Vlogs">Vlogs</option>
+                            <option value="Tutoriales">Tutoriales</option>
+                            <option value="Product Reviews">Product Reviews</option>
+                            <option value="Unboxing">Unboxing</option>
+                            <option value="Videos Formativos">Videos Formativos</option>
+                            <option value="Podcasts">Podcasts</option>
+                            <option value="Música">Música</option>
+                            <option value="Cocina">Cocina</option>
+                            <option value="Deporte">Deporte</option>
+                          </select>
+                        </div>
+                        <div class="modal-body user-box">
+                          <label>Duración en minutos: </label>
+                          <input [value]="video.duracion" [(ngModel)]="video.duracion">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
+                          <button type="button" class="btn btn-danger" (click)="editarVideo()" [routerLink]="['/safaTube/video']">Editar Vídeo</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <ng-template #noPertenece>
                       <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
@@ -61,7 +116,7 @@
               </div>
               <nav class="level">
                 <p class="level-item has-text-left">
-                  <a class="button is-default">
+                  <a class="button is-default" (click)="openModalListas()">
                     <span class="icon"><i class="fa fa-plus"></i></span> <span>Añadir a lista</span>
                   </a>
                   <a class="button is-default">
@@ -71,6 +126,47 @@
                     <span class="icon"><i class="fa fa-ellipsis-h"></i></span> <span>Más</span>
                   </a>
                 </p>
+                <div class="modal" id="listaReproduccion">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content login-box">
+                      <div class="modal-header">
+                        <h3>Agrega contenido a tu lista</h3>
+                        <button type="button" class="btn-close" (click)="closeModalListas()" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="modal-body user-box"  >
+                        <label >Selecciona lista: </label>
+                        <select class="ab"  [(ngModel)]="listaElegida">
+                          <option  *ngFor="let lista of listasReproduccion" [ngValue]="lista">{{lista.nombre}}</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModalListas()">Cerrar</button>
+                        <button type="button" class="btn btn-danger" (click)="openCrearLista()">Crear Lista</button>
+                        <button type="button" class="btn btn-danger" (click)="agregarVideo()">Añadir Vídeo</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal" id="crearLista">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content login-box">
+                      <div class="modal-header">
+                        <h3>Crea tu lista</h3>
+                        <button type="button" class="btn-close" (click)="closeCrearLista()" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="modal-body user-box"  >
+                        <label > Nombre:  </label>
+                        <input [(ngModel)]="nombre">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeCrearLista()">Cerrar</button>
+                        <button type="button" class="btn btn-danger" (click)="crearLista()">Crear Lista</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </nav>
             </div>
           </div>

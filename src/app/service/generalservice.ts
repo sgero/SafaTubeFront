@@ -12,6 +12,7 @@ import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
 import {Suscripcion} from "../models/Suscripcion";
 import {CanalContado} from "../models/CanalContado";
+import {ListaReproduccion} from "../models/ListaReproduccion";
 
 @Injectable({
   providedIn: 'root',
@@ -85,6 +86,34 @@ export class Generalservice {
   CrearVideo(videoNuevo: Video) {
     return this.http.post<Video>('http://localhost:8000/api/video/crear' +
       '', videoNuevo);
+  }
+
+  EditarVideo(video: Video) {
+    return this.http.put<Video>('http://localhost:8000/api/video/editar/'+ video.id , video);
+  }
+
+  EliminarVideo(video: Video) {
+    return this.http.post<Video>('http://localhost:8000/api/video/eliminar', video);
+  }
+
+  enviarIdCanalRecibirListas(id: number) {
+    return this.http.post<ListaReproduccion[]>('http://localhost:8000/api/listaReproduccion/getListas', id)
+  }
+
+  CrearListaReproduccion(listaReproduccionNueva: ListaReproduccion) {
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear', listaReproduccionNueva);
+  }
+
+  AgregarVideoLista(listaReproduccion: ListaReproduccion) {
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo?XDEBUG_SESSION_START=12174', listaReproduccion);
+  }
+
+  EditarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.put<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/editar/'+ listaReproduccion.id , listaReproduccion);
+  }
+
+  EliminarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar');
   }
 
   listarMensaje(data: Mensaje) {

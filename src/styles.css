@@ -1,1 +1,11 @@
 /*@import '~@fortawesome/fontawesome-free/css/all.css';*/
+/*@import '~@angular/material/prebuilt-themes/indigo-pink.css';*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
+}

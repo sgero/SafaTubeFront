@@ -193,5 +193,278 @@
 
 
 
+.sidenav {
+  /* Estilos básicos del menú lateral */
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -200px; /* Esto oculta el menú al principio */
+  transition: left 0.3s ease;
+
+  z-index: 1000;
+  color: black;
+
+  margin-top: 90px;
+  border: 1px solid black;
+
+}
+
+.sidenav.open {
+  left: 0; /* Muestra el menú cuando isSidenavOpen es true */
+  margin-top: 90px;
+  border: 1px solid black;
+}
 
 
+.contentsnav {
+  margin-left: 20%;
+  margin-top: 20%;
+}
+
+
+
+
+/*!* Estilos del menú desplegable *!*/
+/*.dropdown {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  background-color: #f9f9f9;*/
+/*  min-width: 160px;*/
+/*  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*  z-index: 1;*/
+/*}*/
+
+/*.dropdown.show {*/
+/*  display: block;*/
+/*}*/
+
+/*.dropdown ul {*/
+/*  list-style-type: none;*/
+/*  padding: 0;*/
+/*}*/
+
+/*.dropdown li a {*/
+/*  display: block;*/
+/*  padding: 12px 16px;*/
+/*  text-decoration: none;*/
+/*  color: black;*/
+/*}*/
+
+/*!* Estilos de la foto de perfil *!*/
+/*.profile-container {*/
+/*  position: relative;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.profile-container img {*/
+/*  width: 50px; !* Ajusta el tamaño según sea necesario *!*/
+/*  height: 50px; !* Ajusta el tamaño según sea necesario *!*/
+/*  border-radius: 50%;*/
+/*}*/
+
+
+/*.dropdown {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  background-color: white; !* Cambia el color de fondo del menú desplegable *!*/
+/*  min-width: 160px;*/
+/*  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*  z-index: 1000; !* Asegúrate de que el menú esté en la capa superior *!*/
+/*}*/
+
+/*.dropdown {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  background-color: white; !* Cambia el color de fondo del menú desplegable *!*/
+/*  width: 100%; !* Ancho completo *!*/
+/*  min-width: 160px;*/
+/*  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*  z-index: 1000; !* Asegúrate de que el menú esté en la capa superior *!*/
+/*  left: 0; !* Alinea el menú desplegable a la izquierda *!*/
+/*  top: 100%; !* Coloca el menú desplegable justo debajo del botón *!*/
+/*}*/
+
+/*.dropdown.show {*/
+/*  display: block;*/
+/*}*/
+
+/*.dropdown ul {*/
+/*  list-style-type: none;*/
+/*  padding: 0;*/
+/*}*/
+
+/*.dropdown li a {*/
+/*  display: block;*/
+/*  padding: 12px 16px;*/
+/*  text-decoration: none;*/
+/*  color: black;*/
+/*}*/
+
+/* Estilos de la foto de perfil */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-container img {
+  width: 50px; /* Ajusta el tamaño según sea necesario */
+  height: 50px; /* Ajusta el tamaño según sea necesario */
+  border-radius: 50%;
+  margin-left: 150px;
+}
+
+
+
+
+
+.headerflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinea los elementos a lo largo del eje principal y distribuye el espacio sobrante */
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-bg-color);
+  padding: 0 25px;
+  color: var(--body-color);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Espacio entre los elementos dentro del contenedor */
+}
+
+.logo-safatube {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el texto y la imagen dentro del contenedor */
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el input y el botón dentro del contenedor */
+}
+
+.user-settings {
+  display: flex;
+  align-items: center;
+  gap: 18px; /* Espacio entre los elementos dentro del contenedor */
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el icono y el texto dentro del contenedor */
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  color: var(--body-color);
+  font-family: var(--body-font);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 16vh;
+}
+
+/*!* Otros estilos... *!*/
+/*.navbar {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 20px; !* Espacio entre los elementos dentro del contenedor *!*/
+/*  height: 90px;*/
+/*  width: 100%;*/
+/*  border-bottom: 1px solid var(--border-color);*/
+/*  background-color: var(--header-bg-color);*/
+/*  padding: 12px;*/
+/*  color: var(--body-color);*/
+/*  font-size: 15px;*/
+/*  margin-bottom: 0;*/
+/*  margin-top:10px;*/
+/*}*/
+
+.navbar {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 20px; /* Espacio entre los elementos dentro del contenedor */
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-bg-color);
+  padding: 0px;
+  color: var(--body-color);
+  font-size: 15px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white; /* Cambia el color de fondo del menú desplegable */
+  width: 100%; /* Ancho completo */
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1000; /* Asegúrate de que el menú esté en la capa superior */
+  left: 0; /* Alinea el menú desplegable a la izquierda */
+  top: 100%; /* Coloca el menú desplegable justo debajo del botón */
+  opacity: 0; /* Inicialmente oculto */
+  transform: scaleY(0); /* Inicialmente sin altura */
+  transform-origin: top; /* La transformación se realiza desde la parte superior */
+  transition: transform 0.2s ease, opacity 0.2s ease; /* Transición suave */
+}
+
+.dropdown.show {
+  display: block;
+  opacity: 1; /* Hacerlo visible */
+  transform: scaleY(1); /* Escalarlo a su tamaño original */
+}
+
+.dropdown ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dropdown li a {
+  display: flex;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  gap: 10px; /* Espacio entre los elementos dentro del contenedor */
+  justify-content: center;
+  justify-items: center;
+}
+
+.dropdown li a:hover {
+  background-color: #f2f2f2; /* Cambia el color de fondo al pasar el ratón */
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre los elementos dentro del contenedor */
+  justify-content: center;
+  justify-items: center;
+}
+
+/* Estilos de la foto de perfil */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-container img {
+  width: 50px; /* Ajusta el tamaño según sea necesario */
+  height: 50px; /* Ajusta el tamaño según sea necesario */
+  border-radius: 50%;
+}
+
+
+body.dark-mode {
+  background-color: #121212; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
+}

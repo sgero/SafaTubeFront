@@ -292,8 +292,20 @@ export class Generalservice {
       usuario: username,
       password: password
     };
-    return this.http.post<any>('/api/usuario/editarPw', datos);
+    return this.http.post<any>('/api/registro/editarpassword', datos);
 
+  }
+
+  updatePassword(newPassword: string) {
+    const data = {
+      newPassword: newPassword
+    };
+    return this.http.post<any>('/api/registro/updatepassword', data);
+
+  }
+
+  getUserWebhook() {
+    return this.http.get<any>('/api/registro/getUserWebhook');
   }
 }
 

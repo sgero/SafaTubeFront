@@ -286,6 +286,15 @@ export class Generalservice {
   recuperarPwd(data: Usuario) {
     return this.http.post<any>('/api/registro/recuperarpwd', data);
   }
+
+  editarPw(username: string | null, password: string | null) {
+    const datos = {
+      usuario: username,
+      password: password
+    };
+    return this.http.post<any>('/api/usuario/editarPw', datos);
+
+  }
 }
 
 

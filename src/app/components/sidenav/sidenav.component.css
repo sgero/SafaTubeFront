@@ -1045,3 +1045,9 @@ body.dark-mode {
   background-color: #121212; /* Cambia el color de fondo */
   color: #ffffff; /* Cambia el color del texto */
 }
+
+
+body.dark-mode .sidenav open{
+  background-color: #121212; /* Color para el modo oscuro */
+  color: #ffffff; /* Color del texto en modo oscuro */
+}

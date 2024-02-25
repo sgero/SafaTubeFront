@@ -20,6 +20,9 @@ import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.compone
 import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
 import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
 import {VerificarcuentaemailComponent} from "./verificarcuentaemail/verificarcuentaemail.component";
+import {MiperfilComponent} from "./miperfil/miperfil.component";
+import {MicanalComponent} from "./micanal/micanal.component";
+import {ConfprivacyComponent} from "./confprivacy/confprivacy.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
@@ -40,5 +43,9 @@ export const routes: Routes = [
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
   {path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent},
   {path: 'safaTube/recuperarpwd', component: RecuperarpwComponent},
+  {path: 'safaTube/miperfil' , component: MiperfilComponent},
+  {path: 'safaTube/micanal2', component: MicanalComponent},
+  {path: 'safaTube/confprivacy', component: ConfprivacyComponent},
+
 
 ];

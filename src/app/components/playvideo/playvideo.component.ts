@@ -1,4 +1,13 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
@@ -38,6 +47,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
               private login:LoginComponent) {
     this.demoYouTubePlayer = this.video;
+    // this.listasReproduccion = {nombre: '', canal: this.canal, videos: [Video]}
   }
   video:any;
   comentarios: any;
@@ -634,13 +644,14 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   agregarVideo(){
     this.route.params.subscribe(params =>
     // {const videoId= +params['id'];
-    {this.video= +params['id'];
+    {this.video.id= +params['id'];
       if (this.video) {
         this.listaReproduccion = this.listaElegida
-            this.dataservice.AgregarVideoLista(this.listaReproduccion)
+            this.dataservice.AgregarVideoLista(this.listaReproduccion, this.video)
              .subscribe(
                data => {
-                 this.listaReproduccion.videos.push(this.video);
+                 this.listaReproduccion.videos.push(this.video.id);
+                 Swal.fire('¡video añadido!', '', 'success');
                  console.log(data)
                },
                error => {
@@ -649,6 +660,10 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
              )
           }
       })
+    setTimeout(() => {
+      this.closeModalListas()
+    }, 2000);
+
   }
 
 }

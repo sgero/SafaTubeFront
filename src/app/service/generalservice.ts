@@ -104,8 +104,12 @@ export class Generalservice {
     return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear', listaReproduccionNueva);
   }
 
-  AgregarVideoLista(listaReproduccion: ListaReproduccion) {
-    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo?XDEBUG_SESSION_START=12174', listaReproduccion);
+  AgregarVideoLista(listaReproduccion: ListaReproduccion, video: Video) {
+    const datos ={
+      lista:listaReproduccion,
+      video:video
+    };
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo?XDEBUG_SESSION_START=18993', datos);
   }
 
   EditarListaReproduccion(listaReproduccion: ListaReproduccion) {

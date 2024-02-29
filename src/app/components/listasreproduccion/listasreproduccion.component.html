@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<div id="container">
+  <h3>Mis listas de reproducción: </h3>
+  <div id="listas" *ngFor="let l of listasReproduccion" >
+    <p>{{l.nombre}}</p>
+
+  </div>
+<!--  <app-playvideo *ngFor="let listaReproduccion of listasReproduccion"-->
+<!--  [listasReproduccion]="listasReproduccion">{{listaReproduccion.nombre}}-->
+<!--  </app-playvideo>-->
+</div>

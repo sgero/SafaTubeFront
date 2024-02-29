@@ -21,6 +21,7 @@ import {ListaReproduccionComponent} from "./components/lista-reproduccion/lista-
 import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
 import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
 import {VerificarcuentaemailComponent} from "./verificarcuentaemail/verificarcuentaemail.component";
+import {ListasreproduccionComponent} from "./components/listasreproduccion/listasreproduccion.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},
@@ -38,6 +39,7 @@ export const routes: Routes = [
   {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
   {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
   {path:'safaTube/listaReproduccion', component:ListaReproduccionComponent},
+  {path:'safaTube/listasReproduccion', component:ListasreproduccionComponent},
   {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
   {path: 'safaTube/micanal/suscripciones', component: MostrarsubsComponent},
   {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},

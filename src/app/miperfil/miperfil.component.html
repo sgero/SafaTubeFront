@@ -22,7 +22,41 @@
 <div class="abajo">
 
 
-<button  (click)="openChangePasswordModal()"> <i class="fas fa-key"></i>Editar Contraseña</button>
+  <button  (click)="openModal()"> <i class="fas fa-key"></i> Editar</button>
+<!--<button  (click)="openChangePasswordModal()"> <i class="fas fa-key"></i>Editar Contraseña</button>-->
+
+
+  <div class="modal" id="cambiarPw">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content login-box">
+        <div class="modal-header">
+          <h3>Edita tus datos:</h3>
+          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body user-box">
+          <label>Contraseña: </label>
+          <input type="password" [value]="password" [(ngModel)]="password">
+        </div>
+        <div class="modal-body user-box">
+          <label>Webhook: </label>
+          <input [value]="webhook" [(ngModel)]="webhook">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
+          <button type="button" class="btn btn-danger" (click)="onSaveClick()" [routerLink]="['/safaTube/home']">Guardar cambios</button>
+          <!--            <div *ngIf="showProgressBar">-->
+          <!--              <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+          <!--              &lt;!&ndash; Puedes agregar aquí una barra de progreso real o simplemente un mensaje &ndash;&gt;-->
+          <!--            </div>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
 <!--<button (click)="modalPwOpen()"> <i class="fas fa-key"></i> Editar Contraseña</button>-->
 <button routerLink="/safaTube/home"><i class="fas fa-home"></i> Home</button>
 </div>

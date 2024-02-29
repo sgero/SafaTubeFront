@@ -304,8 +304,8 @@ export class Generalservice {
 
   }
 
-  getUserWebhook() {
-    return this.http.get<any>('/api/registro/getUserWebhook');
+  getUserWebhook(data:string) {
+    return this.http.post<any>('/api/registro/getwebhook?XDEBUG_SESSION_START=12905', data);
   }
 }
 

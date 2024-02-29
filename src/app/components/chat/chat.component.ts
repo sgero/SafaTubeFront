@@ -28,6 +28,9 @@ export class ChatComponent implements OnInit{
   div2:any;
   creamensajes:any;
   usao = false;
+  backgroundImageUrl: string = 'assets/images/fondochat2.jpg'; // Imagen de fondo predeterminada
+  botonImagen: any;
+
   constructor(private service:Generalservice, private router: Router) {
 
   }
@@ -44,6 +47,7 @@ export class ChatComponent implements OnInit{
     });
     this.creamensajes = document.getElementById('crear_mensaje');
     this.creamensajes.style.display = 'none';
+    this.botonImagen = document.getElementById('div2back');
   };
   ngAfterViewChecked(){
     // Simula la carga de datos después de un cierto tiempo (por ejemplo, 2 segundos)
@@ -58,6 +62,7 @@ export class ChatComponent implements OnInit{
     // }, 500); // Cambia este valor según sea necesario
   }
   listarMensaje(id?: number){
+    this.botonImagen.style.display = 'none';
     if (id != null) {
       this.emisor.usuario_receptor = id;
       this.mensaje.usuario_receptor = id;
@@ -93,5 +98,25 @@ export class ChatComponent implements OnInit{
   //     this.div2.nativeElement.scrollTop = this.div2.nativeElement.scrollHeight;
   //   }
   // }
+  openFilePicker() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.addEventListener('change', (event) => {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (file) {
+        this.setBackgroundImage(file);
+      }
+    });
+    input.click();
+  }
+  setBackgroundImage(file: File) {
+    // Lógica para cargar la imagen de fondo desde el archivo seleccionado
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.backgroundImageUrl = '' + event.target.result + '';
+    };
+    reader.readAsDataURL(file);
+  }
   boleanochange(){this.usao = false; setTimeout(()=>{this.usao=true;}, 3000)}
 }

@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" />
+
+<div class="video-app">
+  <app-header></app-header>
+  <div class="wrapper">
+  </div>
+
+  <div class="main-container">
+    <p-carousel [value]="videos" [numVisible]="4" [numScroll]="1"
+                [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="7000">
+      <ng-template pTemplate="item" let-v>
+          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 " [routerLink]="['/safaTube/video', v.id]">
+            <div class="video-card w-100 rounded shadow position-relative" [style.background-image]="'url(' + v.miniatura + ')'"
+               style="background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
+              <div class="video-title position-absolute text-white p-3 p-xl-4">
+                <div class="small font-weight-bold pb-2">
+                  {{v.titulo}}
+                </div>
+                <div class="small">
+                  <img src="{{v.foto_canal}}">{{v.nombre_canal}}
+                </div>
+              </div>
+              <div class="hover text-white">
+                <i class="fas fa-play small"></i>
+              </div>
+          </div>
+          </div>
+      </ng-template>
+
+    </p-carousel>
+  </div>
+
+</div>

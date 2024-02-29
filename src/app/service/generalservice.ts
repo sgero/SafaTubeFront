@@ -300,6 +300,9 @@ export class Generalservice {
     return this.http.post<any>(this.url + "/api/canal/verSuscriptores", canal);
   }
 
+  getHistorial(usuario:any) {
+    return this.http.post<Video[]>(this.url + "/api/video/getHistorial?XDEBUG_SESSION_START=17615", usuario);
+  }
 
   verifyUser(data: Usuario) {
 
@@ -315,6 +318,9 @@ export class Generalservice {
   recuperarPwd(data: Usuario) {
     return this.http.post<any>('/api/registro/recuperarpwd', data);
   }
+
+  cargarPorcentajeValoracionesVideo(canal: any) {
+    return this.http.post<any>('/api/valoracion/estadisticasValoracionesVideo', canal);
+  }
+
 }
-
-

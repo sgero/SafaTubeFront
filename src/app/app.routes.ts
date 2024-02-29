@@ -17,6 +17,7 @@ import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
 import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.component";
+import {HistorialVideosComponent} from "./components/home/historial-videos/historial-videos.component";
 import {ListaReproduccionComponent} from "./components/lista-reproduccion/lista-reproduccion.component";
 import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
 import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
@@ -37,12 +38,10 @@ export const routes: Routes = [
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
   {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
   {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
-  {path:'safaTube/listaReproduccion', component:ListaReproduccionComponent},
-  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
-  {path: 'safaTube/micanal/suscripciones', component: MostrarsubsComponent},
-  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
+  {path:'safaTube/historial', component:HistorialVideosComponent},
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
   {path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent},
   {path: 'safaTube/recuperarpwd', component: RecuperarpwComponent},
+  {path:'safaTube/listaReproduccion', component:ListaReproduccionComponent},
 
 ];

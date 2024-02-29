@@ -323,4 +323,11 @@ export class Generalservice {
     return this.http.post<any>('/api/valoracion/estadisticasValoracionesVideo', canal);
   }
 
+  cargarMensajesGrafica(canal: any, fechas:any) {
+    const datos = {
+      idCanal:canal.id,
+      fecha:fechas,
+    };
+    return this.http.post<any>('/api/mensaje/estadisticas', datos);
+  }
 }

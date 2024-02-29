@@ -48,7 +48,24 @@
 
 </section>
 
+<section class="cards-section">
 
-<div class="card flex justify-content-center">
-  <p-chart type="doughnut" [data]="datosGrafica" [options]="opcionesGrafica"></p-chart>
-</div>
+  <article class="card card--1">
+    <div class="card__info">
+      <h3 class="card__title">Vídeos que más visitaste según su categoría</h3>
+    </div>
+    <a class="card_link">
+      <p-chart type="pie" [data]="datosGrafica" [options]="opcionesGrafica"></p-chart>
+    </a>
+  </article>
+
+  <article class="card card--1">
+    <div class="card__info">
+      <h3 class="card__title">Mensajes enviados y recibidos últimos 6 meses</h3>
+    </div>
+    <a class="card_link">
+      <p-chart type="bar" [data]="datosMensajes" [options]="opcionesMensajes"></p-chart>
+    </a>
+  </article>
+
+</section>

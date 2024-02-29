@@ -57,10 +57,17 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
   porcentajeLikes:any;
   sumaLikesDislikes:any;
   videoMejorValorado:any;
-  categoriasMasVisitadasNumero: any;
-  categoriasMasVisitadasNombre: any;
-  datosGrafica:number[] = [];
-  opcionesGrafica:[]= [];
+  categoriasMasVisitadasNumero: number[] = [];
+  categoriasMasVisitadasNombre: string[] = [];
+  datosGrafica:any;
+  opcionesGrafica:any;
+  datosMensajes:any;
+  opcionesMensajes:any;
+  resultadoFechasMensajes: Date[] = [];
+  numeroMensajesEnviados: number[] = [];
+  numeroMensajesRecibidos: number[] = [];
+  w:any;
+  mesMensajes: string[] = [];
   constructor(private dataservice: Generalservice) {
   }
   i:any;
@@ -81,6 +88,7 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
               data => {
                 this.canal = data;
                 this.cargarPorcentajeValoracionesVideo();
+                this.cargarMensajesGrafica();
                 this.dataservice.verSuscriptoresEntreDosFechas(data.id, primerDia, ultimoDia)
                   .subscribe(
                     data => {
@@ -149,7 +157,6 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
           console.error("No se pudo obtener el usuario logeado", error);
         }
       )
-
   }
 
   cargarPorcentajeValoracionesVideo(){
@@ -158,10 +165,22 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
         this.numeroLikesVideos = d.likes.count;
         this.numeroDislikesVideos = d.dislikes.count;
         this.videoMejorValorado = d.video;
-        this.graficaCategoriasMasVisitadas(d.categoriasVisitadas);
-        // this.categoriasMasVisitadas = d.categoriasVisitadas.count;
         this.sumaLikesDislikes = this.numeroLikesVideos + this.numeroDislikesVideos;
         this.porcentajeLikes = calcularPorcentaje(this.numeroLikesVideos, this.sumaLikesDislikes);
+        this.graficaCategoriasMasVisitadas(d.categoriasVisitadas);
+      }, error: (e) => {
+        console.error(e);
+      },
+      complete: () => {
+        console.info("Éxito")      }
+    });
+  }
+
+  cargarMensajesGrafica(){
+    this.resultadoFechasMensajes = calcularFechasMensajes();
+    this.dataservice.cargarMensajesGrafica(this.canal, this.resultadoFechasMensajes).subscribe({
+      next: (d) => {
+        this.graficaMensajesUltimosMeses(d);
       }, error: (e) => {
         console.error(e);
       },
@@ -172,23 +191,127 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
 
   graficaCategoriasMasVisitadas(datos:any){
     for (let x in datos){
-      this.categoriasMasVisitadasNumero.push(datos[x]["count"])
-      this.categoriasMasVisitadasNombre.push(datos[x]["nombre"])
+      this.categoriasMasVisitadasNumero.push(datos[x]["count"]);
+      this.categoriasMasVisitadasNombre.push(datos[x]["nombre"]);
     }
 
-    // this.datosGrafica = {
-    //   labels: this.categoriasMasVisitadasNombre,
-    //   datasets: [
-    //     {
-    //       data: this.categoriasMasVisitadasNumero,
-    //    }
-    //   ]
-    // };
-    //
-    // this.opcionesGrafica = {
-    //   cutout: '60%',
-    // };
+    this.datosGrafica = {
+      labels: this.categoriasMasVisitadasNombre,
+      datasets: [
+        {
+          data: this.categoriasMasVisitadasNumero,
+       }
+      ]
+    };
 
+    this.opcionesGrafica = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            color: 'black'
+          }
+        }
+      }
+    };
+  }
+
+  graficaMensajesUltimosMeses(datos:any){
+    this.getEnviados(datos);
+    this.getRecibidos(datos);
+    for (let h in this.resultadoFechasMensajes){
+      this.mesMensajes.push(this.resultadoFechasMensajes[h].toLocaleString('es',{month: 'long'}))
+    }
+    this.datosMensajes = {
+      labels: this.mesMensajes.reverse(),
+      datasets: [
+        {
+          label: 'Mensajes enviados',
+          backgroundColor: '#1684e3',
+          borderColor: '#1684e3',
+          data: this.numeroMensajesEnviados.reverse()
+        },
+        {
+          label: 'Mensajes recibidos',
+          backgroundColor: '#f14668',
+          borderColor: '#f14668',
+          data: this.numeroMensajesRecibidos.reverse()
+        }
+      ]
+    };
+
+    this.opcionesMensajes = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'black'
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: 'black',
+            font: {
+              weight: 500
+            }
+          },
+          grid: {
+            color: 'white',
+            drawBorder: false
+          }
+        },
+        y: {
+          ticks: {
+            color: 'black'
+          },
+          grid: {
+            color: 'white',
+            drawBorder: false
+          }
+        }
+      }
+    };
+  }
+
+  getEnviados(datos:any){
+    for (this.i = 1; this.i <= 6; this.i++){
+      this.numeroMensajesEnviados.push(this.i);
+    }
+    for (this.x in this.numeroMensajesEnviados){
+      this.numeroMensajesEnviados[this.x] = 0;
+    }
+    for (this.y in datos.enviados){
+      const fechaEnviado = new Date(datos.enviados[this.y].fecha.slice(0,10));
+      for (this.w = 0; this.w < this.resultadoFechasMensajes.length - 1; this.w++){
+        const fechaInicio = new Date(this.resultadoFechasMensajes[this.w].toISOString().slice(0,10));
+        const fechaFin = new Date(this.resultadoFechasMensajes[this.w + 1].toISOString().slice(0,10));
+        if (fechaEstaDentroDeRango(fechaEnviado, fechaInicio, fechaFin)){
+          this.numeroMensajesEnviados[this.w] += 1;
+        }
+      }
+    }
+  }
+
+  getRecibidos(datos:any){
+    for (this.i = 1; this.i <= 6; this.i++){
+      this.numeroMensajesRecibidos.push(this.i);
+    }
+    for (this.x in this.numeroMensajesRecibidos){
+      this.numeroMensajesRecibidos[this.x] = 0;
+    }
+    for (this.y in datos.recibidos){
+      const fechaEnviado = new Date(datos.recibidos[this.y].fecha.slice(0,10));
+      for (this.w = 0; this.w < this.resultadoFechasMensajes.length - 1; this.w++){
+        const fechaInicio = new Date(this.resultadoFechasMensajes[this.w].toISOString().slice(0,10));
+        const fechaFin = new Date(this.resultadoFechasMensajes[this.w + 1].toISOString().slice(0,10));
+        if (fechaEstaDentroDeRango(fechaEnviado, fechaInicio, fechaFin)){
+          this.numeroMensajesRecibidos[this.w] += 1;
+        }
+      }
+    }
   }
 
 }
@@ -214,4 +337,20 @@ function calcularPorcentaje(valorParcial: number, valorTotal: number): number {
   }
 
   return (valorParcial / valorTotal) * 100;
+}
+
+function calcularFechasMensajes(): Date[] {
+  const fechaActual: Date = new Date();
+  const resultadoFechas: Date[] = [];
+
+  for (let i = 0; i < 6; i++) {
+    const nuevaFecha: Date = new Date(fechaActual);
+    nuevaFecha.setMonth(fechaActual.getMonth() - i);
+    resultadoFechas.push(nuevaFecha);
+  }
+
+  return resultadoFechas;
+}
+function fechaEstaDentroDeRango(fechaAComprobar: Date, fechaInicio: Date, fechaFin: Date): boolean {
+  return (fechaAComprobar <= fechaInicio && fechaAComprobar >= fechaFin);
 }

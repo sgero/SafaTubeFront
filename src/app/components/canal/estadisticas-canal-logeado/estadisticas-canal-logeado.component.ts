@@ -289,7 +289,11 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
         const fechaInicio = new Date(this.resultadoFechasMensajes[this.w].toISOString().slice(0,10));
         const fechaFin = new Date(this.resultadoFechasMensajes[this.w + 1].toISOString().slice(0,10));
         if (fechaEstaDentroDeRango(fechaEnviado, fechaInicio, fechaFin)){
-          this.numeroMensajesEnviados[this.w] += 1;
+          if (fechaEnviado.getMonth() != fechaInicio.getMonth()){
+            this.numeroMensajesEnviados[this.w + 1] += 1;
+          } else {
+            this.numeroMensajesEnviados[this.w] += 1;
+          }
         }
       }
     }
@@ -308,7 +312,11 @@ export class EstadisticasCanalLogeadoComponent implements OnInit{
         const fechaInicio = new Date(this.resultadoFechasMensajes[this.w].toISOString().slice(0,10));
         const fechaFin = new Date(this.resultadoFechasMensajes[this.w + 1].toISOString().slice(0,10));
         if (fechaEstaDentroDeRango(fechaEnviado, fechaInicio, fechaFin)){
-          this.numeroMensajesRecibidos[this.w] += 1;
+          if (fechaEnviado.getMonth() != fechaInicio.getMonth()){
+            this.numeroMensajesRecibidos[this.w + 1] += 1;
+          } else {
+            this.numeroMensajesRecibidos[this.w] += 1;
+          }
         }
       }
     }
@@ -345,6 +353,7 @@ function calcularFechasMensajes(): Date[] {
 
   for (let i = 0; i < 6; i++) {
     const nuevaFecha: Date = new Date(fechaActual);
+    nuevaFecha.setDate(nuevaFecha.getDate() + 1);
     nuevaFecha.setMonth(fechaActual.getMonth() - i);
     resultadoFechas.push(nuevaFecha);
   }

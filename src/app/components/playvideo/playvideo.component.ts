@@ -647,18 +647,21 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     {this.video.id= +params['id'];
       if (this.video) {
         this.listaReproduccion = this.listaElegida
+        if (this.listaReproduccion.contain(this.video)){
+          Swal.fire('¡este video ya pertenece a esta lista!', '', 'error');
+        }else {
             this.dataservice.AgregarVideoLista(this.listaReproduccion, this.video)
              .subscribe(
                data => {
-                 this.listaReproduccion.videos.push(this.video.id);
                  Swal.fire('¡video añadido!', '', 'success');
+                 this.listaReproduccion.videos.push(this.video.id);
                  console.log(data)
                },
                error => {
                  console.error("no funciona", error);
                }
              )
-          }
+          }}
       })
     setTimeout(() => {
       this.closeModalListas()

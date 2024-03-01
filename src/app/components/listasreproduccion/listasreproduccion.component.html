@@ -1,12 +1,30 @@
 <app-header></app-header>
 
-<div id="container">
-  <h3>Mis listas de reproducción: </h3>
-  <div id="listas" *ngFor="let l of listasReproduccion" >
-    <p>{{l.nombre}}</p>
+<body>
+<h1>Mis listas de reproducción:</h1>
+<div id="listas"  *ngFor="let l of listasReproduccion">
+  <ol class="ol-cards alternate">
+    <li style="--ol-cards-color-accent:#888888">
+<!--      <div class="step"><i class="fab fa-creative-commons"></i></div>-->
+      <div class="title">{{l.nombre}}</div>
+      <div class="content">{{l.descripcion}}</div>
+      <button class="button">Editar</button>
+      <button class="button">Eliminar</button>
+    </li>
 
-  </div>
-<!--  <app-playvideo *ngFor="let listaReproduccion of listasReproduccion"-->
-<!--  [listasReproduccion]="listasReproduccion">{{listaReproduccion.nombre}}-->
-<!--  </app-playvideo>-->
+  </ol>
 </div>
+</body>
+
+
+
+<!--<div id="container">-->
+<!--  <h3>Mis listas de reproducción: </h3>-->
+<!--  <div id="listas" *ngFor="let l of listasReproduccion" >-->
+<!--    <p>{{l.nombre}}</p>-->
+
+<!--  </div>-->
+<!--&lt;!&ndash;  <app-playvideo *ngFor="let listaReproduccion of listasReproduccion"&ndash;&gt;-->
+<!--&lt;!&ndash;  [listasReproduccion]="listasReproduccion">{{listaReproduccion.nombre}}&ndash;&gt;-->
+<!--&lt;!&ndash;  </app-playvideo>&ndash;&gt;-->
+<!--</div>-->

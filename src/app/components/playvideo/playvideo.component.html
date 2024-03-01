@@ -32,7 +32,7 @@
                     <br>
                   <div  class="opciones" *ngIf="perteneceACanalLogueado == true; else noPertenece">
                     <a class="button is-danger" (click)="openModal()">Editar Vídeo</a>
-                    <a class="button is-danger" (click)="eliminarVideo()">Eliminar Vídeo</a>
+                    <a class="button is-danger" (click)="eliminarVideo()" [routerLink]="['/safaTube/home']">Eliminar Vídeo</a>
                   </div>
                   <div class="modal" id="editarVideo">
                     <div class="modal-dialog modal-dialog-centered">

@@ -41,7 +41,8 @@ export class MiperfilComponent implements OnInit {
   username: string | null = '';
   password: string | null = '';
   webhook: string | null = '';
-  newPassword: string = '';
+  newPassword: string  = '';
+
 
   constructor(private generalService: Generalservice, private router:Router, public dialog: MatDialog) { }
 
@@ -120,7 +121,9 @@ export class MiperfilComponent implements OnInit {
 
   onSaveClick(): void {
     // Verifica que la nueva contraseña no esté vacía
-    if (this.newPassword.trim() !== '') {
+    // if (this.newPassword.trim() !== '')
+    if (this.newPassword)
+    {
       // Actualiza la contraseña en el backend a través del servicio GeneralService
       this.generalService.updatePassword(this.newPassword).subscribe(
         response => {

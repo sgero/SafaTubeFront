@@ -296,11 +296,25 @@ export class Generalservice {
 
   }
 
+  // updatePassword(newPassword: string) {
+  //   const data = {
+  //     newPassword: newPassword
+  //   };
+  //   return this.http.post<any>('/api/registro/updatepassword', data);
+  //
+  // }
+
+
+
   updatePassword(newPassword: string) {
+
     const data = {
-      newPassword: newPassword
-    };
-    return this.http.post<any>('/api/registro/updatepassword', data);
+      newPassword: newPassword,
+      username: localStorage.getItem('username')
+    }
+
+
+    return this.http.post<any>('/api/registro/updatepassword?XDEBUG_SESSION_START=13508', data);
 
   }
 

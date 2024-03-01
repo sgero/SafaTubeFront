@@ -34,11 +34,12 @@
           <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body user-box">
-          <label>Contraseña: </label>
-          <input type="password" [value]="password" [(ngModel)]="password">
+          <label>Nueva Contraseña: </label>
+<!--          <input type="password" [value]="password" [(ngModel)]="password">-->
+          <input type="password"  [(ngModel)]="newPassword" required>
         </div>
         <div class="modal-body user-box">
-          <label>Webhook: </label>
+          <label>Nuevo Webhook: </label>
           <input type="url" [value]="webhook" [(ngModel)]="webhook">
         </div>
 

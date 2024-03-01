@@ -323,6 +323,42 @@ export class Generalservice {
     return this.http.post<any>('/api/registro/recuperarpwd', data);
   }
 
+  editarPw(username: string | null, password: string | null) {
+    const datos = {
+      usuario: username,
+      password: password
+    };
+    return this.http.post<any>('/api/registro/editarpassword', datos);
+
+  }
+
+  // updatePassword(newPassword: string) {
+  //   const data = {
+  //     newPassword: newPassword
+  //   };
+  //   return this.http.post<any>('/api/registro/updatepassword', data);
+  //
+  // }
+
+
+
+  updatePassword(newPassword: string) {
+
+    const data = {
+      newPassword: newPassword,
+      username: localStorage.getItem('username')
+    }
+
+
+    return this.http.post<any>('/api/registro/updatepassword?XDEBUG_SESSION_START=13508', data);
+
+  }
+
+  getUserWebhook(data:string) {
+    return this.http.post<any>('/api/registro/getwebhook?XDEBUG_SESSION_START=12905', data);
+  }
+
+
   cargarPorcentajeValoracionesVideo(canal: any) {
     return this.http.post<any>('/api/valoracion/estadisticasValoracionesVideo', canal);
   }

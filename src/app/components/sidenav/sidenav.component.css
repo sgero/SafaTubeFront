@@ -1045,3 +1045,14 @@ body.dark-mode {
   background-color: #121212; /* Cambia el color de fondo */
   color: #ffffff; /* Cambia el color del texto */
 }
+
+
+body.dark-mode .sidenav open{
+  background-color: #121212; /* Color para el modo oscuro */
+  color: #ffffff; /* Color del texto en modo oscuro */
+}
+
+.sidenav {
+  overflow-y: auto; /* Agrega scroll vertical cuando sea necesario */
+  max-height: 80vh; /* Define una altura máxima del 80% del viewport height */
+}

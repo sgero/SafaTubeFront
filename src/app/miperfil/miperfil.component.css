@@ -1,0 +1,231 @@
+/*@property --rotate {*/
+/*  syntax: "<angle>";*/
+/*  initial-value: 132deg;*/
+/*  inherits: false;*/
+/*}*/
+
+/*:root {*/
+/*  --card-height: 65vh;*/
+/*  --card-width: calc(var(--card-height) / 1.5);*/
+/*}*/
+
+
+/*body {*/
+/*  min-height: 100vh;*/
+/*  background: #212534;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  flex-direction: column;*/
+/*  padding-top: 2rem;*/
+/*  padding-bottom: 2rem;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+
+/*.card {*/
+/*  background: #191c29;*/
+/*  width: var(--card-width);*/
+/*  height: var(--card-height);*/
+/*  padding: 3px;*/
+/*  position: relative;*/
+/*  border-radius: 6px;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  text-align: center;*/
+/*  display: flex;*/
+/*  font-size: 1.5em;*/
+/*  color: rgb(88 199 250 / 0%);*/
+/*  cursor: pointer;*/
+/*  font-family: cursive;*/
+/*}*/
+
+/*.card:hover {*/
+/*  color: rgb(88 199 250 / 100%);*/
+/*  transition: color 1s;*/
+/*}*/
+/*.card:hover:before, .card:hover:after {*/
+/*  animation: none;*/
+/*  opacity: 0;*/
+/*}*/
+
+
+/*.card::before {*/
+/*  content: "";*/
+/*  width: 104%;*/
+/*  height: 102%;*/
+/*  border-radius: 8px;*/
+/*  background-image: linear-gradient(*/
+/*    var(--rotate)*/
+/*    , #5ddcff, #3c67e3 43%, #4e00c2);*/
+/*  position: absolute;*/
+/*  z-index: -1;*/
+/*  top: -1%;*/
+/*  left: -2%;*/
+/*  animation: spin 2.5s linear infinite;*/
+/*}*/
+
+/*.card::after {*/
+/*  position: absolute;*/
+/*  content: "";*/
+/*  top: calc(var(--card-height) / 6);*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  z-index: -1;*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*  margin: 0 auto;*/
+/*  transform: scale(0.8);*/
+/*  filter: blur(calc(var(--card-height) / 6));*/
+/*  background-image: linear-gradient(*/
+/*    var(--rotate)*/
+/*    , #5ddcff, #3c67e3 43%, #4e00c2);*/
+/*  opacity: 1;*/
+/*  transition: opacity .5s;*/
+/*  animation: spin 2.5s linear infinite;*/
+/*}*/
+
+/*@keyframes spin {*/
+/*  0% {*/
+/*    --rotate: 0deg;*/
+/*  }*/
+/*  100% {*/
+/*    --rotate: 360deg;*/
+/*  }*/
+/*}*/
+
+/*a {*/
+/*  color: #212534;*/
+/*  text-decoration: none;*/
+/*  font-family: sans-serif;*/
+/*  font-weight: bold;*/
+/*  margin-top: 2rem;*/
+/*}*/
+
+
+
+/* miperfil.component.css */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px; /* Ancho máximo de la tarjeta */
+  overflow: auto;
+  margin: 0 auto; /* Centrar la tarjeta horizontalmente */
+
+  margin-top:10%;
+  margin-bottom:10%;
+}
+
+h2 {
+
+  align-items: center;
+  text-align: center;
+  color: #3a57af;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-style: italic;
+
+  margin-top: 20px;
+
+
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.username {
+  color: #333;
+}
+
+/*.buttons button {*/
+/*  margin-right: 10px;*/
+/*}*/
+
+
+/*a.button {*/
+/*  font-size: 14px;*/
+/*  font-weight: 600;*/
+/*  color: white;*/
+/*  padding: 6px 80px 28px 20px;*/
+/*  margin: 10px 8px 20px 0px;*/
+/*  display: inline-block;*/
+/*  float: right;*/
+/*  text-decoration: none;*/
+/*  width: 50px; height: 27px;*/
+/*  -webkit-border-radius: 5px;*/
+/*  -moz-border-radius: 5px;*/
+/*  border-radius: 5px;*/
+/*  background-color: #3a57af;*/
+/*  -webkit-box-shadow: 0 3px rgba(58,87,175,.75);*/
+/*  -moz-box-shadow: 0 3px rgba(58,87,175,.75);*/
+/*  box-shadow: 0 3px rgba(58,87,175,.75);*/
+/*  transition: all 0.1s linear 0s;*/
+/*  top: 0px;*/
+/*  position: relative;*/
+/*}*/
+
+/*a.button:hover {*/
+/*  top: 3px;*/
+/*  background-color:#2e458b;*/
+/*  -webkit-box-shadow: none;*/
+/*  -moz-box-shadow: none;*/
+/*  box-shadow: none;*/
+
+/*}*/
+
+
+button {
+  border-radius: 25px;
+  padding: 25px 35px;
+  border: 1px solid #3a57af;
+  background-color: #dde4f8;
+}
+
+button:hover {
+  background-color: #ff0000;
+  color: white ! important;
+}
+
+
+.abajo {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3a57af;
+}
+
+
+.fixed-size-table {
+  table-layout: fixed; /* Fija el ancho de la tabla */
+  width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
+}
+
+.fixed-size-table td {
+  max-width: 150px; /* Establece un ancho máximo para las celdas */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que desborda */
+  white-space: nowrap; /* Evita que el texto se envuelva */
+}
+
+
+label {
+  /*font-weight: bold;*/
+  /*margin-top: 20px;*/
+  /*margin-bottom: 20px;*/
+  color: #3a57af;
+  /*font-size: 20px;*/
+  /*!*font-weight: 600;*!*/
+  /*font-style: italic;*/
+  /*text-align: center;*/
+  margin-right: 10px;
+}

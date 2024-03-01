@@ -110,6 +110,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 400px; /* Ancho máximo de la tarjeta */
+  overflow: auto;
   margin: 0 auto; /* Centrar la tarjeta horizontalmente */
 
   margin-top:10%;
@@ -201,4 +202,17 @@ button:hover {
   justify-content: center;
   align-items: center;
   color: #3a57af;
+}
+
+
+.fixed-size-table {
+  table-layout: fixed; /* Fija el ancho de la tabla */
+  width: 100%; /* Establece el ancho de la tabla al 100% del contenedor */
+}
+
+.fixed-size-table td {
+  max-width: 150px; /* Establece un ancho máximo para las celdas */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que desborda */
+  white-space: nowrap; /* Evita que el texto se envuelva */
 }

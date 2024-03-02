@@ -40,7 +40,7 @@ export const routes: Routes = [
   {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
   {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
   {path:'safaTube/historial', component:HistorialVideosComponent},
-  {path:'safaTube/listaReproduccion', component:ListaReproduccionComponent},
+  {path:'safaTube/listaReproduccion/:id', component:ListaReproduccionComponent},
   {path:'safaTube/listasReproduccion', component:ListasreproduccionComponent},
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
   {path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent},

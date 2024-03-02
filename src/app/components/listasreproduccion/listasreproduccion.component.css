@@ -81,6 +81,13 @@ h1{
 
 }
 
+.button-container {
+  position: absolute;
+  bottom: 1em; /* Ajustar según sea necesario para centrar verticalmente */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media only screen and (max-width: 500px) {
   .ol-cards{
     padding: 1em;

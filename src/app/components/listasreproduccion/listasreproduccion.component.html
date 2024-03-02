@@ -8,23 +8,37 @@
 <!--      <div class="step"><i class="fab fa-creative-commons"></i></div>-->
       <div class="title">{{l.nombre}}</div>
       <div class="content">{{l.descripcion}}</div>
-      <button class="button">Editar</button>
-      <button class="button">Eliminar</button>
+      <div class="button-container">
+        <button class="button" (click)="editarModal()">Editar</button>
+        <div class="modal" id="editarLista">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content login-box">
+              <div class="modal-header">
+                <h3>Edita tu lista</h3>
+                <button type="button" class="btn-close" (click)="closeEditarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body user-box">
+                <label>Nombre: </label>
+                <input [value]="l.nombre" [(ngModel)]="l.nombre">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeEditarModal()">Cerrar</button>
+                <button type="button" class="btn btn-danger" (click)="editarLista()" [routerLink]="['/safaTube/listaReproduccion', l.id]">Editar Lista</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="button" (click)="eliminarLista()" [routerLink]="['/safaTube/listasReproduccion/']" >Eliminar</button>
+      </div>
     </li>
 
   </ol>
 </div>
 </body>
 
-
-
-<!--<div id="container">-->
-<!--  <h3>Mis listas de reproducción: </h3>-->
-<!--  <div id="listas" *ngFor="let l of listasReproduccion" >-->
-<!--    <p>{{l.nombre}}</p>-->
-
 <!--  </div>-->
 <!--&lt;!&ndash;  <app-playvideo *ngFor="let listaReproduccion of listasReproduccion"&ndash;&gt;-->
 <!--&lt;!&ndash;  [listasReproduccion]="listasReproduccion">{{listaReproduccion.nombre}}&ndash;&gt;-->
 <!--&lt;!&ndash;  </app-playvideo>&ndash;&gt;-->
 <!--</div>-->
+

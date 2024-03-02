@@ -117,7 +117,7 @@ export class Generalservice {
   }
 
   EliminarListaReproduccion(listaReproduccion: ListaReproduccion) {
-    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar');
+    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar'+ listaReproduccion);
   }
 
   listarMensaje(data: Mensaje) {

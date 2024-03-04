@@ -12,6 +12,7 @@ import {Comentario} from "../models/Comentario";
 import {Notificacion} from "../models/Notificacion";
 import {Suscripcion} from "../models/Suscripcion";
 import {CanalContado} from "../models/CanalContado";
+import {ListaReproduccion} from "../models/ListaReproduccion";
 
 @Injectable({
   providedIn: 'root',
@@ -87,6 +88,38 @@ export class Generalservice {
       '', videoNuevo);
   }
 
+  EditarVideo(video: Video) {
+    return this.http.put<Video>('http://localhost:8000/api/video/editar/' + video.id, video);
+  }
+
+  EliminarVideo(video: Video) {
+    return this.http.post<Video>('http://localhost:8000/api/video/eliminar', video);
+  }
+
+  enviarIdCanalRecibirListas(id: number) {
+    return this.http.post<ListaReproduccion[]>('http://localhost:8000/api/listaReproduccion/getListas', id)
+  }
+
+  CrearListaReproduccion(listaReproduccionNueva: ListaReproduccion) {
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/crear', listaReproduccionNueva);
+  }
+
+  AgregarVideoLista(listaReproduccion: ListaReproduccion, video: Video) {
+    const datos = {
+      lista: listaReproduccion,
+      video: video
+    };
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo?XDEBUG_SESSION_START=18993', datos);
+  }
+
+  EditarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.put<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/editar/' + listaReproduccion.id, listaReproduccion);
+  }
+
+  EliminarListaReproduccion(listaReproduccion: ListaReproduccion) {
+    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar');
+  }
+
   listarMensaje(data: Mensaje) {
     return this.http.post<Mensaje[]>(this.url + "/api/mensaje/listar", data);
   }
@@ -121,7 +154,7 @@ export class Generalservice {
 
   registerUser(data: Usuario) {
 
-    return this.http.post<Usuario[]>( "/api/registro/registrar", data);
+    return this.http.post<Usuario[]>("/api/registro/registrar", data);
   }
 
   verificarCuenta(token: string) {
@@ -239,31 +272,33 @@ export class Generalservice {
   //   return this.http.post<any>('http://localhost:8000/api/usuario/getImagenPerfil',usuario)
   //
   // }
-  eliminarComentario(idComentario:any) {
-    return this.http.delete <any>('http://localhost:8000/api/comentario/eliminar/'+idComentario)
+  eliminarComentario(idComentario: any) {
+    return this.http.delete <any>('http://localhost:8000/api/comentario/eliminar/' + idComentario)
   }
 
 
-  verSuscriptoresEntreDosFechas(data: any, primerdia:any, ultimodia:any) {
+  verSuscriptoresEntreDosFechas(data: any, primerdia: any, ultimodia: any) {
     const datos = {
-      idCanal:data,
-      inicio:ultimodia,
-      fin:primerdia
+      idCanal: data,
+      inicio: ultimodia,
+      fin: primerdia
     };
     return this.http.post<any>('http://localhost:8000/api/suscripcion/verSuscriptoresEntreDosFechas?XDEBUG_SESSION_START=17036', datos)
   }
-  crearloMensaje(data: Mensaje){
+
+  crearloMensaje(data: Mensaje) {
     return this.http.post<object>(this.url + "/api/mensaje/crearlo", data);
   }
 
   cargarValoracionesVideo(video: Video) {
     return this.http.post<any>(this.url + "/api/valoracion/cargarValoracionesVideo?XDEBUG_SESSION_START=16272", video);
   }
+
   cargarValoracionesComentario(comentario: Comentario) {
     return this.http.post<any>(this.url + "/api/valoracion/cargarValoracionesComentario", comentario);
   }
 
-  cargarSubs(data: Usuario){
+  cargarSubs(data: Usuario) {
     return this.http.post<object>(this.url + "/api/canal/listarsubs", data);
   }
 
@@ -271,10 +306,13 @@ export class Generalservice {
     return this.http.post<any>(this.url + "/api/canal/verSuscriptores", canal);
   }
 
+  getHistorial(usuario: any) {
+    return this.http.post<Video[]>(this.url + "/api/video/getHistorial?XDEBUG_SESSION_START=17615", usuario);
+  }
 
   verifyUser(data: Usuario) {
 
-    return this.http.post<Usuario[]>( "/api/registro/verificar", data);
+    return this.http.post<Usuario[]>("/api/registro/verificar", data);
   }
 
   verifyEmailUser(token: string, data: Usuario) {
@@ -321,6 +359,17 @@ export class Generalservice {
   getUserWebhook(data:string) {
     return this.http.post<any>('/api/registro/getwebhook?XDEBUG_SESSION_START=12905', data);
   }
+
+
+  cargarPorcentajeValoracionesVideo(canal: any) {
+    return this.http.post<any>('/api/valoracion/estadisticasValoracionesVideo', canal);
+  }
+
+  cargarMensajesGrafica(canal: any, fechas: any) {
+    const datos = {
+      idCanal: canal.id,
+      fecha: fechas,
+    };
+    return this.http.post<any>('/api/mensaje/estadisticas', datos);
+  }
 }
-
-

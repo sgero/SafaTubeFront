@@ -1,4 +1,13 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
@@ -13,6 +22,7 @@ import {AppComponent} from "../../app.component";
 import {LoginComponent} from "../login/login.component";
 import {Valoracion} from "../../models/Valoracion";
 import {Video} from "../../models/Video";
+import {ListaReproduccion} from "../../models/ListaReproduccion";
 
 @Component({
   selector: 'app-playvideo',
@@ -37,6 +47,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
               private login:LoginComponent) {
     this.demoYouTubePlayer = this.video;
+    // this.listasReproduccion = {nombre: '', canal: this.canal, videos: [Video]}
   }
   video:any;
   comentarios: any;
@@ -56,6 +67,13 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   totalDisikesVideo:any;
   canal:any;
   x:any;
+  datos: any;
+  listasReproduccion: any;
+  crearListaReproduccion: ListaReproduccion = new ListaReproduccion();
+  nombre: any;
+  listaElegida: ListaReproduccion | null = null;
+  listaReproduccion: any;
+
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -488,7 +506,164 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
     )
   }
 
+  openModal() {
+    const modelDiv2 = document.getElementById('editarVideo');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+  }
 
+  closeModal() {
+    const modelDiv2 = document.getElementById('editarVideo');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
 
+  editarVideo() {
+    this.dataservice.EditarVideo(this.video)
+      .subscribe(data => {
+          this.datos = data;
+          Swal.fire('¡video modificado correctamente!', '', 'success');
+          console.log(data);
+        },
+        error => {
+          console.error("no funciona", error);
+        })
+
+    setTimeout(() => {
+      // Lógica después de completar la operación, como redirigir o mostrar un mensaje.
+      this.closeModal()
+    }, 1000);
+  }
+
+  eliminarVideo() {
+    Swal.fire({
+      title: '¿Quieres eliminar el video?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: '¡Sí!',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.EliminarVideo(this.video)
+          .subscribe(data=> {
+                this.datos=data;
+                Swal.fire('¡video eliminado correctamente!', '', 'success');
+                console.log(data);
+              },
+              error => {
+                console.error("no funciona", error);
+              }
+              )
+      }
+    })}
+
+  openModalListas(){
+    const modelDiv2 = document.getElementById('listaReproduccion');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+    this.verListasReproduccion();
+  }
+
+  verListasReproduccion(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(data => {
+                this.canal = data
+                if (this.canal.id) {
+                  this.dataservice.enviarIdCanalRecibirListas(this.canal.id)
+                    .subscribe(
+                      data => {
+                        this.listasReproduccion = data;
+                        console.log(data);
+                        // this.listasReproduccion = this.comentarios.videos;
+                      },
+                      error => {
+                        console.error("no funciona", error);
+                      }
+                    )
+                }
+              }
+            )
+        })
+  }
+  closeModalListas() {
+    const modelDiv2 = document.getElementById('listaReproduccion');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
+
+  openCrearLista(){
+    const modelDiv2 = document.getElementById('crearLista');
+    if(modelDiv2 != null) {
+      modelDiv2.style.display = 'block';
+    }
+  }
+  closeCrearLista(){
+    const modelDiv2 = document.getElementById('crearLista');
+    if(modelDiv2!= null) {
+      modelDiv2.style.display = 'none';
+    }
+  }
+
+  crearLista(){
+    this.dataservice.getUsuarioLogeado(localStorage.getItem('username'))
+      .subscribe(
+        usuario => {
+          this.dataservice.getCanalUsuarioLogeado(usuario.id)
+            .subscribe(data => {
+                this.canal = data;
+                this.crearListaReproduccion.canal = this.canal;
+                this.crearListaReproduccion.nombre = this.nombre;
+                this.dataservice.CrearListaReproduccion(this.crearListaReproduccion)
+                    .subscribe(
+                      data => {
+                        this.listasReproduccion = data;
+                        this.verListasReproduccion();
+                        Swal.fire('¡lista creada!', '', 'success');
+                        console.log(data);
+                        // this.listasReproduccion = this.comentarios.videos;
+                      },
+                      error => {
+                        console.error("no funciona", error);
+                      }
+                    )
+              }
+            )
+        })
+    setTimeout(() => {
+      this.closeCrearLista()
+    }, 2000);
+  }
+
+  agregarVideo(){
+    this.route.params.subscribe(params =>
+    // {const videoId= +params['id'];
+    {this.video.id= +params['id'];
+      if (this.video) {
+        this.listaReproduccion = this.listaElegida
+        this.dataservice.AgregarVideoLista(this.listaReproduccion, this.video)
+             .subscribe(
+               data => {
+                 Swal.fire('¡video añadido!', '', 'success');
+                 this.listaReproduccion.videos.push(this.video.id);
+                 console.log(data)
+               },
+               error => {
+                 console.error("no funciona", error);
+               }
+             )
+          }}
+      )
+    setTimeout(() => {
+      this.closeModalListas()
+    }, 2000);
+
+  }
 
 }

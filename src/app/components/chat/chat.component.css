@@ -21,7 +21,7 @@ body {
   flex-direction: column;
 }
 .div2{
-  background-image: url("/assets/images/fondochat2.jpg");
+
   background-size: cover;
   padding-bottom: 80px;
 }
@@ -113,7 +113,15 @@ p{
 #crear_mensaje>button>img{
   height: 30px;
 }
-
+.div2>.div2back{
+  width: 200px;
+  align-self: center;
+  height: 50px;
+  margin-top: 200px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding-left: 48px;
+}
 
 
 @media (max-width: 1040px) {

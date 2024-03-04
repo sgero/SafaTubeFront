@@ -3,7 +3,7 @@ import {HeaderComponent} from "../../header/header.component";
 import {KeyValuePipe, NgForOf} from "@angular/common";
 import {Video} from "../../../models/Video";
 import {Generalservice} from "../../../service/generalservice";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -12,7 +12,8 @@ import {HttpClient} from "@angular/common/http";
   imports: [
     HeaderComponent,
     NgForOf,
-    KeyValuePipe
+    KeyValuePipe,
+    RouterLink
   ],
   templateUrl: './buscador-video.component.html',
   styleUrl: './buscador-video.component.css'

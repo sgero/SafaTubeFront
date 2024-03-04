@@ -17,9 +17,12 @@ import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
 import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.component";
+import {HistorialVideosComponent} from "./components/home/historial-videos/historial-videos.component";
+import {ListaReproduccionComponent} from "./components/lista-reproduccion/lista-reproduccion.component";
 import {VerificarCuentaComponent} from "./components/verificar-cuenta/verificar-cuenta.component";
 import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
 import {VerificarcuentaemailComponent} from "./components/verificarcuentaemail/verificarcuentaemail.component";
+import {ListasreproduccionComponent} from "./components/listasreproduccion/listasreproduccion.component";
 import {MiperfilComponent} from "./components/miperfil/miperfil.component";
 import {MicanalComponent} from "./components/micanal/micanal.component";
 import {ConfprivacyComponent} from "./components/confprivacy/confprivacy.component";
@@ -37,9 +40,11 @@ export const routes: Routes = [
   {path: 'safaTube/buscador-video', component: BuscadorVideoComponent},
   {path: 'safaTube/micanal', component: CanalComponent},
   {path: 'safaTube/canal/:nombre', component: VerCanalCualquieraComponent},
-  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
-  {path: 'safaTube/micanal/suscripciones', component: MostrarsubsComponent},
-  {path: 'safaTube/micanal/estadisticas', component: EstadisticasCanalLogeadoComponent},
+  {path:'safaTube/micanal/estadisticas', component:EstadisticasCanalLogeadoComponent},
+  {path:'safaTube/micanal/suscripciones', component:MostrarsubsComponent},
+  {path:'safaTube/historial', component:HistorialVideosComponent},
+  {path:'safaTube/listaReproduccion', component:ListaReproduccionComponent},
+  {path:'safaTube/listasReproduccion', component:ListasreproduccionComponent},
   {path: 'safaTube/verificar_cuenta', component: VerificarCuentaComponent},
   {path: 'safaTube/verificarmail/:token', component: VerificarcuentaemailComponent},
   {path: 'safaTube/recuperarpwd', component: RecuperarpwComponent},

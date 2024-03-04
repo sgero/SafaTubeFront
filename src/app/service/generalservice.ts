@@ -372,4 +372,13 @@ export class Generalservice {
     };
     return this.http.post<any>('/api/mensaje/estadisticas', datos);
   }
+
+  sendConfPrivacy(data: boolean | undefined) {
+
+    const datos = {
+      accessToPrivateVideos: data,
+      username: localStorage.getItem('username')
+    }
+    return this.http.post<any>('/api/registro/confprivacy', datos);
+  }
 }

@@ -12,11 +12,6 @@
               <path d="M496.7 212.2a64.4 64.4 0 11-91.2 91.1 64.4 64.4 0 0191.2-91M303.3 212.2a64.4 64.4 0 11-91 91.1 64.4 64.4 0 0191-91M110 212.2A64.4 64.4 0 1119 303.3a64.4 64.4 0 0191.1-91" /></svg>
           </div>
 
-
-          <div class="profile-contact">
-              <i class="fas fa-cog fa-fw" style="color: white;"></i>
-          </div>
-
           <div class="modal" id="editarCanal">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content login-box">
@@ -66,6 +61,32 @@
               </div>
             </div>
           </div>
+
+          <div class="profile-contact" (click)="openModalConf()">
+            <i class="fas fa-cog fa-fw" style="color: white;"></i>
+          </div>
+          <div class="modal" id="modalConf">
+            <div class="modal-content-privacy">
+              <h2>Configuración de privacidad</h2>
+              <p>¿Desea permitir que sus suscriptores accedan a sus videos privados?</p>
+              <div>
+                <div class="modal-body user-box">
+<!--                  <label>Si</label>-->
+<!--                  <input [value]="true" [(ngModel)]="true">-->
+
+                <label>Sí</label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="true"> <br>
+                <label>No</label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="false"> <br>
+                </div>
+              </div>
+              <button (click)="savePrivacySettings()">Guardar Configuración</button>
+
+              <button (click)="CloseModalConf()">Cerrar</button>
+            </div>
+
+
+
+          </div>
+
         </div>
 
 

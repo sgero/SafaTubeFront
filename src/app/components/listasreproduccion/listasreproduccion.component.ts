@@ -8,6 +8,8 @@ import {LoginComponent} from "../login/login.component";
 import {Video} from "../../models/Video";
 import {NgForOf} from "@angular/common";
 import Swal from "sweetalert2";
+import {FormsModule} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-listasreproduccion',
   standalone: true,
@@ -15,7 +17,8 @@ import Swal from "sweetalert2";
     HeaderComponent,
     PlayvideoComponent,
     NgForOf,
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   templateUrl: './listasreproduccion.component.html',
   styleUrl: './listasreproduccion.component.css'
@@ -24,8 +27,9 @@ export class ListasreproduccionComponent {
   listasReproduccion: any;
   canal: any;
   listaReproduccion: any;
-  datos: ListaReproduccion;
-  constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,) {
+  datos: any;
+  listaSeleccionada: any;
+  constructor(private route:ActivatedRoute, private http: HttpClient, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,) {
   }
 
   ngOnInit(): void{
@@ -44,6 +48,7 @@ export class ListasreproduccionComponent {
                     .subscribe(
                       data => {
                         this.listasReproduccion = data;
+                        this.listaSeleccionada = true;
                         console.log(data);
                         // this.listasReproduccion = this.comentarios.videos;
                       },
@@ -57,7 +62,9 @@ export class ListasreproduccionComponent {
         })
   }
 
-  editarModal() {
+  editarModal(lista: any) {
+    this.listaSeleccionada = lista;
+    console.log(this.listaSeleccionada)
     const modelDiv2 = document.getElementById('editarLista');
     if(modelDiv2 != null) {
       modelDiv2.style.display = 'block';
@@ -72,7 +79,7 @@ export class ListasreproduccionComponent {
   }
 
   editarLista() {
-    this.dataservice.EditarListaReproduccion(this.listaReproduccion)
+    this.dataservice.EditarListaReproduccion(this.listaSeleccionada)
       .subscribe(data => {
           this.datos = data;
           Swal.fire('¡lista modificada correctamente!', '', 'success');
@@ -88,7 +95,7 @@ export class ListasreproduccionComponent {
     }, 1000);
   }
 
-  eliminarLista() {
+  eliminarLista(lista: any) {
     Swal.fire({
       title: '¿Quieres eliminar la lista?',
       showDenyButton: true,
@@ -97,9 +104,10 @@ export class ListasreproduccionComponent {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dataservice.EliminarListaReproduccion(this.listaReproduccion)
+        this.dataservice.EliminarListaReproduccion(lista)
           .subscribe(data=> {
               this.datos=data;
+              this.verListasReproduccion();
               Swal.fire('¡lista eliminada correctamente!', '', 'success');
               console.log(data);
             },

@@ -82,7 +82,14 @@ h1{
 }
 
 .button-container {
-  position: absolute;
+  position: relative;
+  bottom: 1em; /* Ajustar según sea necesario para centrar verticalmente */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal {
+  position: relative;
   bottom: 1em; /* Ajustar según sea necesario para centrar verticalmente */
   left: 50%;
   transform: translateX(-50%);

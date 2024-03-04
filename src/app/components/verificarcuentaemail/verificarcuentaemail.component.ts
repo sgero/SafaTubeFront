@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Generalservice } from "../service/generalservice";
+import { Generalservice } from "../../service/generalservice";
 import { Router, ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
-import {Usuario} from "../models/Usuario";
+import {Usuario} from "../../models/Usuario";
 
 @Component({
   selector: 'app-verificar-cuenta',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Generalservice} from "../service/generalservice";
+import {Generalservice} from "../../service/generalservice";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 

@@ -17,12 +17,12 @@ import {
   EstadisticasCanalLogeadoComponent
 } from "./components/canal/estadisticas-canal-logeado/estadisticas-canal-logeado.component";
 import {MostrarsubsComponent} from "./components/mostrarsubs/mostrarsubs.component";
-import {VerificarCuentaComponent} from "./verificar-cuenta/verificar-cuenta.component";
+import {VerificarCuentaComponent} from "./components/verificar-cuenta/verificar-cuenta.component";
 import {RecuperarpwComponent} from "./components/recuperarpw/recuperarpw.component";
-import {VerificarcuentaemailComponent} from "./verificarcuentaemail/verificarcuentaemail.component";
-import {MiperfilComponent} from "./miperfil/miperfil.component";
-import {MicanalComponent} from "./micanal/micanal.component";
-import {ConfprivacyComponent} from "./confprivacy/confprivacy.component";
+import {VerificarcuentaemailComponent} from "./components/verificarcuentaemail/verificarcuentaemail.component";
+import {MiperfilComponent} from "./components/miperfil/miperfil.component";
+import {MicanalComponent} from "./components/micanal/micanal.component";
+import {ConfprivacyComponent} from "./components/confprivacy/confprivacy.component";
 
 export const routes: Routes = [
   {path: 'safaTube', component: LandingpageComponent},

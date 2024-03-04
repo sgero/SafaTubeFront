@@ -259,6 +259,9 @@ export class Generalservice {
   getVideosPopularesSegunCanal(canal: any) {
     return this.http.post<any>('http://localhost:8000/api/canal/getVideosPopularesSegunCanal', canal)
   }
+  getVideosSoloSubs(canal: any) {
+    return this.http.post<any>('http://localhost:8000/api/canal/getVideosSoloSubs', canal)
+  }
 
   getInfoCanal(data: any) {
     return this.http.post<any>('http://localhost:8000/api/canal/getInfoCanal', data)

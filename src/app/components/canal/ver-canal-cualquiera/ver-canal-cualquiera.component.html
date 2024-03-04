@@ -59,13 +59,24 @@
       </div>
       <div class="trends filtrocanal">
         <div class="follow-buttons">
-          <div class="opciones" *ngIf="recientes == true; else populares">
+          <div class="opciones" *ngIf="recientes == true; else popu">
             <button class="follow blanco">Más Recientes</button>
             <button class="follow follow-option active" (click)="verPopulares()">Populares</button>
+            <button class="follow follow-option active" (click)="verSuscriptores()">Para Suscriptores</button>
           </div>
-          <ng-template #populares>
-            <button class="follow" (click)="verRecientes()">Recientes</button>
-            <button class="follow follow-option active blanco">Populares</button>
+          <ng-template #popu>
+            <div class="opciones" *ngIf="populares == true;else subs">
+              <button class="follow follow-option active" (click)="verRecientes()">Más Recientes</button>
+              <button class="follow blanco">Populares</button>
+              <button class="follow follow-option active" (click)="verSuscriptores()">Para Suscriptores</button>
+            </div>
+            <ng-template #subs>
+              <div class="opciones" *ngIf="soloSubs == true">
+                <button class="follow follow-option active" (click)="verRecientes()">Recientes</button>
+                <button class="follow follow-option active" (click)="verPopulares()">Populares</button>
+                <button class="follow blanco">Para Suscriptores</button>
+              </div>
+            </ng-template>
           </ng-template>
         </div>
       </div>

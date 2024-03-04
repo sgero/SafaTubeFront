@@ -23,6 +23,8 @@ export class CanalComponent implements  OnInit{
   canal:any;
   usuarioLog:any;
   recientes:any;
+  populares:any;
+  soloSubs:any;
   numeroVideosSubidos:any;
   numeroSuscriptores:any;
   numeroVisitas:any;
@@ -142,6 +144,8 @@ export class CanalComponent implements  OnInit{
         data => {
           this.videos = data;
           this.recientes = true;
+          this.populares = false;
+          this.soloSubs = false;
         },
         error => {
           console.error("no funciona", error);
@@ -155,6 +159,23 @@ export class CanalComponent implements  OnInit{
         data => {
           this.videos = data;
           this.recientes = false;
+          this.populares = true;
+          this.soloSubs = false;
+        },
+        error => {
+          console.error("no funciona", error);
+        }
+      )
+  }
+
+  verSuscriptores(){
+    this.dataservice.getVideosSoloSubs(this.canal)
+      .subscribe(
+        data => {
+          this.videos = data;
+          this.recientes = false;
+          this.populares = false;
+          this.soloSubs = true;
         },
         error => {
           console.error("no funciona", error);

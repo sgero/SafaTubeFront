@@ -27,6 +27,8 @@ export class VerCanalCualquieraComponent implements OnInit{
   canal:any;
   usuarioLog:any;
   recientes:any;
+  populares:any;
+  soloSubs:any;
   numeroVideosSubidos:any;
   numeroSuscriptores:any;
   numeroVisitas:any;
@@ -154,6 +156,8 @@ export class VerCanalCualquieraComponent implements OnInit{
         data => {
           this.videos = data;
           this.recientes = true;
+          this.populares = false;
+          this.soloSubs = false;
         },
         error => {
           console.error("no funciona", error);
@@ -167,6 +171,8 @@ export class VerCanalCualquieraComponent implements OnInit{
         data => {
           this.videos = data;
           this.recientes = false;
+          this.populares = true;
+          this.soloSubs = false;
         },
         error => {
           console.error("no funciona", error);
@@ -174,9 +180,38 @@ export class VerCanalCualquieraComponent implements OnInit{
       )
   }
 
+  verSuscriptores(){
+    if (this.estaSuscrito == true){
+    this.dataservice.getVideosSoloSubs(this.canal)
+      .subscribe(
+        data => {
+          this.videos = data;
+          this.recientes = false;
+          this.populares = false;
+          this.soloSubs = true;
+        },
+        error => {
+          console.error("no funciona", error);
+        }
+      )
+    }else if (this.estaSuscrito == false){
+      Swal.fire({
+        title: 'No estás suscrito a este canal',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: '¡Quiero suscribirme y ver estos vídeos!',
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.suscribirse();
+        }
+      });
+    }
+  }
+
   eliminarSuscripcion(){
     Swal.fire({
-      title: '¿Quieres eleminar tu suscripción?',
+      title: '¿Quieres eliminar tu suscripción?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: '¡Eliminar!',

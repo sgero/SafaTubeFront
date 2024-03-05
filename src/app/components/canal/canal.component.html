@@ -61,6 +61,32 @@
               </div>
             </div>
           </div>
+
+          <div class="profile-contact" (click)="openModalConf()">
+            <i class="fas fa-cog fa-fw" style="color: white;"></i>
+          </div>
+          <div class="modal" id="modalConf">
+            <div class="modal-content-privacy">
+              <h2>Configuración de privacidad</h2>
+              <p>¿Desea permitir que sus suscriptores accedan a sus videos privados?</p>
+              <div>
+                <div class="modal-body user-box">
+<!--                  <label>Si</label>-->
+<!--                  <input [value]="true" [(ngModel)]="true">-->
+
+               <input type="radio" [(ngModel)]="accessToPrivateVideos" value="true">  <label>Sí</label><br>
+                <input type="radio" [(ngModel)]="accessToPrivateVideos" value="false"> <label>No</label><br>
+                </div>
+              </div>
+              <button (click)="savePrivacySettings()">Guardar Configuración</button>
+
+              <button (click)="CloseModalConf()">Cerrar</button>
+            </div>
+
+
+
+          </div>
+
         </div>
 
 
@@ -119,6 +145,9 @@
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Canal de {{canal.nombre}} {{canal.apellidos}}</h1>
                     <button type="button" class="btn-close" (click)="CloseModel()" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
                   </div>
                   <div class="modal-body">
                     {{canal.descripcion}}

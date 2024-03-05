@@ -375,4 +375,13 @@ export class Generalservice {
     };
     return this.http.post<any>('/api/mensaje/estadisticas', datos);
   }
+
+  sendConfPrivacy(data: boolean | undefined) {
+
+    const datos = {
+      accessToPrivateVideos: data,
+      username: localStorage.getItem('username')
+    }
+    return this.http.post<any>('/api/video/confprivacy?XDEBUG_SESSION_START=11126', datos);
+  }
 }

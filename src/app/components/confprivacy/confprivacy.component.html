@@ -1,0 +1,25 @@
+<!--<div class="modal">-->
+<!--  <div class="modal-content">-->
+<!--    <h2>Configuracion de privacidad:</h2>-->
+<!--    <div>-->
+<!--      <h3>elige que contenido </h3>-->
+<!--      <label><input type="radio" [(ngModel)]="selectedPreference" value="todos"> Todos</label><br>-->
+<!--      <label><input type="radio" [(ngModel)]="selectedPreference" value="educativos"> Educativos</label><br>-->
+<!--      <label><input type="radio" [(ngModel)]="selectedPreference" value="entretenimiento"> Entretenimiento</label><br>-->
+<!--    </div>-->
+<!--    <button (click)="savePreferences()">Guardar Preferencias</button>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="modal">
+  <div class="modal-content">
+    <h2>Configuración de privacidad</h2>
+    <p>¿Desea permitir que sus suscriptores accedan a sus videos privados?</p>
+    <div>
+      <label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="true"> Sí</label><br>
+      <label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="false"> No</label><br>
+    </div>
+    <button (click)="savePrivacySettings()">Guardar Configuración</button>
+  </div>
+</div>

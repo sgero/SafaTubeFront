@@ -14,7 +14,7 @@
 //
 
 import { Component, OnInit } from '@angular/core';
-import {Generalservice} from "../service/generalservice";
+import {Generalservice} from "../../service/generalservice";
 import Swal from "sweetalert2";
 import {RouterLink} from "@angular/router";
 import { Router } from '@angular/router';

@@ -1,9 +1,10 @@
 import {Component, inject, OnInit, TemplateRef} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {NgForOf, NgIf} from "@angular/common";
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Generalservice} from "../../service/generalservice";
 import {FormsModule} from "@angular/forms";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-canal',
@@ -15,7 +16,9 @@ import {FormsModule} from "@angular/forms";
     NgIf,
     FormsModule
   ],
+
   templateUrl: './canal.component.html',
+  // styleUrls: '.canal.component.css',
   styleUrl: './canal.component.css'
 })
 export class CanalComponent implements  OnInit{
@@ -31,7 +34,15 @@ export class CanalComponent implements  OnInit{
   tiposContenidoCanal:any;
   suscriptoresCanal:any;
 
-  constructor(private route:ActivatedRoute, private dataservice: Generalservice) {
+
+
+  accessToPrivateVideos?: boolean ; // Variable para almacenar la opción seleccionada
+
+
+
+
+
+  constructor(private route:ActivatedRoute, private dataservice: Generalservice, private router: Router){
   }
 
   ngOnInit() {
@@ -88,7 +99,57 @@ export class CanalComponent implements  OnInit{
           console.error("no funciona", error);
         }
       )
+    // Verifica que el modal se esté activando correctamente
+    const button = document.querySelector('#openModalButton');
+    if (!button) {
+      console.error('No se encontró el botón para abrir el modal');
+    }
 
+    // Verifica la estructura HTML del modal
+    const modal = document.querySelector('#modalConf');
+    if (!modal) {
+      console.error('No se encontró el modal');
+    } else {
+      const modalContent = modal.querySelector('.modal-content');
+      if (!modalContent) {
+        console.error('No se encontró el contenido del modal');
+      }
+    }
+  }
+
+
+
+  savePrivacySettings() {
+    // Lógica para enviar la opción seleccionada al backend (Symfony)
+    this.dataservice.sendConfPrivacy(this.accessToPrivateVideos).subscribe(() => {
+      // Aquí puedes ejecutar cualquier lógica adicional después de enviar la configuración al backend
+      // Por ejemplo, mostrar un mensaje de éxito al usuario
+      Swal.fire('Cambios guardados con éxito', '', 'success');
+      // Aquí puedes redirigir al usuario a una página de éxito o realizar cualquier otra acción
+      // this.router.navigate(['/home']);
+    });
+
+    // Aquí se haría una solicitud HTTP POST al backend
+    console.log('Acceso a videos privados permitido:', this.accessToPrivateVideos);
+  }
+
+
+
+
+  openModalConf() {
+    const modelDiv = document.getElementById('modalConf');
+    if(modelDiv != null) {
+      modelDiv.style.display = 'block';
+      modelDiv.style.zIndex = String(4);
+
+    }
+  }
+
+  CloseModalConf() {
+    const modelDiv = document.getElementById('modalConf');
+    if(modelDiv!= null) {
+      modelDiv.style.display = 'none';
+    }
 
   }
 

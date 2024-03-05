@@ -74,8 +74,8 @@
 <!--                  <label>Si</label>-->
 <!--                  <input [value]="true" [(ngModel)]="true">-->
 
-                <label>Sí</label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="true"> <br>
-                <label>No</label><input type="radio" [(ngModel)]="accessToPrivateVideos" value="false"> <br>
+               <input type="radio" [(ngModel)]="accessToPrivateVideos" value="true">  <label>Sí</label><br>
+                <input type="radio" [(ngModel)]="accessToPrivateVideos" value="false"> <label>No</label><br>
                 </div>
               </div>
               <button (click)="savePrivacySettings()">Guardar Configuración</button>

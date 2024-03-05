@@ -379,6 +379,6 @@ export class Generalservice {
       accessToPrivateVideos: data,
       username: localStorage.getItem('username')
     }
-    return this.http.post<any>('/api/video/confprivacy', datos);
+    return this.http.post<any>('/api/video/confprivacy?XDEBUG_SESSION_START=11126', datos);
   }
 }

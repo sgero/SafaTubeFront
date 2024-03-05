@@ -45,7 +45,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
   videoHeight: number | undefined;
   respuestaCreada: any;
   indice: any;
-  constructor(private route:ActivatedRoute, private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
+  constructor(private route:ActivatedRoute, private router:Router,private dataservice: Generalservice,private _changeDetectorRef: ChangeDetectorRef,
               private login:LoginComponent) {
     this.demoYouTubePlayer = this.video;
     // this.listasReproduccion = {nombre: '', canal: this.canal, videos: [Video]}
@@ -552,6 +552,7 @@ export class PlayvideoComponent implements OnInit,AfterViewInit, OnDestroy {
                 this.datos=data;
                 Swal.fire('¡video eliminado correctamente!', '', 'success');
                 console.log(data);
+                this.router.navigate(['/safaTube/micanal']);
               },
               error => {
                 console.error("no funciona", error);

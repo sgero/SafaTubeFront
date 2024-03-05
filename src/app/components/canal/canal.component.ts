@@ -125,6 +125,10 @@ export class CanalComponent implements  OnInit{
       // Aquí puedes ejecutar cualquier lógica adicional después de enviar la configuración al backend
       // Por ejemplo, mostrar un mensaje de éxito al usuario
       Swal.fire('Cambios guardados con éxito', '', 'success');
+
+      setTimeout(() => {
+        this.CloseModalConf();
+      }, 1000);
       // Aquí puedes redirigir al usuario a una página de éxito o realizar cualquier otra acción
       // this.router.navigate(['/home']);
     });

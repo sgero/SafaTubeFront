@@ -379,6 +379,6 @@ export class Generalservice {
       accessToPrivateVideos: data,
       username: localStorage.getItem('username')
     }
-    return this.http.post<any>('/api/registro/confprivacy', datos);
+    return this.http.post<any>('/api/video/confprivacy', datos);
   }
 }

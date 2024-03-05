@@ -91,7 +91,6 @@
                   <ng-template #noPertenece>
                       <div class="opciones" *ngIf="estaSuscrito == true; else noestasuscrito">
                         <a class="button is-dark" (click)="eliminarSuscripcion()">Eliminar Suscripción</a>
-                        <a class="button is-danger">Mensaje</a>
                       </div>
                       <ng-template #noestasuscrito>
                         <a class="button is-danger" (click)="suscribirse()">Suscribirse</a>
@@ -181,7 +180,7 @@
         <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="{{video.canal.foto}}">
+              <img src="{{canal.foto}}" style="border-radius: 50%;width: 50px;height: 50px">
             </p>
           </figure>
           <div class="media-content">
@@ -203,7 +202,7 @@
         <article class="media" *ngFor="let c of comentarios">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="{{c.foto_canal}}">
+              <img src="{{c.foto_canal}}" style="border-radius: 50%;width: 50px;height: 50px">
             </p>
           </figure>
           <div class="media-content">
@@ -240,7 +239,7 @@
                     <div *ngIf="r.id_comentario_padre == c.id">
                       <figure class="media-left">
                         <p class="image is-64x64">
-                          <img src="{{r.foto_canal}}">
+                          <img src="{{r.foto_canal}}" style="border-radius: 50%;width: 50px;height: 50px">
                         </p>
                       </figure>
                       <div class="media-content">

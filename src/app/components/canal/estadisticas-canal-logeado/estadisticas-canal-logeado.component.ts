@@ -339,12 +339,12 @@ function obtenerFechasIntermedias(fechaInicio: Date, fechaFin: Date): string[] {
   return fechasAMandar;
 }
 
-function calcularPorcentaje(valorParcial: number, valorTotal: number): number {
+function calcularPorcentaje(valorParcial: number, valorTotal: number): string {
   if (valorTotal == 0) {
-    return 0;
+    return String(0);
   }
 
-  return (valorParcial / valorTotal) * 100;
+  return ((valorParcial / valorTotal) * 100).toFixed(1);
 }
 
 function calcularFechasMensajes(): Date[] {

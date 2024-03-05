@@ -104,6 +104,7 @@ export class HeaderComponent implements OnInit {
                       Swal.fire('¡video creado correctamente!', '', 'success');
 
                       console.log(data);
+                      this.router.navigate(['/safaTube/micanal']);
                     },
                     error => {
                       console.error("no funciona", error);

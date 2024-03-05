@@ -84,6 +84,7 @@ export class ListasreproduccionComponent {
           this.datos = data;
           Swal.fire('¡lista modificada correctamente!', '', 'success');
           console.log(data);
+          this.verListasReproduccion();
         },
         error => {
           console.error("no funciona", error);

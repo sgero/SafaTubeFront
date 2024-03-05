@@ -159,3 +159,26 @@ body {
 .video-playlist-wrap.two-col .details {
   padding: 0 10px;
 }
+
+.media-content1{
+  margin-left: 5px;
+}
+
+.related-card .video-title {
+  display:block;
+  font-size: 13px;
+  font-weight: 500;
+  max-width: 150px; /* Establece un ancho máximo para las celdas */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto que desborda */
+  white-space: nowrap; /* Evita que el texto se envuelva */
+}
+.related-card .video-account,.related-card .video-views {
+  display:block;
+  font-size: 11px;
+  color: #95A5A6;
+}
+
+.media-left1{
+  width: 37%;
+}

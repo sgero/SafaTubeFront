@@ -10,28 +10,28 @@
         <a [routerLink]="['/safaTube/listaReproduccion', l.id]">{{l.nombre}}</a>
         <button class="button" (click)="editarModal(l)">Editar</button>
 
-        <div class="modal" id="editarLista">-->
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content login-box">
-              <div class="modal-header">
-                <h3>Edita tu lista</h3>
-                <button type="button" class="btn-close" (click)="closeEditarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body user-box">
-                <label>Nombre: </label>
-                <input [(ngModel)]="listaSeleccionada.nombre" [value]="listaSeleccionada.nombre" >
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeEditarModal()">Cerrar</button>
-                <button type="button" class="btn btn-danger" (click)="editarLista()" [routerLink]="['/safaTube/listaReproduccion', l.id]">Editar Lista</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <button class="button" (click)="eliminarLista(l)" [routerLink]="['/safaTube/listasReproduccion/']" >Eliminar</button>
       </div>
     </li>
-
+    <div class="modal" id="editarLista">-->
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content login-box">
+          <div class="modal-header">
+            <h3>Edita tu lista</h3>
+            <button type="button" class="btn-close" (click)="closeEditarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body user-box">
+            <label>Nombre: </label>
+            <input [(ngModel)]="listaSeleccionada.nombre" [value]="listaSeleccionada.nombre" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeEditarModal()">Cerrar</button>
+            <button type="button" class="btn btn-danger" (click)="editarLista()" >Editar Lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
 <!--    <div class="button-container">-->
 <!--      <button class="button" (click)="editarModal(l)">Editar</button>-->
 <!--      <div class="modal" id="editarLista">-->

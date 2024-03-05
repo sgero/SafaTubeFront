@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container">
+<div class="container" >
   <h1 class="text-center">{{listaReproduccion.nombre}}</h1>
   <div class="video-playlist-wrap two-col">
     <div class="player-wrap">
@@ -21,13 +21,14 @@
     <div class="column is-4">
       <div class="box related-list">
         <p class="autoplay">
-          <span class="autoplay-title">Siguiente</span>
+          <span class="autoplay-title">Estas viendo:</span>
         </p>
         <article class="media related-card articlevideo" *ngFor="let recomend of videos" [routerLink]="['/safaTube/video', recomend.id]">
           <div class="media-left1">
             <figure class="image">
               <img src="{{recomend.miniatura}}" alt="Image">
             </figure>
+            <p>Siguiente: </p>
           </div>
           <div class="media-content1">
             <div class="content">

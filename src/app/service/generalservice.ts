@@ -58,6 +58,10 @@ export class Generalservice {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosRecomendadosAPartirDeVideo?', videoId)
   }
 
+  getVideosLista(listaId: any) {
+    return this.http.post<any>('http://localhost:8000/api/listaReproduccion/getVideosListas?XDEBUG_SESSION_START=15551', listaId)
+  }
+
   getVideosDeCanalesSuscritosPage(usuarioId: any) {
     return this.http.post<Video[]>('http://localhost:8000/api/video/getVideosCanalesSuscritos', usuarioId)
   }
@@ -109,7 +113,7 @@ export class Generalservice {
       lista: listaReproduccion,
       video: video
     };
-    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo?XDEBUG_SESSION_START=18993', datos);
+    return this.http.post<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/agregarVideo', datos);
   }
 
   EditarListaReproduccion(listaReproduccion: ListaReproduccion) {
@@ -117,7 +121,7 @@ export class Generalservice {
   }
 
   EliminarListaReproduccion(listaReproduccion: ListaReproduccion) {
-    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar');
+    return this.http.delete<ListaReproduccion>('http://localhost:8000/api/listaReproduccion/eliminar/'+ listaReproduccion.id);
   }
 
   listarMensaje(data: Mensaje) {

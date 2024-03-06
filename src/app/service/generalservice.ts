@@ -149,7 +149,7 @@ export class Generalservice {
   }
 
   editarCanal(data: Canal) {
-    return this.http.put<Canal[]>(this.url + "/api/canal/editar/" + data.id + '?XDEBUG_SESSION_START=10151', data);
+    return this.http.put<Canal[]>(this.url + "/api/canal/editar/" + data.id, data);
   }
 
   editarUsuario(data: Usuario) {

@@ -74,6 +74,10 @@ export class ChatComponent implements OnInit{
       this.comparador = this.emisor.usuario_receptor;
       this.mensajes = data;
     });
+    this.service.buscarMensaje(this.emisor).subscribe(data =>{
+      this.canales = data;
+      console.log(data);
+    });
   this.cacharra()
   }
   crearMensaje(){

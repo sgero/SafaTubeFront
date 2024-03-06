@@ -1103,3 +1103,57 @@ body {
   padding: 20px;
   border-radius: 10px;
 }
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+}
+
+.modal-content-privacy {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  margin-left: 35%;
+}
+
+.modal-content-privacy h2 {
+  margin-top: 0;
+}
+
+.modal-content-privacy p {
+  margin-bottom: 20px;
+}
+
+.modal-content-privacy button {
+  background-color: #e60036;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+
+}
+
+.modal-content-privacy button:hover {
+  background-color: #960423;
+}
+
+/* Estilos para los radios y labels */
+.modal-body label {
+  margin-right: 10px;
+}
